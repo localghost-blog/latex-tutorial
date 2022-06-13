@@ -1,0 +1,27 @@
+baseURL = 'http://example.org/'
+languageCode = 'zh'
+
+theme = 'hugo-book'
+
+[markup]
+[markup.goldmark.renderer]
+  unsafe = true
+[markup.tableOfContents]
+  startLevel = 1
+
+DefaultContentLanguage = 'zh'
+DefaultContentLanguageInSubdir = true
+[languages]
+  [languages.zh]
+    contentDir = 'content/zh'
+    title = 'LaTeX 教程'
+    languageName = '简体中文'
+    weight = 1
+  [languages.en]
+    contentDir = 'content/en'
+	title = 'LaTeX tutorial'
+    languageName = 'English'
+    weight = 2
+
+[params]
+  BookTheme = 'auto'
