@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LaTeX tutorial</title>
+    <link>https://localghost-blog.github.io/latex-tutorial/</link>
+    <description>Recent content on LaTeX tutorial</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language><atom:link href="https://localghost-blog.github.io/latex-tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with LaTeX</title>
+      <link>https://localghost-blog.github.io/latex-tutorial/docs/getting-started-with-latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localghost-blog.github.io/latex-tutorial/docs/getting-started-with-latex/</guid>
+      <description>\(\)Installing the $\TeX$ software#To use $\LaTeX$, you will need access to a computer with $\LaTeX$ installed, or download and install a $\TeX$ distribution on your own computer.
+Your first $\LaTeX$ file#Create a new file below. You can name it anything you like, but it should be a .tex file.
+% helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} Open a shell or cmd window, cd to the directory containing the file, and run xelatex on your file.</description>
+    </item>
+    
+  </channel>
+</rss>

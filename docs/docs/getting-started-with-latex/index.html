@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="\(\)Installing the $\TeX$ software#To use $\LaTeX$, you will need access to a computer with $\LaTeX$ installed, or download and install a $\TeX$ distribution on your own computer.
+Your first $\LaTeX$ file#Create a new file below. You can name it anything you like, but it should be a .tex file.
+% helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} Open a shell or cmd window, cd to the directory containing the file, and run xelatex on your file.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Getting Started with LaTeX" />
+<meta property="og:description" content="\(\)Installing the $\TeX$ software#To use $\LaTeX$, you will need access to a computer with $\LaTeX$ installed, or download and install a $\TeX$ distribution on your own computer.
+Your first $\LaTeX$ file#Create a new file below. You can name it anything you like, but it should be a .tex file.
+% helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} Open a shell or cmd window, cd to the directory containing the file, and run xelatex on your file." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/docs/getting-started-with-latex/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="LaTeX tutorial" />
+
+<title>Getting Started with LaTeX | LaTeX tutorial</title>
+<link rel="manifest" href="/latex-tutorial/manifest.json">
+<link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="zh" href="https://localghost-blog.github.io/latex-tutorial/zh/docs/getting-started-with-latex/" title="初次使用 LaTeX">
+<link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
+  <script defer src="/latex-tutorial/flexsearch.min.js"></script>
+  <script defer src="/latex-tutorial/en.search.min.0306a13732c6f3b3136df16b26db910e41d9f62c21f3bc43915a1c2294d219cd.js" integrity="sha256-AwahNzLG87MTbfFrJtuRDkHZ9iwh87xDkVocIpTSGc0=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/latex-tutorial/zh/"><span>LaTeX tutorial</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/latex-tutorial/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://localghost-blog.github.io/latex-tutorial/zh/docs/getting-started-with-latex/">
+          简体中文
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/docs/getting-started-with-latex/" class="active">Getting Started with LaTeX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/latex-tutorial/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Getting Started with LaTeX</strong>
+
+  <label for="toc-control">
+    
+    <img src="/latex-tutorial/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-the-tex-software">Installing the $\TeX$ software</a></li>
+    <li><a href="#your-first-latex-file">Your first $\LaTeX$ file</a></li>
+    <li><a href="#file-structure">File structure</a></li>
+    <li><a href="#the-layout-of-the-document">The layout of the document</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+	integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+	integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+	crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+	integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+	crossorigin="anonymous"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		renderMathInElement(document.body, {
+			
+			
+			delimiters: [
+				{ left: "$", right: "$", display: false },
+				{ left: "$$", right: "$$", display: true },
+				{ left: "\\(", right: "\\)", display: false },
+				{ left: "\\begin{equation}", right: "\\end{equation}", display: true },
+				{ left: "\\begin{align}", right: "\\end{align}", display: true },
+				{ left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+				{ left: "\\begin{gather}", right: "\\end{gather}", display: true },
+				{ left: "\\begin{CD}", right: "\\end{CD}", display: true },
+				{ left: "\\[", right: "\\]", display: true }
+			],
+			
+			throwOnError: false
+		});
+	});
+</script><span>
+	\(\)
+</span>
+<h1 id="installing-the-tex-software">
+  Installing the $\TeX$ software
+  <a class="anchor" href="#installing-the-tex-software">#</a>
+</h1>
+<p>To use $\LaTeX$, you will need access to a computer with $\LaTeX$ installed, or <a href="https://www.latex-project.org/get/">download</a> and install a $\TeX$ distribution on your own computer.</p>
+<h1 id="your-first-latex-file">
+  Your first $\LaTeX$ file
+  <a class="anchor" href="#your-first-latex-file">#</a>
+</h1>
+<ol>
+<li>
+<p>Create a new file below. 
+You can name it anything you like, but it should be a .tex file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#75715e">% helloworld.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>Hello, World!
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div></li>
+<li>
+<p>Open a shell or cmd window, <code>cd</code> to the directory containing the file, and run <code>xelatex</code> on your file. 
+If successful, you should see a PDF file called <code>helloworld.pdf</code> in the same directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd /path/to/your/folder
+</span></span><span style="display:flex;"><span>$ xelatex helloworld
+</span></span></code></pre></div><p>When your file has a bug $\LaTeX$ will tell you about it and stop processing. Type
+<code>ctrl-D</code> to get back to the shell.</p>
+</li>
+</ol>
+<h1 id="file-structure">
+  File structure
+  <a class="anchor" href="#file-structure">#</a>
+</h1>
+<p>When $\LaTeX 2 \varepsilon$ processes an input file, it expects it to follow a certain structure. Thus every input file must start with the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{...}
+</span></span></code></pre></div><p>This specifies what sort of document you intend to write. 
+After that, add commands to influence the style of the whole document, 
+or load packages that add new features to the LATEX system. 
+To load such a package you use the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{...}
+</span></span></code></pre></div><p>When all the setup work is done, you start the body of the text with the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span></code></pre></div><p>Now you enter the text mixed with some useful $\LaTeX$ commands. 
+At the end of the document you add the</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><p>command, which tells $\LaTeX$ to call it a day. 
+Anything that follows this command will be ignored by $\LaTeX$.</p>
+<h1 id="the-layout-of-the-document">
+  The layout of the document
+  <a class="anchor" href="#the-layout-of-the-document">#</a>
+</h1>
+<ol>
+<li><strong>document class</strong>: 
+The first information LATEX needs to know when processing an input file is the type of document the author wants to create. 
+This is specified with the <code>\documentclass</code> command.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span><span style="color:#a6e22e">[options]</span>{class}
+</span></span></code></pre></div>The following table lists some common document classes and options:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Class</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>article</td>
+<td>For short documents and journal articles. Is the most commonly used.</td>
+</tr>
+<tr>
+<td>report</td>
+<td>For longer documents and dissertations.</td>
+</tr>
+<tr>
+<td>book</td>
+<td>Useful to write books</td>
+</tr>
+<tr>
+<td>beamer</td>
+<td>Slides in the Beamer class format. See the beamer documentation for a better description</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Options</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(\d+)pt</td>
+<td>Sets the size of the main font in the document. default: 10pt</td>
+</tr>
+<tr>
+<td>(\w+)paper</td>
+<td>Defines the paper size. default: letterpaper. Other values: a5paper, b5paper, executivepaper, and legalpaper</td>
+</tr>
+<tr>
+<td>fleqn</td>
+<td>Typesets displayed formulae left-aligned instead of centred.</td>
+</tr>
+<tr>
+<td>leqno</td>
+<td>Places the numbering of formulae on the left hand side instead of the right.</td>
+</tr>
+<tr>
+<td>(no?)titlepage</td>
+<td>Specifies whether a new page should be started after the document title or not.</td>
+</tr>
+<tr>
+<td>(one|two)column</td>
+<td>Instructs $\LaTeX$ to typeset the document in one column or two columns.</td>
+</tr>
+<tr>
+<td>(one|two)side</td>
+<td>Specifies whether double or single sided output should be generated.</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>
+<p><strong>packages</strong>: While writing your document, 
+you will probably find that there are some areas where basic $\LaTeX$ cannot solve your problem. 
+If you want to include graphics, coloured text or source code from a file into your document, you need to enhance the capabilities of LATEX. 
+Such enhancements are called packages. Packages are activated with the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[options]</span>{package}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[options]</span>{package1, package2, ...}
+</span></span></code></pre></div><p>Modern $\TeX$ distributions come with a large number of packages prein-stalled. 
+If you are working on a Unix system, use the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ texdoc package
+</span></span></code></pre></div><p>for accessing package documentation.</p>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-the-tex-software">Installing the $\TeX$ software</a></li>
+    <li><a href="#your-first-latex-file">Your first $\LaTeX$ file</a></li>
+    <li><a href="#file-structure">File structure</a></li>
+    <li><a href="#the-layout-of-the-document">The layout of the document</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

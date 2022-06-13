@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者下载并安装一个$\TeX$发行版。 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
+以下以本地运行为例。
+第一个$\LaTeX$文件#创建新文件如下。可以使用任意名字，但建议以.tex结尾。
+% helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} 打开命令行， 用命令 cd 切换至文件所在目录，然后运行xelatex。 编译成功后，你会在当前目录发现helloworld.pdf以及一些其它文件。
+$ cd /path/to/your/folder $ xelatex helloworld # or xelatex helloworld.tex 若编译失败，则会显示错误信息，并停止编译。此时按ctrl-D(MacOS下为control-D)返回命令行。
+代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：
+\documentclass{...} 该命令指定了PDF文档的类型(如文章、书籍、演示文稿等)。 在此之后，可以添加命令来改变文档的样式，或者加载宏包(package)以获取拓展功能。 加载宏包的命令如下：
+\usepackage{...} 完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。
+\begin{document} 正文内容包括$\LaTeX$命令以及普通文本。 在正文结束后，用以下命令结束文档。
+\end{document} 该命令后的任何字符将被忽略。
+下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。
+文档前置#文档类型: 文档类型由命令\documentclass指定: \documentclass[options]{class} 其中class是文档类型的名称，控制整篇文档的大致风格，而[]内的部分提供一些参数的调整，可以如前文样例一样省去或置空。常用的名称和参数见以下表格： class 描述 article 文章格式，常用于科技论文、短篇报告、说明文档等。 report 报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。 book 书籍格式。 beamer 演示文稿格式，适于做报告时配合使用。 options 描述 (\d&#43;)pt 设置正文主要字体大小。如12pt，默认为10pt。 (\w&#43;)paper 设置页面大小。默认为letterpaper(8.5in$\times$11in，约合21.6cm$\times$28.0cm)。其它可选值有a5paper，b5paper，executivepaper及legalpaper等。 fleqn 行间公式左置。默认居中。 leqno 公式编号左置，默认居右。 (no)?">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="初次使用 LaTeX" />
+<meta property="og:description" content="\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者下载并安装一个$\TeX$发行版。 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
+以下以本地运行为例。
+第一个$\LaTeX$文件#创建新文件如下。可以使用任意名字，但建议以.tex结尾。
+% helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} 打开命令行， 用命令 cd 切换至文件所在目录，然后运行xelatex。 编译成功后，你会在当前目录发现helloworld.pdf以及一些其它文件。
+$ cd /path/to/your/folder $ xelatex helloworld # or xelatex helloworld.tex 若编译失败，则会显示错误信息，并停止编译。此时按ctrl-D(MacOS下为control-D)返回命令行。
+代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：
+\documentclass{...} 该命令指定了PDF文档的类型(如文章、书籍、演示文稿等)。 在此之后，可以添加命令来改变文档的样式，或者加载宏包(package)以获取拓展功能。 加载宏包的命令如下：
+\usepackage{...} 完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。
+\begin{document} 正文内容包括$\LaTeX$命令以及普通文本。 在正文结束后，用以下命令结束文档。
+\end{document} 该命令后的任何字符将被忽略。
+下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。
+文档前置#文档类型: 文档类型由命令\documentclass指定: \documentclass[options]{class} 其中class是文档类型的名称，控制整篇文档的大致风格，而[]内的部分提供一些参数的调整，可以如前文样例一样省去或置空。常用的名称和参数见以下表格： class 描述 article 文章格式，常用于科技论文、短篇报告、说明文档等。 report 报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。 book 书籍格式。 beamer 演示文稿格式，适于做报告时配合使用。 options 描述 (\d&#43;)pt 设置正文主要字体大小。如12pt，默认为10pt。 (\w&#43;)paper 设置页面大小。默认为letterpaper(8.5in$\times$11in，约合21.6cm$\times$28.0cm)。其它可选值有a5paper，b5paper，executivepaper及legalpaper等。 fleqn 行间公式左置。默认居中。 leqno 公式编号左置，默认居右。 (no)?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/getting-started-with-latex/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="LaTeX 教程" />
+
+<title>初次使用 LaTeX | LaTeX 教程</title>
+<link rel="manifest" href="/latex-tutorial/manifest.json">
+<link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="zh" href="https://localghost-blog.github.io/latex-tutorial/docs/getting-started-with-latex/" title="Getting Started with LaTeX">
+<link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
+  <script defer src="/latex-tutorial/flexsearch.min.js"></script>
+  <script defer src="/latex-tutorial/zh.search.min.46fce9c1454cf3f94ec35cdcd6afbae87e14acc92de54c5dc032e4e97f530ba6.js" integrity="sha256-RvzpwUVM8/lOw1zc1q&#43;66H4UrMkt5UxdwDLk6X9TC6Y=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/latex-tutorial/zh/"><span>LaTeX 教程</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/latex-tutorial/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://localghost-blog.github.io/latex-tutorial/docs/getting-started-with-latex/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/getting-started-with-latex/" class="active">初次使用 LaTeX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/international-language-support/" class="">多语言支持</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/latex-tutorial/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>初次使用 LaTeX</strong>
+
+  <label for="toc-control">
+    
+    <img src="/latex-tutorial/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#准备工作">准备工作</a></li>
+    <li><a href="#第一个latex文件">第一个$\LaTeX$文件</a></li>
+    <li><a href="#代码结构">代码结构</a></li>
+    <li><a href="#文档前置">文档前置</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+	integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+	integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+	crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+	integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+	crossorigin="anonymous"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		renderMathInElement(document.body, {
+			
+			
+			delimiters: [
+				{ left: "$", right: "$", display: false },
+				{ left: "$$", right: "$$", display: true },
+				{ left: "\\(", right: "\\)", display: false },
+				{ left: "\\begin{equation}", right: "\\end{equation}", display: true },
+				{ left: "\\begin{align}", right: "\\end{align}", display: true },
+				{ left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+				{ left: "\\begin{gather}", right: "\\end{gather}", display: true },
+				{ left: "\\begin{CD}", right: "\\end{CD}", display: true },
+				{ left: "\\[", right: "\\]", display: true }
+			],
+			
+			throwOnError: false
+		});
+	});
+</script><span>
+	\(\)
+</span>
+<h1 id="准备工作">
+  准备工作
+  <a class="anchor" href="#%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c">#</a>
+</h1>
+<p>使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者<a href="https://www.latex-project.org/get/">下载</a>并安装一个$\TeX$发行版。
+此外，也可以访问<a href="https://www.overleaf.com">Overleaf</a>等在线服务以联网使用$\LaTeX$。</p>
+<p>以下以本地运行为例。</p>
+<h1 id="第一个latex文件">
+  第一个$\LaTeX$文件
+  <a class="anchor" href="#%e7%ac%ac%e4%b8%80%e4%b8%aalatex%e6%96%87%e4%bb%b6">#</a>
+</h1>
+<ol>
+<li>
+<p>创建新文件如下。可以使用任意名字，但建议以<code>.tex</code>结尾。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#75715e">% helloworld.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>Hello, World!
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div></li>
+<li>
+<p>打开命令行， 用命令 <code>cd</code> 切换至文件所在目录，然后运行<code>xelatex</code>。 
+编译成功后，你会在当前目录发现<code>helloworld.pdf</code>以及一些其它文件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cd /path/to/your/folder
+</span></span><span style="display:flex;"><span>$ xelatex helloworld <span style="color:#75715e"># or xelatex helloworld.tex</span>
+</span></span></code></pre></div><p>若编译失败，则会显示错误信息，并停止编译。此时按<code>ctrl-D</code>(MacOS下为<code>control-D</code>)返回命令行。</p>
+</li>
+</ol>
+<h1 id="代码结构">
+  代码结构
+  <a class="anchor" href="#%e4%bb%a3%e7%a0%81%e7%bb%93%e6%9e%84">#</a>
+</h1>
+<p>一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{...}
+</span></span></code></pre></div><p>该命令指定了PDF文档的类型(如文章、书籍、演示文稿等)。
+在此之后，可以添加命令来改变文档的样式，或者加载宏包(package)以获取拓展功能。
+加载宏包的命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{...}
+</span></span></code></pre></div><p>完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span></code></pre></div><p>正文内容包括$\LaTeX$命令以及普通文本。
+在正文结束后，用以下命令结束文档。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><p>该命令后的任何字符将被忽略。</p>
+<p>下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。</p>
+<h1 id="文档前置">
+  文档前置
+  <a class="anchor" href="#%e6%96%87%e6%a1%a3%e5%89%8d%e7%bd%ae">#</a>
+</h1>
+<ol>
+<li><strong>文档类型:</strong> 
+文档类型由命令<code>\documentclass</code>指定:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span><span style="color:#a6e22e">[options]</span>{class}
+</span></span></code></pre></div>其中<code>class</code>是文档类型的名称，控制整篇文档的大致风格，而<code>[]</code>内的部分提供一些参数的调整，可以如前文样例一样省去或置空。常用的名称和参数见以下表格：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>class</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>article</td>
+<td>文章格式，常用于科技论文、短篇报告、说明文档等。</td>
+</tr>
+<tr>
+<td>report</td>
+<td>报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。</td>
+</tr>
+<tr>
+<td>book</td>
+<td>书籍格式。</td>
+</tr>
+<tr>
+<td>beamer</td>
+<td>演示文稿格式，适于做报告时配合使用。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>options</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(\d+)pt</td>
+<td>设置正文主要字体大小。如<code>12pt</code>，默认为<code>10pt</code>。</td>
+</tr>
+<tr>
+<td>(\w+)paper</td>
+<td>设置页面大小。默认为<code>letterpaper</code>(8.5in$\times$11in，约合21.6cm$\times$28.0cm)。其它可选值有<code>a5paper</code>，<code>b5paper</code>，<code>executivepaper</code>及<code>legalpaper</code>等。</td>
+</tr>
+<tr>
+<td>fleqn</td>
+<td>行间公式左置。默认居中。</td>
+</tr>
+<tr>
+<td>leqno</td>
+<td>公式编号左置，默认居右。</td>
+</tr>
+<tr>
+<td>(no)?titlepage</td>
+<td>设置命令<code>\maketitle</code>是否生成单独页。<code>article</code>默认为<code>notitlepage</code>，<code>report</code>，<code>book</code>默认为<code>titlepage</code>。</td>
+</tr>
+<tr>
+<td>(one|two)column</td>
+<td>单/双列排版。默认为单列。</td>
+</tr>
+<tr>
+<td>(one|two)side</td>
+<td>单/双面排版。双面时奇偶页页眉页脚及页边距不同。<code>artcle</code>，<code>report</code>默认为单面，<code>book</code>默认为双面</td>
+</tr>
+</tbody>
+</table>
+<p>以下是一个合法(但没必要)的文档类型命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span><span style="color:#a6e22e">[10pt, letterpaper, titlepage, onecolumn, twoside]</span>{book}
+</span></span></code></pre></div><ol start="2">
+<li>
+<p><strong>宏包:</strong> 编写文档时偶尔会发现部分需求难以用最基本的$\LaTeX$实现，例如插入图片，文字上色、高亮代码等。此时一般可以通过使用宏包来简单实现。
+宏包用以下命令调用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[options]</span>{package}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% 或者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[options]</span>{package1, package2, ...}
+</span></span></code></pre></div><p>其中<code>package</code>是宏包的名称，<code>options</code>是宏包的参数。可以一次性调用多个宏包，但参数作用于所有宏包。</p>
+<p>现代的$\TeX$发布版有大量的预安装宏包，可以使用命令<code>texdoc</code>来阅读已安装宏包的文档：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ texdoc package
+</span></span></code></pre></div></li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#准备工作">准备工作</a></li>
+    <li><a href="#第一个latex文件">第一个$\LaTeX$文件</a></li>
+    <li><a href="#代码结构">代码结构</a></li>
+    <li><a href="#文档前置">文档前置</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="\(\)多语言支持#现代的$\TeX$引擎，如XeTeX和LuaTeX，原生支持UTF-8编码。如下：
+源代码#\documentclass{article} \begin{document} Français Português Español Føroyskt \end{document} 编译结果#Français Português Español Føroyskt然而非拉丁字母无法直接在$\LaTeX$中使用，如西里尔字母、希腊字母、阿拉伯字母以及东亚文字等。
+我们主要介绍中文的支持，提供两种解决方案。
+方案一：xeCJK宏包#xeCJK是一个XeLaTeX宏包，用于排版中日韩(CJK)文字，有以下功能：
+分别设置CJK与英文字体； 自动忽略CJK文字间空格(保留其它空格)，允许在非标点汉字和英文字母间断行； 提供多种标点处理方式； 自动调整中英文间空白。 在引入宏包后，须指定CJK文字的字体，然后可以在文档中自由使用中日韩文字。
+更多特性及设定见其文档。
+源代码#\documentclass{article} \usepackage{xeCJK} \setCJKmainfont{SimSun} \begin{document} 汉语测试 \end{document} 编译结果#汉语测试方案二：ctex宏包与文档类#另一种方式是使用ctex宏包与文档类，其进一步封装了CJK，xeCJK，luatexja等宏包， 使得用户在排版时无须考虑排版引擎等细节。
+注意事项：该方案会改变默认的页码位置，如果需要使用默认的页码位置，请在文档中使用以下命令：
+\usepackage{fancyhdr} \pagestyle{fancy} \lfoot{} ctexart文档类\documentclass{ctexart} \begin{document} 少写两行太好用啦！ \end{document} ctex宏包\documentclass{article} \usepackage{ctex} \begin{document} 多了一行 \end{document} ctex会自动寻找中文字体。默认的字体如下：
+Windows MacOS Linux XeLaTeX 中易字库 &#43; 微软雅黑 华文字库 &#43; 苹方 Fandol字库 LuaLaTeX 中易字库 &#43; 微软雅黑 华文字库 &#43; 苹方 Fandol字库 pdfLaTeX 中易字库 &#43; 微软雅黑 不可用 不可用 也可以使用\setCJKmainfont{}命令来设置中文字体。">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="多语言支持" />
+<meta property="og:description" content="\(\)多语言支持#现代的$\TeX$引擎，如XeTeX和LuaTeX，原生支持UTF-8编码。如下：
+源代码#\documentclass{article} \begin{document} Français Português Español Føroyskt \end{document} 编译结果#Français Português Español Føroyskt然而非拉丁字母无法直接在$\LaTeX$中使用，如西里尔字母、希腊字母、阿拉伯字母以及东亚文字等。
+我们主要介绍中文的支持，提供两种解决方案。
+方案一：xeCJK宏包#xeCJK是一个XeLaTeX宏包，用于排版中日韩(CJK)文字，有以下功能：
+分别设置CJK与英文字体； 自动忽略CJK文字间空格(保留其它空格)，允许在非标点汉字和英文字母间断行； 提供多种标点处理方式； 自动调整中英文间空白。 在引入宏包后，须指定CJK文字的字体，然后可以在文档中自由使用中日韩文字。
+更多特性及设定见其文档。
+源代码#\documentclass{article} \usepackage{xeCJK} \setCJKmainfont{SimSun} \begin{document} 汉语测试 \end{document} 编译结果#汉语测试方案二：ctex宏包与文档类#另一种方式是使用ctex宏包与文档类，其进一步封装了CJK，xeCJK，luatexja等宏包， 使得用户在排版时无须考虑排版引擎等细节。
+注意事项：该方案会改变默认的页码位置，如果需要使用默认的页码位置，请在文档中使用以下命令：
+\usepackage{fancyhdr} \pagestyle{fancy} \lfoot{} ctexart文档类\documentclass{ctexart} \begin{document} 少写两行太好用啦！ \end{document} ctex宏包\documentclass{article} \usepackage{ctex} \begin{document} 多了一行 \end{document} ctex会自动寻找中文字体。默认的字体如下：
+Windows MacOS Linux XeLaTeX 中易字库 &#43; 微软雅黑 华文字库 &#43; 苹方 Fandol字库 LuaLaTeX 中易字库 &#43; 微软雅黑 华文字库 &#43; 苹方 Fandol字库 pdfLaTeX 中易字库 &#43; 微软雅黑 不可用 不可用 也可以使用\setCJKmainfont{}命令来设置中文字体。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/international-language-support/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="LaTeX 教程" />
+
+<title>多语言支持 | LaTeX 教程</title>
+<link rel="manifest" href="/latex-tutorial/manifest.json">
+<link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
+  <script defer src="/latex-tutorial/flexsearch.min.js"></script>
+  <script defer src="/latex-tutorial/zh.search.min.46fce9c1454cf3f94ec35cdcd6afbae87e14acc92de54c5dc032e4e97f530ba6.js" integrity="sha256-RvzpwUVM8/lOw1zc1q&#43;66H4UrMkt5UxdwDLk6X9TC6Y=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/latex-tutorial/zh/"><span>LaTeX 教程</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/latex-tutorial/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://localghost-blog.github.io/latex-tutorial/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/getting-started-with-latex/" class="">初次使用 LaTeX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/international-language-support/" class="active">多语言支持</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/latex-tutorial/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>多语言支持</strong>
+
+  <label for="toc-control">
+    
+    <img src="/latex-tutorial/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#多语言支持">多语言支持</a>
+      <ul>
+        <li><a href="#方案一xecjk宏包">方案一：xeCJK宏包</a></li>
+        <li><a href="#方案二ctex宏包与文档类">方案二：ctex宏包与文档类</a></li>
+      </ul>
+    </li>
+    <li><a href="#字体使用">字体使用</a>
+      <ul>
+        <li><a href="#使用本机安装字体">使用本机安装字体</a></li>
+        <li><a href="#使用本地字体">使用本地字体</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+	integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+	integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+	crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+	integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+	crossorigin="anonymous"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		renderMathInElement(document.body, {
+			
+			
+			delimiters: [
+				{ left: "$", right: "$", display: false },
+				{ left: "$$", right: "$$", display: true },
+				{ left: "\\(", right: "\\)", display: false },
+				{ left: "\\begin{equation}", right: "\\end{equation}", display: true },
+				{ left: "\\begin{align}", right: "\\end{align}", display: true },
+				{ left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+				{ left: "\\begin{gather}", right: "\\end{gather}", display: true },
+				{ left: "\\begin{CD}", right: "\\end{CD}", display: true },
+				{ left: "\\[", right: "\\]", display: true }
+			],
+			
+			throwOnError: false
+		});
+	});
+</script><span>
+	\(\)
+</span>
+<h1 id="多语言支持">
+  多语言支持
+  <a class="anchor" href="#%e5%a4%9a%e8%af%ad%e8%a8%80%e6%94%af%e6%8c%81">#</a>
+</h1>
+<p>现代的$\TeX$引擎，如XeTeX和LuaTeX，原生支持UTF-8编码。如下：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>Français Português Español Føroyskt
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>Français Português Español Føroyskt
+  </div>
+
+</div>
+
+<p>然而非拉丁字母无法直接在$\LaTeX$中使用，如西里尔字母、希腊字母、阿拉伯字母以及东亚文字等。</p>
+<p>我们主要介绍中文的支持，提供两种解决方案。</p>
+<h2 id="方案一xecjk宏包">
+  方案一：xeCJK宏包
+  <a class="anchor" href="#%e6%96%b9%e6%a1%88%e4%b8%80xecjk%e5%ae%8f%e5%8c%85">#</a>
+</h2>
+<p>xeCJK是一个XeLaTeX宏包，用于排版中日韩(CJK)文字，有以下功能：</p>
+<ol>
+<li>分别设置CJK与英文字体；</li>
+<li>自动忽略CJK文字间空格(保留其它空格)，允许在非标点汉字和英文字母间断行；</li>
+<li>提供多种标点处理方式；</li>
+<li>自动调整中英文间空白。</li>
+</ol>
+<p>在引入宏包后，须指定CJK文字的字体，然后可以在文档中自由使用中日韩文字。</p>
+<p>更多特性及设定见其<a href="http://mirrors.ibiblio.org/CTAN/macros/xetex/latex/xecjk/xeCJK.pdf">文档</a>。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{xeCJK}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setCJKmainfont</span>{SimSun}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>汉语测试
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h3 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h3>
+<p>汉语测试
+  </div>
+
+</div>
+
+<h2 id="方案二ctex宏包与文档类">
+  方案二：ctex宏包与文档类
+  <a class="anchor" href="#%e6%96%b9%e6%a1%88%e4%ba%8cctex%e5%ae%8f%e5%8c%85%e4%b8%8e%e6%96%87%e6%a1%a3%e7%b1%bb">#</a>
+</h2>
+<p>另一种方式是使用ctex宏包与文档类，其进一步封装了CJK，xeCJK，luatexja等宏包，
+使得用户在排版时无须考虑排版引擎等细节。</p>
+<p><strong>注意事项</strong>：该方案会改变默认的页码位置，如果需要使用默认的页码位置，请在文档中使用以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{fancyhdr}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\pagestyle</span>{fancy}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\lfoot</span>{}
+</span></span></code></pre></div>
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-ctex" id="tabs-ctex-0" checked="checked" />
+  <label for="tabs-ctex-0">ctexart文档类</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{ctexart}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>少写两行太好用啦！
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-ctex" id="tabs-ctex-1"  />
+  <label for="tabs-ctex-1">ctex宏包</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{ctex}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>多了一行
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div></div></div>
+
+<p>ctex会自动寻找中文字体。默认的字体如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Windows</th>
+<th>MacOS</th>
+<th>Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XeLaTeX</td>
+<td>中易字库 + 微软雅黑</td>
+<td>华文字库 + 苹方</td>
+<td>Fandol字库</td>
+</tr>
+<tr>
+<td>LuaLaTeX</td>
+<td>中易字库 + 微软雅黑</td>
+<td>华文字库 + 苹方</td>
+<td>Fandol字库</td>
+</tr>
+<tr>
+<td>pdfLaTeX</td>
+<td>中易字库 + 微软雅黑</td>
+<td>不可用</td>
+<td>不可用</td>
+</tr>
+</tbody>
+</table>
+<p>也可以使用<code>\setCJKmainfont{}</code>命令来设置中文字体。</p>
+<p>更多特性及设定见其<a href="http://mirrors.ibiblio.org/CTAN/language/chinese/ctex/ctex.pdf">文档</a>。</p>
+<h1 id="字体使用">
+  字体使用
+  <a class="anchor" href="#%e5%ad%97%e4%bd%93%e4%bd%bf%e7%94%a8">#</a>
+</h1>
+<h2 id="使用本机安装字体">
+  使用本机安装字体
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e6%9c%ac%e6%9c%ba%e5%ae%89%e8%a3%85%e5%ad%97%e4%bd%93">#</a>
+</h2>
+<p>XeTeX通常使用fontconfig库查找和调用字体，因此可以用fc-list命令显示可用的字体。
+在命令行运行以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ fc-list &gt; fontlist.txt
+</span></span></code></pre></div><p>可将系统中所有安装的字体列表存入<code>fontlist.txt</code>文件中。
+而可用于CJK字体参数的字体名可用以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ fc-list -f <span style="color:#e6db74">&#34;%{family}\n&#34;</span> :lang<span style="color:#f92672">=</span>zh &gt; zhfont.txt
+</span></span></code></pre></div><p>以下是部分预装字体
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-zh-font" id="tabs-zh-font-0" checked="checked" />
+  <label for="tabs-zh-font-0">Windows</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ fc-list -f <span style="color:#e6db74">&#34;%{family}\n&#34;</span> :lang<span style="color:#f92672">=</span>zh
+</span></span><span style="display:flex;"><span>方正姚体,FZYaoTi
+</span></span><span style="display:flex;"><span>黑体,SimHei
+</span></span><span style="display:flex;"><span>微软雅黑,Microsoft YaHei
+</span></span><span style="display:flex;"><span>华文仿宋,STFangsong
+</span></span><span style="display:flex;"><span>华文楷体,STKaiti
+</span></span><span style="display:flex;"><span>华文隶书,STLiti
+</span></span><span style="display:flex;"><span>幼圆,YouYuan
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-zh-font" id="tabs-zh-font-1"  />
+  <label for="tabs-zh-font-1">MacOS</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ fc-list -f <span style="color:#e6db74">&#34;%{family}\n&#34;</span> :lang<span style="color:#f92672">=</span>zh
+</span></span><span style="display:flex;"><span>苹方-简,蘋方-簡,PingFang SC
+</span></span><span style="display:flex;"><span>.苹方-繁,.蘋方-繁,.PingFang TC
+</span></span><span style="display:flex;"><span>苹方-繁,蘋方-繁,PingFang TC
+</span></span><span style="display:flex;"><span>黑体-繁,黑體-繁,Heiti TC,黒体-繁,Heiti-번체
+</span></span><span style="display:flex;"><span>.苹方-繁,.蘋方-繁,.PingFang TC
+</span></span><span style="display:flex;"><span>黑体-繁,黑體-繁,Heiti TC,黒体-繁,Heiti-번체
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-zh-font" id="tabs-zh-font-2"  />
+  <label for="tabs-zh-font-2">Ubuntu</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ fc-list -f <span style="color:#e6db74">&#34;%{family}\n&#34;</span> :lang<span style="color:#f92672">=</span>zh
+</span></span><span style="display:flex;"><span>AR PL Mingti2L Big5,文鼎ＰＬ細上海宋
+</span></span><span style="display:flex;"><span>AR PL KaitiM GB,文鼎ＰＬ简中楷
+</span></span><span style="display:flex;"><span>AR PL KaitiM Big5,文鼎ＰＬ中楷
+</span></span><span style="display:flex;"><span>AR PL SungtiL GB,文鼎ＰＬ简报宋
+</span></span><span style="display:flex;"><span>Droid Sans Fallback
+</span></span></code></pre></div></div></div>
+</p>
+<p>以Windows系统为例，以下使用黑体方式均合法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\setCJKmainfont</span>{黑体}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% 或者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\setCJKmainfont</span>{SimHei}
+</span></span></code></pre></div><h2 id="使用本地字体">
+  使用本地字体
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e6%9c%ac%e5%9c%b0%e5%ad%97%e4%bd%93">#</a>
+</h2>
+<p>若要使用本地字体，可以使用<code>\setCJKmainfont[options]{fontname}</code>命令，其中参数<code>options</code>为本地字体相对<strong>命令行当前路径</strong>的路径，<code>fontname</code>为字体名。</p>
+<p>使用样例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#75715e">% folder/src/main.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\documentclass</span>{ctexart}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setCJKmainfont</span><span style="color:#a6e22e">[Path=fonts/]</span>{LXGWWenKaiScreen}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% located in folder/fonts/
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>叽里呱啦。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>foo@bar:folder$ xelatex src/main
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#多语言支持">多语言支持</a>
+      <ul>
+        <li><a href="#方案一xecjk宏包">方案一：xeCJK宏包</a></li>
+        <li><a href="#方案二ctex宏包与文档类">方案二：ctex宏包与文档类</a></li>
+      </ul>
+    </li>
+    <li><a href="#字体使用">字体使用</a>
+      <ul>
+        <li><a href="#使用本机安装字体">使用本机安装字体</a></li>
+        <li><a href="#使用本地字体">使用本地字体</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
