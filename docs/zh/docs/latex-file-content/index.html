@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="\(\)$\LaTeX$文件结构#在此前的代码结构一节中，我们初步介绍了$\LaTeX$文件的结构。以下是文件内容的示意图。
+flowchart LRA(文件) --&gt; B(导言)A --&gt; C(正文)A --&gt; D(忽略)B --&gt; E(文档类型)B --&gt; F(宏包, 全局设定, 注释)C --&gt; G(开始)C --&gt; H(文字, 命令, 环境, 注释)C --&gt; I(结束)正文部分的内容由文字，命令，环境，注释组成。一般来说，文字会被按照原样处理为文档的内容，其余部分会按照$\LaTeX$的语法规则进行处理。我们将分别介绍这些部分的内容。
+文字#空格#\n([ \t]*\n)&#43; -&gt; 段落终止: 两个文段间的空行定义段落的终止，多个空行被视为一个空行。 (?&lt;=\n)[ \t]&#43; -&gt; 忽略, (?&lt;!\n)([ \t]&#43;|[ \t]*\n) -&gt; 空格: 空白符，如空格键、tab键输入的字符皆视为空格，连续的多个空格视为一个空格。行头空格忽略不计，而单个换行符亦视为空格。 以下是一个例子：
+源代码#It does not matter whether you enter one or several spaces after a word.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="LaTeX 文件内容" />
+<meta property="og:description" content="\(\)$\LaTeX$文件结构#在此前的代码结构一节中，我们初步介绍了$\LaTeX$文件的结构。以下是文件内容的示意图。
+flowchart LRA(文件) --&gt; B(导言)A --&gt; C(正文)A --&gt; D(忽略)B --&gt; E(文档类型)B --&gt; F(宏包, 全局设定, 注释)C --&gt; G(开始)C --&gt; H(文字, 命令, 环境, 注释)C --&gt; I(结束)正文部分的内容由文字，命令，环境，注释组成。一般来说，文字会被按照原样处理为文档的内容，其余部分会按照$\LaTeX$的语法规则进行处理。我们将分别介绍这些部分的内容。
+文字#空格#\n([ \t]*\n)&#43; -&gt; 段落终止: 两个文段间的空行定义段落的终止，多个空行被视为一个空行。 (?&lt;=\n)[ \t]&#43; -&gt; 忽略, (?&lt;!\n)([ \t]&#43;|[ \t]*\n) -&gt; 空格: 空白符，如空格键、tab键输入的字符皆视为空格，连续的多个空格视为一个空格。行头空格忽略不计，而单个换行符亦视为空格。 以下是一个例子：
+源代码#It does not matter whether you enter one or several spaces after a word." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/latex-file-content/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="LaTeX 教程" />
+
+<title>LaTeX 文件内容 | LaTeX 教程</title>
+<link rel="manifest" href="/latex-tutorial/manifest.json">
+<link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
+  <script defer src="/latex-tutorial/flexsearch.min.js"></script>
+  <script defer src="/latex-tutorial/zh.search.min.3bee9e24c4f9a7623b3ddd535cc9dfc6b986a5031491db19e66616cb1e36fd81.js" integrity="sha256-O&#43;6eJMT5p2I7Pd1TXMnfxrmGpQMUkdsZ5mYWyx42/YE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/latex-tutorial/zh/"><span>LaTeX 教程</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/latex-tutorial/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://localghost-blog.github.io/latex-tutorial/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/getting-started-with-latex/" class="">初次使用 LaTeX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/international-language-support/" class="">多语言支持</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/latex-file-content/" class="active">LaTeX 文件内容</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/common-environments/" class="">常见环境</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/" class="">如何写出一个结构化的LaTeX文档</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/latex-tutorial/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>LaTeX 文件内容</strong>
+
+  <label for="toc-control">
+    
+    <img src="/latex-tutorial/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#latex文件结构">$\LaTeX$文件结构</a></li>
+    <li><a href="#文字">文字</a>
+      <ul>
+        <li><a href="#空格">空格</a>
+          <ul>
+            <li><a href="#单词间距与断行">单词间距与断行</a></li>
+          </ul>
+        </li>
+        <li><a href="#特殊字符">特殊字符</a>
+          <ul>
+            <li><a href="#保留字符">保留字符</a></li>
+            <li><a href="#引号">引号</a></li>
+            <li><a href="#连字与破折号--">连字与破折号 (-)</a></li>
+            <li><a href="#斜杠-">斜杠 (/)</a></li>
+            <li><a href="#度数符号-circ">度数符号 ($^\circ$)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#命令">命令</a>
+      <ul>
+        <li><a href="#手动断行与断页">手动断行与断页</a></li>
+      </ul>
+    </li>
+    <li><a href="#环境">环境</a></li>
+    <li><a href="#注释">注释</a>
+      <ul>
+        <li><a href="#多行注释">多行注释</a></li>
+      </ul>
+    </li>
+    <li><a href="#逐字输出verbatim">逐字输出(verbatim)</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+	integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+	integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+	crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+	integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+	crossorigin="anonymous"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		renderMathInElement(document.body, {
+			
+			
+			delimiters: [
+				{ left: "$", right: "$", display: false },
+				{ left: "$$", right: "$$", display: true },
+				{ left: "\\(", right: "\\)", display: false },
+				{ left: "\\begin{equation}", right: "\\end{equation}", display: true },
+				{ left: "\\begin{align}", right: "\\end{align}", display: true },
+				{ left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+				{ left: "\\begin{gather}", right: "\\end{gather}", display: true },
+				{ left: "\\begin{CD}", right: "\\end{CD}", display: true },
+				{ left: "\\[", right: "\\]", display: true }
+			],
+			
+			throwOnError: false
+		});
+	});
+</script><span>
+	\(\)
+</span>
+<h1 id="latex文件结构">
+  $\LaTeX$文件结构
+  <a class="anchor" href="#latex%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84">#</a>
+</h1>
+<p>在此前的<a href="../getting-started-with-latex/#%e4%bb%a3%e7%a0%81%e7%bb%93%e6%9e%84">代码结构</a>一节中，我们初步介绍了$\LaTeX$文件的结构。以下是文件内容的示意图。</p>
+
+
+<script src="/latex-tutorial/mermaid.min.js"></script>
+
+  <script>mermaid.initialize({
+  "flowchart": {
+    "useMaxWidth":true
+  },
+  "theme": "default"
+}
+)</script>
+
+
+
+
+<p class="mermaid text-center">
+flowchart LR
+A(文件) --> B(导言)
+A --> C(正文)
+A --> D(忽略)
+B --> E(文档类型)
+B --> F(宏包, 全局设定, 注释)
+C --> G(开始)
+C --> H(文字, 命令, 环境, 注释)
+C --> I(结束)
+</p>
+
+<p>正文部分的内容由文字，命令，环境，注释组成。一般来说，文字会被按照原样处理为文档的内容，其余部分会按照$\LaTeX$的语法规则进行处理。我们将分别介绍这些部分的内容。</p>
+<h1 id="文字">
+  文字
+  <a class="anchor" href="#%e6%96%87%e5%ad%97">#</a>
+</h1>
+<h2 id="空格">
+  空格
+  <a class="anchor" href="#%e7%a9%ba%e6%a0%bc">#</a>
+</h2>
+<ol>
+<li><code>\n([ \t]*\n)+ -&gt; 段落终止</code>: 两个文段间的空行定义段落的终止，多个空行被视为一个空行。</li>
+<li><code>(?&lt;=\n)[ \t]+ -&gt; 忽略, (?&lt;!\n)([ \t]+|[ \t]*\n) -&gt; 空格</code>: 
+空白符，如空格键、<code>tab</code>键输入的字符皆视为空格，连续的多个空格视为一个空格。行头空格忽略不计，而单个换行符亦视为空格。</li>
+</ol>
+<p>以下是一个例子：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>It does not matter whether you
+</span></span><span style="display:flex;"><span>enter one or several     spaces
+</span></span><span style="display:flex;"><span>after a word.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>An empty line starts a new
+</span></span><span style="display:flex;"><span>paragraph.
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>It does not matter whether you enter one or several spaces after a word.</p>
+<p>An empty line starts a new paragraph.</p>
+
+  </div>
+
+</div>
+
+<h3 id="单词间距与断行">
+  单词间距与断行
+  <a class="anchor" href="#%e5%8d%95%e8%af%8d%e9%97%b4%e8%b7%9d%e4%b8%8e%e6%96%ad%e8%a1%8c">#</a>
+</h3>
+<p>在进行西文排版时，为了使文字达到右边界，$\LaTeX$会适度调整单词间距。为提高可读性，其也会在句尾稍加间距。$\LaTeX$会自动选择断行位置。若在空格处断行，会舍去空格生成的间距；若在词中断行，会生成连接符。</p>
+<p>$\LaTeX$的默认句终止符为句号<code>.</code>，问号<code>?</code>与感叹号<code>!</code>。若句号紧随大写字母，则其不会处理为语句终止，这是因为句号常出现于单词缩写中，如<code>Q.E.D.</code>。</p>
+<p>你可以以特殊命令改变当前空格和句号的规则。
+如<code>~</code>会生成不调整间距，亦不断行的空格。
+而命令<code>\@</code>则会指定其紧随的句号为语句终止，即使其前为大写字母。</p>
+<p>例子见下</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>Mr.~Smith was happy to see her<span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>cf.~Fig.~5<span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>I like BASIC<span style="color:#66d9ef">\@</span>. What about you?
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>Mr. Smith was happy to see her</p>
+<p>cf. Fig. 5</p>
+<p>I like BASIC. What about you?</p>
+
+  </div>
+
+</div>
+
+<p>以下命令禁止句尾的额外间距：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\frenchspacing</span>
+</span></span></code></pre></div><p>这在非英文语言中是常见的，若你使用该命令，命令<code>\@</code>非必要。</p>
+<h2 id="特殊字符">
+  特殊字符
+  <a class="anchor" href="#%e7%89%b9%e6%ae%8a%e5%ad%97%e7%ac%a6">#</a>
+</h2>
+<h3 id="保留字符">
+  保留字符
+  <a class="anchor" href="#%e4%bf%9d%e7%95%99%e5%ad%97%e7%ac%a6">#</a>
+</h3>
+<p>多数字符在$\LaTeX$中为其本义，但以下字符有特殊用途：</p>
+<center># $ % ^ & _ { } ~ \</center>
+<p>其中<code>$</code>，<code>^</code>，<code>_</code>用于数学公式排版，<code>&amp;</code>用于表格排版，<code>~</code>用途见上，<code>%</code>用于注释。
+若想在文档中使用其本义，须在其前面加上<code>\</code>，如<code>\$</code>。<code>\</code>为例外，需要使用命令<code>\textbackslash</code>(在数学环境为<code>\backslash</code>)。细表见下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">#</th>
+<th style="text-align:center">$</th>
+<th style="text-align:center">%</th>
+<th style="text-align:center">^</th>
+<th style="text-align:center">&amp;</th>
+<th style="text-align:center">_</th>
+<th style="text-align:center">{</th>
+<th style="text-align:center">}</th>
+<th style="text-align:center">~</th>
+<th style="text-align:center">\</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\#</td>
+<td style="text-align:center">\$</td>
+<td style="text-align:center">\%</td>
+<td style="text-align:center">\^{}</td>
+<td style="text-align:center">\&amp;</td>
+<td style="text-align:center">\_</td>
+<td style="text-align:center">\{</td>
+<td style="text-align:center">\}</td>
+<td style="text-align:center">\~{}</td>
+<td style="text-align:center">\textbackslash (\backslash)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="引号">
+  引号
+  <a class="anchor" href="#%e5%bc%95%e5%8f%b7">#</a>
+</h3>
+<p>在$\LaTeX$不能直接使用引号，单引号<code>‘</code>和<code>’</code>分别用<code>`</code>和<code>'</code>输入；双引号则用<code>``</code>和<code>''</code>输入。在使用ctex宏包或文档类时，中文引号可以直接输入。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>``Please press the `x&#39; key.&#39;&#39;
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <p>##international-language-support/#使用本地字体 编译结果</p>
+<p>&ldquo;Please press the &lsquo;x&rsquo; key.&rdquo;</p>
+
+  </div>
+
+</div>
+
+<h3 id="连字与破折号--">
+  连字与破折号 (-)
+  <a class="anchor" href="#%e8%bf%9e%e5%ad%97%e4%b8%8e%e7%a0%b4%e6%8a%98%e5%8f%b7--">#</a>
+</h3>
+<p>$\LaTeX$按连续<code>-</code>的个数提供3种“横线”：
+单个<code>-</code>用来组成复合词，
+连续两个<code>-</code>用来连接数字表示范围，
+连续三个<code>-</code>用来连接单词，语义上类似破折号。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>daughter-in-law, X-rated<span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>pages 13--67<span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>yes---or no? <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">$</span><span style="color:#ae81ff">0</span><span style="color:#e6db74">$</span>, <span style="color:#e6db74">$</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">$</span> and <span style="color:#e6db74">$</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">$</span>
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>daughter-in-law, X-rated</p>
+<p>pages 13–67</p>
+<p>yes—or no?</p>
+<p>$0$, $1$ and $-1$</p>
+
+  </div>
+
+</div>
+
+<h3 id="斜杠-">
+  斜杠 (/)
+  <a class="anchor" href="#%e6%96%9c%e6%9d%a0-">#</a>
+</h3>
+<p>在两个单词间加入斜杠<code>/</code>会使编译器将其视为一个单词，如<code>read/write</code>。
+但在排版时也会禁止在行尾生成连字符，因此可能出现错误‘overfull’。
+解决方案是改用<code>\slash</code>。尽管如此，普通的<code>/</code>仍然会在表示比例时使用，如<code>5 MB/s</code>.</p>
+<h3 id="度数符号-circ">
+  度数符号 ($^\circ$)
+  <a class="anchor" href="#%e5%ba%a6%e6%95%b0%e7%ac%a6%e5%8f%b7-circ">#</a>
+</h3>
+<p>在纯净<code>\LaTeX</code>中，使用<code>$^\circ$</code>表示度数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>It&#39;s <span style="color:#e6db74">$</span><span style="color:#f92672">-</span><span style="color:#ae81ff">30</span>\,^{\circ}\mathrm{C}<span style="color:#e6db74">$</span>. I will soon start to super-conduct.
+</span></span></code></pre></div><p>It&rsquo;s ${-30,}^{\circ}$C. I will soon start to super-conduct.</p>
+<p>而宏包<code>textcomp</code>提供了<code>\textdegree</code>和<code>\textcelsius</code>等用于方便地表示度数。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>30 <span style="color:#66d9ef">\textcelsius</span>{} is 86 <span style="color:#66d9ef">\textdegree</span>{F}.
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>30 $\text{\textdegree}$C is 86 $\text{\textdegree}$F.
+  </div>
+
+</div>
+
+<h1 id="命令">
+  命令
+  <a class="anchor" href="#%e5%91%bd%e4%bb%a4">#</a>
+</h1>
+<p>$\LaTeX$ 命令以反斜杠<code>\</code>开头，大小写敏感，有以下两种形式：</p>
+<ul>
+<li><code>\\[a-zA-Z]+\*?([...]|{...})*</code>：
+在反斜杠后紧随若干字母，然后终止于非字母。
+部分命令可以带星号，与不带星号的命令有差异。
+部分命令提供以<code>[]</code>或<code>{}</code>包围的若干参数。
+一般来说，<code>[]</code>为可选参数，<code>{}</code>为必须参数，不可以随意调换参数的顺序。
+此外，一般来说可选参数会在必须参数的前面。</li>
+<li><code>\\[^a-zA-Z]</code>：由反斜杠及紧随的一个非字母组成。</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>
+<p>命令后的空格会被忽略。若想在命令后间隔，可以使用空参数<code>{}</code>加上空白符，或是用使用<code>~</code>，或<code>\ </code>(反斜杠加空格)。</p>
+</li>
+<li>
+<p>如果未使用<code>{}</code>包围必须参数，可能出现不可预料的结果。大体来说有两种情况：</p>
+<ol>
+<li>
+<p>以下一条命令/非空白字符作为参数。对于数学环境中的分式<code>\frac{}{}</code>，如不使用<code>{}</code>包围，例如<code>\frac \alpha \beta</code>，编译器会将其认为<code>\frac{\alpha}{\beta}</code>。</p>
+</li>
+<li>
+<p>对其后的所有内容产生作用。如<code>\bfseries{}</code>，其会加粗命令后的所有内容，截至<code>\bfseries</code>所在环境结束。如<code>\text{\bfseries bold} normal</code>会加粗bold。</p>
+</li>
+</ol>
+<p><strong>请不要省去必须参数，除非你知道如此做的后果。</strong></p>
+</li>
+</ol>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>New <span style="color:#66d9ef">\TeX</span> users may miss whitespaces after a command. <span style="color:#75715e">% renders wrong 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Experienced <span style="color:#66d9ef">\TeX\ </span>users are <span style="color:#66d9ef">\TeX</span> perts, and know how to use whitespaces. <span style="color:#75715e">% renders correct
+</span></span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>New $\TeX$users may miss whitespaces after a command. 
+Experienced $\TeX$ users are $\TeX$perts, and know how to use whitespaces.
+  </div>
+
+</div>
+
+<p>第2类命令分为以下几种类型：</p>
+<ol>
+<li>
+<p><code>\#</code>, <code>\$</code>, <code>\%</code>, <code>\^{}</code>, <code>\&amp;</code>, <code>\_</code>, <code>\{</code>, <code>\}</code>, <code>\~{}</code>：转义为反斜杠后的特殊字符；</p>
+</li>
+<li>
+<p><code>\!</code>, <code>\,</code>, <code>\:</code>, <code>\;</code>, <code>\ </code>：转义为空格；具体宽度如下：</p>
+<table>
+<thead>
+<tr>
+<th>\!</th>
+<th>\,</th>
+<th>\:</th>
+<th>\;</th>
+<th>\</th>
+<th>\quad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>18(与M的宽度相同)</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>\(</code>, <code>\)</code>, <code>\[</code>, <code>\]</code>：分别为行内公式的开始与结束，以及行间公式的开始与结束；</p>
+</li>
+<li>
+<p><code>\|</code>：数学公式中为$\|$；</p>
+</li>
+<li>
+<p><code>\`</code>, <code>\'</code>, <code>\^</code>,  <code>\~</code>, <code>\=</code>, <code>\.</code>, <code>\&quot;</code>：重音符，效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>\`o</th>
+<th>\'o</th>
+<th>\^o</th>
+<th>\~o</th>
+<th>\=o</th>
+<th>\.o</th>
+<th>\&quot;o</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\`o$</td>
+<td>$\'o$</td>
+<td>$\^o$</td>
+<td>$\~o$</td>
+<td>$\=o$</td>
+<td>$\.o$</td>
+<td>$\&quot;o$</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>\\</code>：结束当前行</p>
+</li>
+<li>
+<p><code>\@</code>：见<a href="#%e5%8d%95%e8%af%8d%e9%97%b4%e8%b7%9d%e4%b8%8e%e6%96%ad%e8%a1%8c">单词间距与断行</a>；</p>
+</li>
+<li>
+<p><code>\-</code>：指定断词位置；</p>
+</li>
+</ol>
+<h2 id="手动断行与断页">
+  手动断行与断页
+  <a class="anchor" href="#%e6%89%8b%e5%8a%a8%e6%96%ad%e8%a1%8c%e4%b8%8e%e6%96%ad%e9%a1%b5">#</a>
+</h2>
+<p>我们可以使用<code>\\</code>, <code>\newline</code>来手动断行(在<code>tabular</code>等环境中为<code>\\</code>或<code>\cr</code>)。其中<code>\\</code>有可选参数<code>[length]</code>，代表额外的垂直间距。</p>
+<p>断页的命令有两个：<code>\newpage</code>, <code>\clearpage</code>。区别在于：在双栏排版中<code>\newpage</code>另起一栏，而<code>\clearpage</code>另起一页。</p>
+<h1 id="环境">
+  环境
+  <a class="anchor" href="#%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p><code>\begin{([a-zA-Z]+\*?)}([...]|{...})* ... \end{\1} -&gt; 环境</code>：环境是一种特殊的命令，以<code>\begin{envname}</code>开头，以<code>\end{envname}</code>结尾，其中<code>envname</code>为环境名称，由字母组成，前后须相同。部分环境名支持在字母后面带星号，与不带星号的环境有差异。</p>
+<p>环境用于令一些效果在局部生效，或是生成特殊的文档元素，<a href="../common-environments">常见环境</a>会之后详细介绍。</p>
+<h1 id="注释">
+  注释
+  <a class="anchor" href="#%e6%b3%a8%e9%87%8a">#</a>
+</h1>
+<p><code>%.*\n[ \t]* -&gt; 注释</code>: 注释以<code>%</code>开头，截至行尾。所有字符皆被忽略，也包括下一行开头的空格。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>This is an <span style="color:#75715e">% stupid
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">% Better: instructive &lt;----
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>example: Supercal<span style="color:#75715e">%
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				ifragilist<span style="color:#75715e">%
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>icexpialidocious
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>This is an example: Supercalifragilisticexpialidocious.
+  </div>
+
+</div>
+
+<p><code>%</code>可用于分隔不可以换行的环境。</p>
+<h2 id="多行注释">
+  多行注释
+  <a class="anchor" href="#%e5%a4%9a%e8%a1%8c%e6%b3%a8%e9%87%8a">#</a>
+</h2>
+<p>除了连续多行开头使用<code>%</code>，还有两种方案来更优雅地实现多行注释。</p>
+<ol>
+<li>
+<p><code>\iffalse</code>与<code>\fi</code>：编译器会忽略<code>\iffalse</code>和<code>\fi</code>之间的所有内容。该命令允许嵌套使用。
+如</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>前面
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\iffalse</span>
+</span></span><span style="display:flex;"><span>	看不到
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\iffalse</span>
+</span></span><span style="display:flex;"><span>		看不到
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\fi</span>
+</span></span><span style="display:flex;"><span>	也看不到
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\fi</span>
+</span></span><span style="display:flex;"><span>后面
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>前面后面
+  </div>
+
+</div>
+
+</li>
+<li>
+<p><code>\begin{comment}</code>与<code>\end{comment}</code>：编译器会忽略<code>\begin{comment}</code>和<code>\end{comment}</code>之间的所有内容。但是，该命令不允许嵌套，其会寻找<code>\begin{comment}</code>后的第一个<code>\end{comment}</code>作为命令的终止。</p>
+<p><strong>注意事项</strong>：该命令需要使用宏包<code>comment</code>或<code>verbatim</code>。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>前面
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{comment}
+</span></span><span style="display:flex;"><span>	看不到
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\begin</span>{comment}
+</span></span><span style="display:flex;"><span>		看不到
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\end</span>{comment}
+</span></span><span style="display:flex;"><span>	也看不到
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% \end{comment} 若不注释，编译器会在该行报错
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>后面
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>前面 也看不到后面<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>此处“也看不到”与“后面”间没有空格，是由于ctex的空格处理机制，若使用英文，可以看到单词间有空格，来源于注释前的换行符。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  </div>
+
+</div>
+
+</li>
+</ol>
+<h1 id="逐字输出verbatim">
+  逐字输出(verbatim)
+  <a class="anchor" href="#%e9%80%90%e5%ad%97%e8%be%93%e5%87%baverbatim">#</a>
+</h1>
+<p>环境<code>verbatim</code>用于逐字输出，将环境中的所有字符输出为原始字符，不会根据$\LaTeX$的规则进行转义；而<code>verbatim*</code>会将空格显示为“⎵”。</p>
+<p><code>\verb\*?([^a-zA-Z\* \s])(.*?)\1</code>：需要简短地使用逐字输出，可使用<code>\verb</code>命令，其将紧邻的字符视为起始符与终止符，其间的字符将被输出为原始字符。带星号的会将空格显示为“⎵”。</p>
+<p>起始符与终止符为字母、空格、星号以外的字符，一般使用<code>|</code>符号。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>The <span style="color:#66d9ef">\verb</span>|<span style="color:#66d9ef">\ldots</span>| command <span style="color:#66d9ef">\ldots</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{verbatim}
+</span></span><span style="display:flex;"><span>10 PRINT &#34;HELLO WORLD &#34;;
+</span></span><span style="display:flex;"><span>20 GOTO 10
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{verbatim}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>The <code>\ldots</code> command $\ldots$</p>
+<p>10 PRINT &quot;HELLO WORLD &quot;;</p>
+<p>20 GOTO 10</p>
+
+  </div>
+
+</div>
+
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{verbatim*}
+</span></span><span style="display:flex;"><span>the starred version of
+</span></span><span style="display:flex;"><span>the      verbatim
+</span></span><span style="display:flex;"><span>environment emphasizes
+</span></span><span style="display:flex;"><span>the spaces   in the text
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{verbatim*}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\verb*</span>|like   this :-) |
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>the⎵starred⎵version⎵of</p>
+<p>the⎵⎵⎵⎵⎵⎵verbatim</p>
+<p>environment⎵emphasizes</p>
+<p>the⎵spaces⎵⎵⎵in⎵the⎵text</p>
+<p>like⎵⎵⎵this⎵:-)⎵</p>
+
+  </div>
+
+</div>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#latex文件结构">$\LaTeX$文件结构</a></li>
+    <li><a href="#文字">文字</a>
+      <ul>
+        <li><a href="#空格">空格</a>
+          <ul>
+            <li><a href="#单词间距与断行">单词间距与断行</a></li>
+          </ul>
+        </li>
+        <li><a href="#特殊字符">特殊字符</a>
+          <ul>
+            <li><a href="#保留字符">保留字符</a></li>
+            <li><a href="#引号">引号</a></li>
+            <li><a href="#连字与破折号--">连字与破折号 (-)</a></li>
+            <li><a href="#斜杠-">斜杠 (/)</a></li>
+            <li><a href="#度数符号-circ">度数符号 ($^\circ$)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#命令">命令</a>
+      <ul>
+        <li><a href="#手动断行与断页">手动断行与断页</a></li>
+      </ul>
+    </li>
+    <li><a href="#环境">环境</a></li>
+    <li><a href="#注释">注释</a>
+      <ul>
+        <li><a href="#多行注释">多行注释</a></li>
+      </ul>
+    </li>
+    <li><a href="#逐字输出verbatim">逐字输出(verbatim)</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

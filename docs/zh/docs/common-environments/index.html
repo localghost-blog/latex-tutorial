@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="\(\)列表环境#列表环境有三种，分别是：
+itemize：无序列表； enumerate：有序列表； description：描述列表。 列表的项以\item开头，后面可以跟着一个描述，描述的内容会被放在列表项的右边。 \item有可选参数[name]，用于指定列表项的名称，对于desription为必须项。例子见下：
+源代码#\begin{enumerate} \item You can nest the list environments to your taste: \begin{itemize} \item But it might start to look silly. \item[-] With a dash. \end{itemize} \item Therefore remember: \begin{description} \item[Stupid] things will not become smart because they are in a list. \item[Smart] things, though, can be presented beautifully in a list. \end{description} \end{enumerate} 编译结果#You can nest the list environments to your taste:">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="常见环境" />
+<meta property="og:description" content="\(\)列表环境#列表环境有三种，分别是：
+itemize：无序列表； enumerate：有序列表； description：描述列表。 列表的项以\item开头，后面可以跟着一个描述，描述的内容会被放在列表项的右边。 \item有可选参数[name]，用于指定列表项的名称，对于desription为必须项。例子见下：
+源代码#\begin{enumerate} \item You can nest the list environments to your taste: \begin{itemize} \item But it might start to look silly. \item[-] With a dash. \end{itemize} \item Therefore remember: \begin{description} \item[Stupid] things will not become smart because they are in a list. \item[Smart] things, though, can be presented beautifully in a list. \end{description} \end{enumerate} 编译结果#You can nest the list environments to your taste:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/common-environments/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="LaTeX 教程" />
+
+<title>常见环境 | LaTeX 教程</title>
+<link rel="manifest" href="/latex-tutorial/manifest.json">
+<link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
+  <script defer src="/latex-tutorial/flexsearch.min.js"></script>
+  <script defer src="/latex-tutorial/zh.search.min.3bee9e24c4f9a7623b3ddd535cc9dfc6b986a5031491db19e66616cb1e36fd81.js" integrity="sha256-O&#43;6eJMT5p2I7Pd1TXMnfxrmGpQMUkdsZ5mYWyx42/YE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/latex-tutorial/zh/"><span>LaTeX 教程</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/latex-tutorial/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://localghost-blog.github.io/latex-tutorial/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/getting-started-with-latex/" class="">初次使用 LaTeX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/international-language-support/" class="">多语言支持</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/latex-file-content/" class="">LaTeX 文件内容</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/common-environments/" class="active">常见环境</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/" class="">如何写出一个结构化的LaTeX文档</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/latex-tutorial/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>常见环境</strong>
+
+  <label for="toc-control">
+    
+    <img src="/latex-tutorial/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#列表环境">列表环境</a></li>
+    <li><a href="#对齐环境">对齐环境</a></li>
+    <li><a href="#引文环境">引文环境</a>
+      <ul>
+        <li><a href="#摘要环境">摘要环境</a></li>
+      </ul>
+    </li>
+    <li><a href="#表格环境">表格环境</a>
+      <ul>
+        <li><a href="#分割线绘制">分割线绘制</a></li>
+        <li><a href="#合并单元格">合并单元格</a></li>
+      </ul>
+    </li>
+    <li><a href="#图片环境">图片环境</a>
+      <ul>
+        <li><a href="#svg格式图片支持">svg格式图片支持</a></li>
+      </ul>
+    </li>
+    <li><a href="#迷你页环境">迷你页环境</a></li>
+    <li><a href="#浮动体环境">浮动体环境</a>
+      <ul>
+        <li><a href="#并排浮动体与子浮动体">并排浮动体与子浮动体</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+	integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+	integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+	crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+	integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+	crossorigin="anonymous"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		renderMathInElement(document.body, {
+			
+			
+			delimiters: [
+				{ left: "$", right: "$", display: false },
+				{ left: "$$", right: "$$", display: true },
+				{ left: "\\(", right: "\\)", display: false },
+				{ left: "\\begin{equation}", right: "\\end{equation}", display: true },
+				{ left: "\\begin{align}", right: "\\end{align}", display: true },
+				{ left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+				{ left: "\\begin{gather}", right: "\\end{gather}", display: true },
+				{ left: "\\begin{CD}", right: "\\end{CD}", display: true },
+				{ left: "\\[", right: "\\]", display: true }
+			],
+			
+			throwOnError: false
+		});
+	});
+</script><span>
+	\(\)
+</span>
+<h1 id="列表环境">
+  列表环境
+  <a class="anchor" href="#%e5%88%97%e8%a1%a8%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>列表环境有三种，分别是：</p>
+<ol>
+<li><code>itemize</code>：无序列表；</li>
+<li><code>enumerate</code>：有序列表；</li>
+<li><code>description</code>：描述列表。</li>
+</ol>
+<p>列表的项以<code>\item</code>开头，后面可以跟着一个描述，描述的内容会被放在列表项的右边。
+<code>\item</code>有可选参数<code>[name]</code>，用于指定列表项的名称，对于<code>desription</code>为必须项。例子见下：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{enumerate}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\item</span> You can nest the list environments to your taste:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\begin</span>{itemize}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">\item</span> But it might start to look silly.
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">\item</span><span style="color:#a6e22e">[-]</span> With a dash.
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\end</span>{itemize}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\item</span> Therefore remember:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\begin</span>{description}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">\item</span><span style="color:#a6e22e">[Stupid]</span> things will not become smart because they are in a list.
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">\item</span><span style="color:#a6e22e">[Smart]</span> things, though, can be presented beautifully in a list.
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\end</span>{description}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{enumerate}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<ol>
+<li>
+<p>You can nest the list environments to your taste:</p>
+<p>•	But it might start to look silly.</p>
+<p>-	With a dash.</p>
+</li>
+<li>
+<p>Therefore remember:</p>
+<p><strong>Stupid</strong> things will not become smart because they are in a list.</p>
+<p><strong>Smart</strong> things, though, can be presented beautifully in a list.</p>
+</li>
+</ol>
+
+  </div>
+
+</div>
+
+<p><strong>注意事项</strong>：列表环境可以如上例一样嵌套，但环境<code>itemize</code>及<code>enumerate</code>的嵌套层数至多为4层，其中<code>itemize</code>中的<code>\item</code>对应的命令为<code>\labelitemi</code> 至 <code>\labelitemiv</code>，而<code>enumerate</code>中的<code>\item</code>对应的命令为<code>\labelenumi</code> 至 <code>\labelenumiv</code>。
+其代表的符号可以使用<code>texdef</code>查找：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ texdef -t latex -f <span style="color:#ae81ff">\l</span>abelitemi <span style="color:#ae81ff">\l</span>abelitemii <span style="color:#ae81ff">\l</span>abelitemiii <span style="color:#ae81ff">\l</span>abelitemiv
+</span></span></code></pre></div><p>我们可以更改默认的列表样式。
+在纯净$\LaTeX$环境中，可以使用<code>\renewcommand{command}{symbol}</code>命令，例如<code>\rewnewcommand{\labelitemi}{\dag}</code>将第1层<code>itemize</code>的<code>\item</code>显示为<code>\dag</code>($\dag$)。</p>
+<p>宏包<code>enumitem</code>给出了方便地更改默认列表样式的方法，或仅修改当前的列表环境，也可以设置其它参数，见其<a href="https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/enumitem/enumitem.pdf">文档</a>。</p>
+<h1 id="对齐环境">
+  对齐环境
+  <a class="anchor" href="#%e5%af%b9%e9%bd%90%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>环境<code>center</code>, <code>flushleft</code>, <code>flushright</code>可以用于对齐文本，例如：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{flushleft}
+</span></span><span style="display:flex;"><span>This text is<span style="color:#66d9ef">\\</span> left-aligned.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\LaTeX</span>{} is not trying to make
+</span></span><span style="display:flex;"><span>each line the same length.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{flushleft}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{flushright}
+</span></span><span style="display:flex;"><span>This text is right-<span style="color:#66d9ef">\\</span>aligned.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\LaTeX</span>{} is not trying to make
+</span></span><span style="display:flex;"><span>each line the same length.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{flushright}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{center}
+</span></span><span style="display:flex;"><span>At the centre<span style="color:#66d9ef">\\</span>of the earth
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{center}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<div style="text-align: left;">
+This text is <br>
+left-aligned. $\LaTeX$ is not trying to make <br>
+each line the same length.
+</div>
+<div style="text-align: right;">
+This text is right- <br>
+aligned. $\LaTeX$ is not trying to make each <br>
+line the same length.
+</div>
+<div style="text-align: center;">
+At the centre <br>
+of the earth
+</div>
+
+  </div>
+
+</div>
+
+<p>此外，可用<code>\centering</code>, <code>\raggedright</code>, <code>\raggedleft</code>等命令来设置文本的对齐方式。
+区别在于环境会在上下文产生额外间距，而命令仅改变对齐方式。</p>
+<h1 id="引文环境">
+  引文环境
+  <a class="anchor" href="#%e5%bc%95%e6%96%87%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>$\LaTeX$提供了<code>quote</code>和<code>quotation</code>两种引文环境，其中<code>quote</code>适于引用短文字，首行不缩进；<code>quotation</code>适用于引用若干段文字，首行缩进。
+此外，引文环境相比一般文字有额外的左右缩进。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>France is Bacon:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{quote}
+</span></span><span style="display:flex;"><span>	Knowledge is power.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{quote}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>France is Bacon:</p>
+<p> Knowledge is power.</p>
+
+  </div>
+
+</div>
+
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>《孔雀东南飞》：
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{quotation}
+</span></span><span style="display:flex;"><span>孔雀东南飞，五里一徘徊。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>十三能织素，十四学裁衣，
+</span></span><span style="display:flex;"><span>十五弹箜篌，十六诵诗书。
+</span></span><span style="display:flex;"><span>十七为君妇，心中常苦悲。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{quotation}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>《孔雀东南飞》：</p>
+<p>   孔雀东南飞，五里一徘徊。</p>
+<p>   十三能织素，十四学裁衣，
+十五弹箜篌，十六诵诗书。
+十七为君妇，心中常苦悲。</p>
+
+  </div>
+
+</div>
+
+<h2 id="摘要环境">
+  摘要环境
+  <a class="anchor" href="#%e6%91%98%e8%a6%81%e7%8e%af%e5%a2%83">#</a>
+</h2>
+<p>摘要环境<code>abstract</code>默认仅在文档类<code>article</code>, <code>report</code>中可用，一般紧跟<code>\maketitle</code>命令。
+若指定<code>titlepage</code>选项，则单独成页；若否，单栏排版时相当于居中标题与<code>quotation</code>环境，双栏排版时相当于<code>\section*</code>中的一节。</p>
+<h1 id="表格环境">
+  表格环境
+  <a class="anchor" href="#%e8%a1%a8%e6%a0%bc%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>排班表格的基本环境为<code>tabular</code>，使用方法如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{tabular}[align]{column_spec}
+</span></span><span style="display:flex;"><span>⟨item1⟩ &amp; ⟨item2⟩ &amp; … <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>⟨item1⟩ &amp; ⟨item2⟩ &amp; … <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{tabular}
+</span></span></code></pre></div><p>每行的单元格以<code>&amp;</code>分隔，<code>\\</code>(或<code>\cr</code>)切换新行。</p>
+<p><strong>注意事项</strong>：直接<code>tabular</code>环境时会和<strong>文字混排</strong>。此时<code>align</code>控制表格的垂直对齐方式：<code>t</code>, <code>b</code>对应按顶部、底部对齐，其余情况为居中对齐。
+通常表格很少与文字混排，而是放在<code>table</code>浮动体环境中，并使用<code>\caption</code>命令加标题，此时<code>align</code>参数非必要。</p>
+<p>而<code>column_spec</code>指定列数及每列格式。常见的列格式如下：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l/c/r</td>
+<td>单元格左对齐/居中/右对齐</td>
+</tr>
+<tr>
+<td>p{width}</td>
+<td>单元格宽度固定为width(如6em)，自动换行</td>
+</tr>
+<tr>
+<td>|</td>
+<td>绘制竖线</td>
+</tr>
+<tr>
+<td>@{str}</td>
+<td>自定义内容</td>
+</tr>
+</tbody>
+</table>
+<p>其中l/c/r/p个数之和为列数。</p>
+<p>单元格前后会额外添加间距，而@格式会取消间距。</p>
+<p>此外，$\LaTeX$提供将参数重复的写法<code>*{n}{arg}</code>，如以下的写法等效：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{tabular}{|c|c|c|c|c|p{4em}|p{4em}|}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% 及
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\begin</span>{tabular}{|*{5}{c|}*{2}{p{4em}|}}
+</span></span></code></pre></div><h2 id="分割线绘制">
+  分割线绘制
+  <a class="anchor" href="#%e5%88%86%e5%89%b2%e7%ba%bf%e7%bb%98%e5%88%b6">#</a>
+</h2>
+<p>在表格每行的开头使用命令<code>\hline</code>可以绘制分割线。此外<code>\cline{i-j}</code>可以绘制第i列至第j列的横线。</p>
+<p>此外，宏包<code>booktabs</code>提供了科技论文中常用的三线表，提供<code>\toprule</code>、<code>\midrule</code>、<code>\bottomrule</code>以绘制三条线，以及和<code>\cline</code>对应的<code>\cmidrule</code>命令。请尽量不要用其它横线和竖线。</p>
+<h2 id="合并单元格">
+  合并单元格
+  <a class="anchor" href="#%e5%90%88%e5%b9%b6%e5%8d%95%e5%85%83%e6%a0%bc">#</a>
+</h2>
+<p>$\LaTeX$按行排版表格，因此横向合并单元格较容易，命令为</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\multicolumn</span>{n}{column_spec}{text}
+</span></span></code></pre></div><p>其中<code>n</code>为行数，<code>column_spec</code>为列格式，<code>text</code>为合并单元格的内容。其中<code>column_spec</code>仅允许出现一列。该命令也可用于修改某一个单元格的列样式。</p>
+<p>纵向合并需要用宏包<code>multirow</code>提供的命令<code>\multirow</code>，其参数为<code>n</code>、<code>width</code>、<code>text</code>，其中<code>width</code>参数指定宽度，可以填<code>*</code>以使用自然宽度，其余参数与<code>\multicolumn</code>相同。</p>
+<h1 id="图片环境">
+  图片环境
+  <a class="anchor" href="#%e5%9b%be%e7%89%87%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>该环境需要<code>graphicx</code>宏包支持。</p>
+<p>插入图片的命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[options]</span>{filename}
+</span></span></code></pre></div><p>其中<code>options</code>中的参数指定为<code>key = value</code>的形式，常用参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width = (width)</td>
+<td>缩放至宽度为(width)</td>
+</tr>
+<tr>
+<td>height = (height)</td>
+<td>缩放至高度为(height)</td>
+</tr>
+<tr>
+<td>scale = (scale)</td>
+<td>相对原尺寸缩放(scale)倍</td>
+</tr>
+<tr>
+<td>angle = (angle)</td>
+<td>逆时针旋转(angle)度</td>
+</tr>
+</tbody>
+</table>
+<p><code>filename</code>用相对路径或绝对路径表示，见<a href="../international-language-support/#%e4%bd%bf%e7%94%a8%e6%9c%ac%e5%9c%b0%e5%ad%97%e4%bd%93">使用本地字体</a>一节。</p>
+<p>XeLaTeX原生支持.pdf, .eps矢量图，以及.jpg, .png, .bmp位图。</p>
+<h2 id="svg格式图片支持">
+  svg格式图片支持
+  <a class="anchor" href="#svg%e6%a0%bc%e5%bc%8f%e5%9b%be%e7%89%87%e6%94%af%e6%8c%81">#</a>
+</h2>
+<p>由于LaTeX并不支持.svg格式文件的导入，因此需要将其转换为其它格式。</p>
+<p>此处推荐使用软件<a href="https://inkscape.org/">inkscape</a>，安装后可以在命令行使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ inkscape sample.svg --export-eps<span style="color:#f92672">=</span>sample.eps
+</span></span><span style="display:flex;"><span># or
+</span></span><span style="display:flex;"><span>$ inkscape sample.svg --export-pdf<span style="color:#f92672">=</span>sample.pdf
+</span></span></code></pre></div><h1 id="迷你页环境">
+  迷你页环境
+  <a class="anchor" href="#%e8%bf%b7%e4%bd%a0%e9%a1%b5%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>$\LaTeX$提供了生成独立页的环境<code>minipage</code>。命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{minipage}[align][height][inner-align]{width}
+</span></span></code></pre></div><p>其中<code>align</code>为迷你页与文字的混排格式(见<a href="#%e8%a1%a8%e6%a0%bc%e7%8e%af%e5%a2%83">表格环境</a>)，<code>height</code>为高度，<code>inner-align</code>为内部的对齐方式，分为顶部<code>t</code>, 底部<code>b</code>, 居中<code>c</code>, 分散<code>s</code>, <code>width</code>为宽度。</p>
+<p>迷你页常在并排显示图片的时候使用，如并排显示两个图片，通常为以下格式(见<a href="#%e5%b9%b6%e6%8e%92%e6%b5%ae%e5%8a%a8%e4%bd%93%e4%b8%8e%e5%ad%90%e6%b5%ae%e5%8a%a8%e4%bd%93">并排浮动体与子浮动体</a>)。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{figure}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\begin</span>{minipage}{.5<span style="color:#66d9ef">\textwidth</span>}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[...]</span>{figure1}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\caption</span>{...}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\end</span>{minipage}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\begin</span>{minipage}{.5<span style="color:#66d9ef">\textwidth</span>}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[...]</span>{figure2}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\caption</span>{...}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\end</span>{minipage}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{figure}
+</span></span></code></pre></div><h1 id="浮动体环境">
+  浮动体环境
+  <a class="anchor" href="#%e6%b5%ae%e5%8a%a8%e4%bd%93%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>表格、图片等内容尺寸较大，会导致分页困难。
+$\LaTeX$为此引入的浮动体的机制，使得大块内容可以脱离原文，自动放置在合适位置。</p>
+<p>$\LaTeX$预定义了两类浮动体环境<code>table</code>和<code>figure</code>，一般来说<code>table</code>放表格，<code>figure</code>放图片，但也可以放置任意内容。</p>
+<p>以<code>table</code>浮动体为例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{table}[placement]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\begin</span>{tabular}{...}
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\end</span>{tabular}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{table}
+</span></span></code></pre></div><p>参数<code>placement</code>提供浮动体允许排版的位置，见下表：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h</td>
+<td>此处</td>
+</tr>
+<tr>
+<td>t</td>
+<td>顶部</td>
+</tr>
+<tr>
+<td>b</td>
+<td>底部</td>
+</tr>
+<tr>
+<td>p</td>
+<td>单独成页</td>
+</tr>
+<tr>
+<td>!</td>
+<td>改变部分参数，提高强制性</td>
+</tr>
+<tr>
+<td>H</td>
+<td>强制插入此处</td>
+</tr>
+</tbody>
+</table>
+<p>其中<code>H</code>仅能单独使用，其余参数可以组合，如<code>[ht!p]</code>。</p>
+<p><strong>注意事项</strong>：排版位置的选取与参数内符号<strong>顺序无关</strong>，总是以h-t-b-p的优先级决定位置。</p>
+<p>在双栏排版的环境下，$\LaTeX$提供了<code>table*</code>和<code>figure*</code>环境，用于处理跨栏浮动体，用法与<code>table</code>和<code>figure</code>相同，但参数<code>placement</code>仅允许<code>t</code>和<code>p</code>。</p>
+<p>使用命令<code>\listoftables</code>和<code>\listoffigures</code>可以生成当前文件中的浮动体目录。</p>
+<p>浮动体可以用<code>\caption[]{}</code>指定标题，其中长标题必须指定，短标题可选，会出现在目录中。</p>
+<h2 id="并排浮动体与子浮动体">
+  并排浮动体与子浮动体
+  <a class="anchor" href="#%e5%b9%b6%e6%8e%92%e6%b5%ae%e5%8a%a8%e4%bd%93%e4%b8%8e%e5%ad%90%e6%b5%ae%e5%8a%a8%e4%bd%93">#</a>
+</h2>
+<p>我们经常需要在浮动体中放置多个表格或图片，最简单的是并排放置，如</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{figure}{...}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[...]</span>{figure1}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\qquad</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[...]</span>{figure2}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[...]</span>{figure3}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\caption</span>{...}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{figure}
+</span></span></code></pre></div><p>如需给并排图片添加标题，则需要借助<code>minipage</code>环境，见<a href="#%e8%bf%b7%e4%bd%a0%e9%a1%b5%e7%8e%af%e5%a2%83">迷你页环境</a>。</p>
+<p>如果需要给一个<code>figure</code>浮动体中的两个子图添加标题，则需要引入<code>subcaption</code>宏包(依赖于<code>caption</code>宏包)，具体请参考其<a href="https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/caption/subcaption.pdf">文档</a>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{figure}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\begin</span>{subfigure}{...}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[...]</span>{figure1.a}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\caption</span>{...}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\end</span>{subfigure}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\qquad</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\begin</span>{subfigure}{...}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[...]</span>{figure1.b}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\caption</span>{...}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\end</span>{subfigure}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{figure}
+</span></span></code></pre></div><p>并排图片和子图片的区别在于，并排图片为多个图片，而包含子图片的图片为单个图片。</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#列表环境">列表环境</a></li>
+    <li><a href="#对齐环境">对齐环境</a></li>
+    <li><a href="#引文环境">引文环境</a>
+      <ul>
+        <li><a href="#摘要环境">摘要环境</a></li>
+      </ul>
+    </li>
+    <li><a href="#表格环境">表格环境</a>
+      <ul>
+        <li><a href="#分割线绘制">分割线绘制</a></li>
+        <li><a href="#合并单元格">合并单元格</a></li>
+      </ul>
+    </li>
+    <li><a href="#图片环境">图片环境</a>
+      <ul>
+        <li><a href="#svg格式图片支持">svg格式图片支持</a></li>
+      </ul>
+    </li>
+    <li><a href="#迷你页环境">迷你页环境</a></li>
+    <li><a href="#浮动体环境">浮动体环境</a>
+      <ul>
+        <li><a href="#并排浮动体与子浮动体">并排浮动体与子浮动体</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

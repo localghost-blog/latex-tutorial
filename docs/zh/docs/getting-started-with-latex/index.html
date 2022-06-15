@@ -3,32 +3,26 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者下载并安装一个$\TeX$发行版。 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
+<meta name="description" content="\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者前往The LaTeX Project官网下载并安装一个$\TeX$发行版。
+如官网不方便访问，可以访问清华大学开源软件镜像站获取$\TeX$发行版，其中Windows系统或Linux系统使用TeX Live，而MacOS使用MacTeX。
+或者通过命令行下载并安装$\TeX$发行版，如下：
+Windows$ choco install texlive MacOS$ brew cask install mactex # 或者 $ brew cask install basictex Ubuntu$ apt install texlive # or $ apt install texlive-base 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
 以下以本地运行为例。
 第一个$\LaTeX$文件#创建新文件如下。可以使用任意名字，但建议以.tex结尾。
 % helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} 打开命令行， 用命令 cd 切换至文件所在目录，然后运行xelatex。 编译成功后，你会在当前目录发现helloworld.pdf以及一些其它文件。
 $ cd /path/to/your/folder $ xelatex helloworld # or xelatex helloworld.tex 若编译失败，则会显示错误信息，并停止编译。此时按ctrl-D(MacOS下为control-D)返回命令行。
-代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：
-\documentclass{...} 该命令指定了PDF文档的类型(如文章、书籍、演示文稿等)。 在此之后，可以添加命令来改变文档的样式，或者加载宏包(package)以获取拓展功能。 加载宏包的命令如下：
-\usepackage{...} 完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。
-\begin{document} 正文内容包括$\LaTeX$命令以及普通文本。 在正文结束后，用以下命令结束文档。
-\end{document} 该命令后的任何字符将被忽略。
-下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。
-文档前置#文档类型: 文档类型由命令\documentclass指定: \documentclass[options]{class} 其中class是文档类型的名称，控制整篇文档的大致风格，而[]内的部分提供一些参数的调整，可以如前文样例一样省去或置空。常用的名称和参数见以下表格： class 描述 article 文章格式，常用于科技论文、短篇报告、说明文档等。 report 报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。 book 书籍格式。 beamer 演示文稿格式，适于做报告时配合使用。 options 描述 (\d&#43;)pt 设置正文主要字体大小。如12pt，默认为10pt。 (\w&#43;)paper 设置页面大小。默认为letterpaper(8.5in$\times$11in，约合21.6cm$\times$28.0cm)。其它可选值有a5paper，b5paper，executivepaper及legalpaper等。 fleqn 行间公式左置。默认居中。 leqno 公式编号左置，默认居右。 (no)?">
+代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="初次使用 LaTeX" />
-<meta property="og:description" content="\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者下载并安装一个$\TeX$发行版。 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
+<meta property="og:description" content="\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者前往The LaTeX Project官网下载并安装一个$\TeX$发行版。
+如官网不方便访问，可以访问清华大学开源软件镜像站获取$\TeX$发行版，其中Windows系统或Linux系统使用TeX Live，而MacOS使用MacTeX。
+或者通过命令行下载并安装$\TeX$发行版，如下：
+Windows$ choco install texlive MacOS$ brew cask install mactex # 或者 $ brew cask install basictex Ubuntu$ apt install texlive # or $ apt install texlive-base 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
 以下以本地运行为例。
 第一个$\LaTeX$文件#创建新文件如下。可以使用任意名字，但建议以.tex结尾。
 % helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} 打开命令行， 用命令 cd 切换至文件所在目录，然后运行xelatex。 编译成功后，你会在当前目录发现helloworld.pdf以及一些其它文件。
 $ cd /path/to/your/folder $ xelatex helloworld # or xelatex helloworld.tex 若编译失败，则会显示错误信息，并停止编译。此时按ctrl-D(MacOS下为control-D)返回命令行。
-代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：
-\documentclass{...} 该命令指定了PDF文档的类型(如文章、书籍、演示文稿等)。 在此之后，可以添加命令来改变文档的样式，或者加载宏包(package)以获取拓展功能。 加载宏包的命令如下：
-\usepackage{...} 完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。
-\begin{document} 正文内容包括$\LaTeX$命令以及普通文本。 在正文结束后，用以下命令结束文档。
-\end{document} 该命令后的任何字符将被忽略。
-下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。
-文档前置#文档类型: 文档类型由命令\documentclass指定: \documentclass[options]{class} 其中class是文档类型的名称，控制整篇文档的大致风格，而[]内的部分提供一些参数的调整，可以如前文样例一样省去或置空。常用的名称和参数见以下表格： class 描述 article 文章格式，常用于科技论文、短篇报告、说明文档等。 report 报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。 book 书籍格式。 beamer 演示文稿格式，适于做报告时配合使用。 options 描述 (\d&#43;)pt 设置正文主要字体大小。如12pt，默认为10pt。 (\w&#43;)paper 设置页面大小。默认为letterpaper(8.5in$\times$11in，约合21.6cm$\times$28.0cm)。其它可选值有a5paper，b5paper，executivepaper及legalpaper等。 fleqn 行间公式左置。默认居中。 leqno 公式编号左置，默认居右。 (no)?" />
+代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/getting-started-with-latex/" /><meta property="article:section" content="docs" />
 
@@ -40,7 +34,7 @@ $ cd /path/to/your/folder $ xelatex helloworld # or xelatex helloworld.tex 若�
   <link rel="alternate" hreflang="zh" href="https://localghost-blog.github.io/latex-tutorial/docs/getting-started-with-latex/" title="Getting Started with LaTeX">
 <link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
   <script defer src="/latex-tutorial/flexsearch.min.js"></script>
-  <script defer src="/latex-tutorial/zh.search.min.46fce9c1454cf3f94ec35cdcd6afbae87e14acc92de54c5dc032e4e97f530ba6.js" integrity="sha256-RvzpwUVM8/lOw1zc1q&#43;66H4UrMkt5UxdwDLk6X9TC6Y=" crossorigin="anonymous"></script>
+  <script defer src="/latex-tutorial/zh.search.min.3bee9e24c4f9a7623b3ddd535cc9dfc6b986a5031491db19e66616cb1e36fd81.js" integrity="sha256-O&#43;6eJMT5p2I7Pd1TXMnfxrmGpQMUkdsZ5mYWyx42/YE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -146,6 +140,45 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/latex-file-content/" class="">LaTeX 文件内容</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/common-environments/" class="">常见环境</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/" class="">如何写出一个结构化的LaTeX文档</a>
+  
+
+        </li>
+      
+    
   </ul>
 
 
@@ -201,7 +234,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#准备工作">准备工作</a></li>
     <li><a href="#第一个latex文件">第一个$\LaTeX$文件</a></li>
     <li><a href="#代码结构">代码结构</a></li>
-    <li><a href="#文档前置">文档前置</a></li>
+    <li><a href="#文档导言">文档导言</a></li>
   </ul>
 </nav>
 
@@ -250,8 +283,29 @@ https://github.com/alex-shpak/hugo-book
   准备工作
   <a class="anchor" href="#%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c">#</a>
 </h1>
-<p>使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者<a href="https://www.latex-project.org/get/">下载</a>并安装一个$\TeX$发行版。
-此外，也可以访问<a href="https://www.overleaf.com">Overleaf</a>等在线服务以联网使用$\LaTeX$。</p>
+<p>使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者前往The LaTeX Project官网<a href="https://www.latex-project.org/get/">下载</a>并安装一个$\TeX$发行版。</p>
+<p>如官网不方便访问，可以访问清华大学开源软件镜像站获取$\TeX$发行版，其中Windows系统或Linux系统使用<a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/">TeX Live</a>，而MacOS使用<a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/">MacTeX</a>。</p>
+<p>或者通过命令行下载并安装$\TeX$发行版，如下：</p>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-get-tex" id="tabs-get-tex-0" checked="checked" />
+  <label for="tabs-get-tex-0">Windows</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ choco install texlive
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-get-tex" id="tabs-get-tex-1"  />
+  <label for="tabs-get-tex-1">MacOS</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ brew cask install mactex
+</span></span><span style="display:flex;"><span># 或者
+</span></span><span style="display:flex;"><span>$ brew cask install basictex
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-get-tex" id="tabs-get-tex-2"  />
+  <label for="tabs-get-tex-2">Ubuntu</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ apt install texlive
+</span></span><span style="display:flex;"><span># or
+</span></span><span style="display:flex;"><span>$ apt install texlive-base
+</span></span></code></pre></div></div></div>
+
+<p>此外，也可以访问<a href="https://www.overleaf.com">Overleaf</a>等在线服务以联网使用$\LaTeX$。</p>
 <p>以下以本地运行为例。</p>
 <h1 id="第一个latex文件">
   第一个$\LaTeX$文件
@@ -284,16 +338,16 @@ https://github.com/alex-shpak/hugo-book
 在此之后，可以添加命令来改变文档的样式，或者加载宏包(package)以获取拓展功能。
 加载宏包的命令如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{...}
-</span></span></code></pre></div><p>完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。</p>
+</span></span></code></pre></div><p>完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为导言(preamble)。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
 </span></span></code></pre></div><p>正文内容包括$\LaTeX$命令以及普通文本。
 在正文结束后，用以下命令结束文档。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
 </span></span></code></pre></div><p>该命令后的任何字符将被忽略。</p>
-<p>下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。</p>
-<h1 id="文档前置">
-  文档前置
-  <a class="anchor" href="#%e6%96%87%e6%a1%a3%e5%89%8d%e7%bd%ae">#</a>
+<p>在<a href="../latex-file-content">LaTeX 文件内容</a>一章会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。</p>
+<h1 id="文档导言">
+  文档导言
+  <a class="anchor" href="#%e6%96%87%e6%a1%a3%e5%af%bc%e8%a8%80">#</a>
 </h1>
 <ol>
 <li><strong>文档类型:</strong> 
@@ -315,7 +369,7 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 <tr>
 <td>report</td>
-<td>报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。</td>
+<td>报告格式，适用分数个章节的长篇报告，或是短篇书籍、博士论文等。</td>
 </tr>
 <tr>
 <td>book</td>
@@ -349,7 +403,7 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 <tr>
 <td>leqno</td>
-<td>公式编号左置，默认居右。</td>
+<td>公式编号左置。默认居右。</td>
 </tr>
 <tr>
 <td>(no)?titlepage</td>
@@ -423,7 +477,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#准备工作">准备工作</a></li>
     <li><a href="#第一个latex文件">第一个$\LaTeX$文件</a></li>
     <li><a href="#代码结构">代码结构</a></li>
-    <li><a href="#文档前置">文档前置</a></li>
+    <li><a href="#文档导言">文档导言</a></li>
   </ul>
 </nav>
 

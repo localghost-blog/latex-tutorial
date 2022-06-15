@@ -12,18 +12,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://localghost-blog.github.io/latex-tutorial/zh/docs/getting-started-with-latex/</guid>
-      <description>\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者下载并安装一个$\TeX$发行版。 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
+      <description>\(\)准备工作#使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者前往The LaTeX Project官网下载并安装一个$\TeX$发行版。
+如官网不方便访问，可以访问清华大学开源软件镜像站获取$\TeX$发行版，其中Windows系统或Linux系统使用TeX Live，而MacOS使用MacTeX。
+或者通过命令行下载并安装$\TeX$发行版，如下：
+Windows$ choco install texlive MacOS$ brew cask install mactex # 或者 $ brew cask install basictex Ubuntu$ apt install texlive # or $ apt install texlive-base 此外，也可以访问Overleaf等在线服务以联网使用$\LaTeX$。
 以下以本地运行为例。
 第一个$\LaTeX$文件#创建新文件如下。可以使用任意名字，但建议以.tex结尾。
 % helloworld.tex \documentclass{article} \begin{document} Hello, World! \end{document} 打开命令行， 用命令 cd 切换至文件所在目录，然后运行xelatex。 编译成功后，你会在当前目录发现helloworld.pdf以及一些其它文件。
 $ cd /path/to/your/folder $ xelatex helloworld # or xelatex helloworld.tex 若编译失败，则会显示错误信息，并停止编译。此时按ctrl-D(MacOS下为control-D)返回命令行。
-代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：
-\documentclass{...} 该命令指定了PDF文档的类型(如文章、书籍、演示文稿等)。 在此之后，可以添加命令来改变文档的样式，或者加载宏包(package)以获取拓展功能。 加载宏包的命令如下：
-\usepackage{...} 完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。
-\begin{document} 正文内容包括$\LaTeX$命令以及普通文本。 在正文结束后，用以下命令结束文档。
-\end{document} 该命令后的任何字符将被忽略。
-下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。
-文档前置#文档类型: 文档类型由命令\documentclass指定: \documentclass[options]{class} 其中class是文档类型的名称，控制整篇文档的大致风格，而[]内的部分提供一些参数的调整，可以如前文样例一样省去或置空。常用的名称和参数见以下表格： class 描述 article 文章格式，常用于科技论文、短篇报告、说明文档等。 report 报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。 book 书籍格式。 beamer 演示文稿格式，适于做报告时配合使用。 options 描述 (\d+)pt 设置正文主要字体大小。如12pt，默认为10pt。 (\w+)paper 设置页面大小。默认为letterpaper(8.5in$\times$11in，约合21.6cm$\times$28.0cm)。其它可选值有a5paper，b5paper，executivepaper及legalpaper等。 fleqn 行间公式左置。默认居中。 leqno 公式编号左置，默认居右。 (no)?</description>
+代码结构#一个合法的$\LaTeX$代码需要正确格式以使编译程序处理。一般来说，任何一个$\TeX$文件需要以以下命令开始：</description>
     </item>
     
     <item>
@@ -42,6 +39,42 @@ $ cd /path/to/your/folder $ xelatex helloworld # or xelatex helloworld.tex 若�
 注意事项：该方案会改变默认的页码位置，如果需要使用默认的页码位置，请在文档中使用以下命令：
 \usepackage{fancyhdr} \pagestyle{fancy} \lfoot{} ctexart文档类\documentclass{ctexart} \begin{document} 少写两行太好用啦！ \end{document} ctex宏包\documentclass{article} \usepackage{ctex} \begin{document} 多了一行 \end{document} ctex会自动寻找中文字体。默认的字体如下：
 Windows MacOS Linux XeLaTeX 中易字库 + 微软雅黑 华文字库 + 苹方 Fandol字库 LuaLaTeX 中易字库 + 微软雅黑 华文字库 + 苹方 Fandol字库 pdfLaTeX 中易字库 + 微软雅黑 不可用 不可用 也可以使用\setCJKmainfont{}命令来设置中文字体。</description>
+    </item>
+    
+    <item>
+      <title>LaTeX 文件内容</title>
+      <link>https://localghost-blog.github.io/latex-tutorial/zh/docs/latex-file-content/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localghost-blog.github.io/latex-tutorial/zh/docs/latex-file-content/</guid>
+      <description>\(\)$\LaTeX$文件结构#在此前的代码结构一节中，我们初步介绍了$\LaTeX$文件的结构。以下是文件内容的示意图。
+flowchart LRA(文件) --&gt; B(导言)A --&gt; C(正文)A --&gt; D(忽略)B --&gt; E(文档类型)B --&gt; F(宏包, 全局设定, 注释)C --&gt; G(开始)C --&gt; H(文字, 命令, 环境, 注释)C --&gt; I(结束)正文部分的内容由文字，命令，环境，注释组成。一般来说，文字会被按照原样处理为文档的内容，其余部分会按照$\LaTeX$的语法规则进行处理。我们将分别介绍这些部分的内容。
+文字#空格#\n([ \t]*\n)+ -&amp;gt; 段落终止: 两个文段间的空行定义段落的终止，多个空行被视为一个空行。 (?&amp;lt;=\n)[ \t]+ -&amp;gt; 忽略, (?&amp;lt;!\n)([ \t]+|[ \t]*\n) -&amp;gt; 空格: 空白符，如空格键、tab键输入的字符皆视为空格，连续的多个空格视为一个空格。行头空格忽略不计，而单个换行符亦视为空格。 以下是一个例子：
+源代码#It does not matter whether you enter one or several spaces after a word.</description>
+    </item>
+    
+    <item>
+      <title>常见环境</title>
+      <link>https://localghost-blog.github.io/latex-tutorial/zh/docs/common-environments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localghost-blog.github.io/latex-tutorial/zh/docs/common-environments/</guid>
+      <description>\(\)列表环境#列表环境有三种，分别是：
+itemize：无序列表； enumerate：有序列表； description：描述列表。 列表的项以\item开头，后面可以跟着一个描述，描述的内容会被放在列表项的右边。 \item有可选参数[name]，用于指定列表项的名称，对于desription为必须项。例子见下：
+源代码#\begin{enumerate} \item You can nest the list environments to your taste: \begin{itemize} \item But it might start to look silly. \item[-] With a dash. \end{itemize} \item Therefore remember: \begin{description} \item[Stupid] things will not become smart because they are in a list. \item[Smart] things, though, can be presented beautifully in a list. \end{description} \end{enumerate} 编译结果#You can nest the list environments to your taste:</description>
+    </item>
+    
+    <item>
+      <title>如何写出一个结构化的LaTeX文档</title>
+      <link>https://localghost-blog.github.io/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localghost-blog.github.io/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/</guid>
+      <description>\(\)文章结构#了解了如何输入文字内容后，我们可以尝试写出一个结构化的$\LaTeX$文档。
+flowchart LRA(内容) --&gt; B(开端)A --&gt; C(正文)A --&gt; D(结尾)B --&gt; E(标题)B --&gt; F(前言)B --&gt; G(目录)C --&gt; H(章, 节, 小节)H --&gt; I(章节内容)D --&gt; J(附录)D --&gt; L(参考文献)D --&gt; M(索引)以上仅为示意图，可根据实际需要增加或删减部分。
+开端#Todo.
+正文#Todo.
+结尾#Todo.</description>
     </item>
     
   </channel>
