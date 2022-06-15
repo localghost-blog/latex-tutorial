@@ -42,7 +42,7 @@ xeCJK是一个XeLaTeX宏包，用于排版中日韩(CJK)文字，有以下功能
 
 更多特性及设定见其[文档](http://mirrors.ibiblio.org/CTAN/macros/xetex/latex/xecjk/xeCJK.pdf)。
 
-{{< columns >}}
+{{<columns>}}
 
 ## 源代码
 
@@ -61,7 +61,7 @@ xeCJK是一个XeLaTeX宏包，用于排版中日韩(CJK)文字，有以下功能
 
 汉语测试
 
-{{< /columns >}}
+{{</columns>}}
 
 ## 方案二：ctex宏包与文档类
 
@@ -116,7 +116,7 @@ ctex会自动寻找中文字体。默认的字体如下：
 
 ## 使用本机安装字体
 
-XeTeX通常使用fontconfig库查找和调用字体，因此可以用fc-list命令显示可用的字体。
+XeTeX通常使用fontconfig库查找和调用字体，因此可以用`fc-list`命令显示可用的字体。
 在命令行运行以下命令：
 
 ```console

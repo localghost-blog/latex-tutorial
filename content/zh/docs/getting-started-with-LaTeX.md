@@ -6,7 +6,38 @@ weight: 1
 
 # 准备工作
 
-使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者[下载](https://www.latex-project.org/get/)并安装一个$\TeX$发行版。
+使用$\LaTeX$前，你需要有一台已安装$\LaTeX$的电脑，或者前往The LaTeX Project官网[下载](https://www.latex-project.org/get/)并安装一个$\TeX$发行版。
+
+如官网不方便访问，可以访问清华大学开源软件镜像站获取$\TeX$发行版，其中Windows系统或Linux系统使用[TeX Live](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)，而MacOS使用[MacTeX](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/)。
+
+或者通过命令行下载并安装$\TeX$发行版，如下：
+
+{{<tabs "get-tex">}}
+
+{{<tab "Windows">}}
+```console
+$ choco install texlive
+```
+{{</tab>}}
+
+{{<tab "MacOS">}}
+```console
+$ brew cask install mactex
+# 或者
+$ brew cask install basictex
+```
+{{</tab>}}
+
+{{<tab "Ubuntu">}}
+```console
+$ apt install texlive
+# or
+$ apt install texlive-base
+```
+{{</tab>}}
+
+{{</tabs>}}
+
 此外，也可以访问[Overleaf](https://www.overleaf.com)等在线服务以联网使用$\LaTeX$。
 
 以下以本地运行为例。
@@ -49,7 +80,7 @@ weight: 1
 \usepackage{...}
 ```
 
-完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为前置(preamble)。
+完成所有准备工作后，用以下命令进入正文内容。正文内容以前的部分称为导言(preamble)。
 
 ```latex
 \begin{document}
@@ -64,9 +95,9 @@ weight: 1
 
 该命令后的任何字符将被忽略。
 
-下一节会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。
+在[LaTeX 文件内容](../latex-file-content)一章会具体展开代码结构和内容的讨论，在此之前我们先介绍一些常用的文档类型。
 
-# 文档前置
+# 文档导言
 
 1.	**文档类型:** 
 	文档类型由命令`\documentclass`指定:
@@ -78,7 +109,7 @@ weight: 1
   | **class** | **描述**                                                       |
   | --------- | -------------------------------------------------------------- |
   | article   | 文章格式，常用于科技论文、短篇报告、说明文档等。               |
-  | report    | 报告格式，适用分数个章节的长篇报告，或是短片书籍、博士论文等。 |
+  | report    | 报告格式，适用分数个章节的长篇报告，或是短篇书籍、博士论文等。 |
   | book      | 书籍格式。                                                     |
   | beamer    | 演示文稿格式，适于做报告时配合使用。                           |
 
@@ -88,7 +119,7 @@ weight: 1
   | \(\\d\+\)pt        | 设置正文主要字体大小。如`12pt`，默认为`10pt`。                                                                                                       |
   | \(\\w\+\)paper     | 设置页面大小。默认为`letterpaper`(8.5in$\times$11in，约合21.6cm$\times$28.0cm)。其它可选值有`a5paper`，`b5paper`，`executivepaper`及`legalpaper`等。 |
   | fleqn              | 行间公式左置。默认居中。                                                                                                                             |
-  | leqno              | 公式编号左置，默认居右。                                                                                                                             |
+  | leqno              | 公式编号左置。默认居右。                                                                                                                             |
   | \(no\)?titlepage   | 设置命令`\maketitle`是否生成单独页。`article`默认为`notitlepage`，`report`，`book`默认为`titlepage`。                                                |
   | \(one\|two\)column | 单/双列排版。默认为单列。                                                                                                                            |
   | \(one\|two\)side   | 单/双面排版。双面时奇偶页页眉页脚及页边距不同。`artcle`，`report`默认为单面，`book`默认为双面                                                        |

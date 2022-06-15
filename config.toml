@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://localghost-blog.github.io/latex-tutorial/'
 languageCode = 'zh'
 
 theme = 'hugo-book'
