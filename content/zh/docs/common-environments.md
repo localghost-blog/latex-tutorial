@@ -176,6 +176,129 @@ France is Bacon:
 摘要环境`abstract`默认仅在文档类`article`, `report`中可用，一般紧跟`\maketitle`命令。
 若指定`titlepage`选项，则单独成页；若否，单栏排版时相当于居中标题与`quotation`环境，双栏排版时相当于`\section*`中的一节。
 
+# 定理环境
+
+在使用$\LaTeX$排版数学或其它科技文档时，
+会大量使用定理、证明等内容，但定理环境不仅限于此。
+在写其它文档时，如剧本等，我们也可以灵活使用定理环境。
+$\LaTeX$提供命令`\newtheorem`来定义定理环境：
+
+```latex
+\newtheorem{envname}{title}[section-level]
+% or
+\newtheorem{envname}[counter]{title}
+```
+
+其中`envname`为定理环境名称，`title`为定理标题，`section-level`为章节层级，见[章节层级](../how-to-write-a-well-structured-latex-file/#章节层级)，`counter`为定理计数器名称。
+
+**注意事项**：`\newtheorem`的出现位置应早于其定义环境的实例，可以出现在正文区，但一般会放在导言区。
+
+若选用第一种定义，定理的序号(计数器)为章节名的下一级序号(计数器)。
+
+在定义好定理环境后，就可以使用环境了。定理环境提供可选参数`options`
+
+```latex
+\begin{envname}[options]
+...
+\end{envname}
+```
+
+效果见下
+
+{{<columns>}}
+
+## 源代码
+
+```latex
+\newtheorem{theorem}{Theorem}[section]
+\section{section name}
+\begin{theorem}
+	All triangles are isosceles.
+\end{theorem}
+\begin{theorem}[This is TRUE!]
+	All isosceles are triangles.
+\end{theorem}
+```
+
+<--->
+
+## 编译结果
+
+### **1 section name**
+
+**Theorem 1.1** *All triangles are isosceles.*
+
+**Theorem 1.2** **(This is TRUE!)** *All isosceles are triangles.*
+
+{{</columns>}}
+
+例中命令新建了一个名为`theorem`的计数器。
+此时如果需要新建一个和`theorem`共享编号的定理环境，可以使用
+```latex
+\newtheorem{proposition}[theorem]{Proposition}
+```
+
+**注意事项**：一般来说我们会使用其它新建的定理名作为`counter`的参数。请尽量不要使用章节层级名等作为`counter`参数。
+
+## 使用`amsthm`宏包定制定理环境
+
+宏包`amsthm`提供了`\theoremstyle`来支持定理格式的切换，在`\newtheorem`前使用。
+
+`amsthm`预定义了三种格式用于`\theoremstyle`：
+
+1.	`plain`：与$\LaTeX$原始格式相同，即**粗体标签**，*斜体内容*
+
+1.	`definition`：使用**粗体标签**、正体内容
+
+1.	`remark`：使用*斜体标签*、正体内容
+
+此外`amsthm`支持带星号的`\newtheorem*{envname}{title}`定义不带序号的定理环境。
+
+**注意事项**：`amsthm`会将定理环境的可选参数内容以正体(而非粗体)显示，此外，会在标签后加上一个句号。
+
+{{<columns>}}
+
+## 源代码
+
+```latex
+\newtheorem*{Nick}{Nick}
+\newtheorem*{Doctor}{Doctor}
+\begin{Nick}
+When I came back from New York I was disgusted.
+\end{Nick}
+\begin{Nick}[CONT'D]
+Disgusted... with everyone, and everything... Only one man was exempt from my disgust.
+\end{Nick}
+\begin{Doctor}
+One man...? Mr. Carraway?
+\end{Doctor}
+\begin{Nick}[whispers]
+Gatsby...
+\end{Nick}
+```
+
+<--->
+
+## 编译结果
+
+**Nick.** *When I came back from New York I was disgusted.*
+
+**Nick** (CONT'D)**.** *Disgusted... with everyone, and everything... Only one man was exempt from my disgust.*
+
+**Doctor.** *One man...? Mr. Carraway?*
+
+**Nick** (whispers)**.** *Gatsby...*
+
+{{</columns>}}
+
+此外，`amsthm`也可以使用`\newtheoremstyle`来自定义定理格式，参见其[文档](https://mirrors.hit.edu.cn/CTAN/macros/latex/required/amscls/doc/amsthdoc.pdf)。
+
+## `amsthm`的证明环境
+
+`amsthm`还提供了一个`proof`环境用于排版定理的证明过程。`proof`环境基于`remark`定理风格，在末尾自动加上一个$\square$证毕符号。
+
+**注意事项**：若定理环境末尾为环境，证毕符号可能出现在独立一行，此时可用命令`\qedhere`指定证毕符号的位置。
+
 # 表格环境
 
 排班表格的基本环境为`tabular`，使用方法如下：
