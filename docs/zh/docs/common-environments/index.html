@@ -21,7 +21,7 @@ itemize：无序列表； enumerate：有序列表； description：描述列表
 <link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
   <script defer src="/latex-tutorial/flexsearch.min.js"></script>
-  <script defer src="/latex-tutorial/zh.search.min.3bee9e24c4f9a7623b3ddd535cc9dfc6b986a5031491db19e66616cb1e36fd81.js" integrity="sha256-O&#43;6eJMT5p2I7Pd1TXMnfxrmGpQMUkdsZ5mYWyx42/YE=" crossorigin="anonymous"></script>
+  <script defer src="/latex-tutorial/zh.search.min.6409e1dcce3c03bc8c63eebb0b046b04095a53bd5170a315946a3e5408923aa1.js" integrity="sha256-ZAnh3M48A7yMY&#43;67CwRrBAlaU71RcKMVlGo&#43;VAiSOqE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -221,6 +221,12 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#引文环境">引文环境</a>
       <ul>
         <li><a href="#摘要环境">摘要环境</a></li>
+      </ul>
+    </li>
+    <li><a href="#定理环境">定理环境</a>
+      <ul>
+        <li><a href="#使用amsthm宏包定制定理环境">使用<code>amsthm</code>宏包定制定理环境</a></li>
+        <li><a href="#amsthm的证明环境"><code>amsthm</code>的证明环境</a></li>
       </ul>
     </li>
     <li><a href="#表格环境">表格环境</a>
@@ -473,6 +479,127 @@ of the earth
 </h2>
 <p>摘要环境<code>abstract</code>默认仅在文档类<code>article</code>, <code>report</code>中可用，一般紧跟<code>\maketitle</code>命令。
 若指定<code>titlepage</code>选项，则单独成页；若否，单栏排版时相当于居中标题与<code>quotation</code>环境，双栏排版时相当于<code>\section*</code>中的一节。</p>
+<h1 id="定理环境">
+  定理环境
+  <a class="anchor" href="#%e5%ae%9a%e7%90%86%e7%8e%af%e5%a2%83">#</a>
+</h1>
+<p>在使用$\LaTeX$排版数学或其它科技文档时，
+会大量使用定理、证明等内容，但定理环境不仅限于此。
+在写其它文档时，如剧本等，我们也可以灵活使用定理环境。
+$\LaTeX$提供命令<code>\newtheorem</code>来定义定理环境：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\newtheorem</span>{envname}{title}[section-level]
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\newtheorem</span>{envname}[counter]{title}
+</span></span></code></pre></div><p>其中<code>envname</code>为定理环境名称，<code>title</code>为定理标题，<code>section-level</code>为章节层级，见<a href="../how-to-write-a-well-structured-latex-file/#%e7%ab%a0%e8%8a%82%e5%b1%82%e7%ba%a7">章节层级</a>，<code>counter</code>为定理计数器名称。</p>
+<p><strong>注意事项</strong>：<code>\newtheorem</code>的出现位置应早于其定义环境的实例，可以出现在正文区，但一般会放在导言区。</p>
+<p>若选用第一种定义，定理的序号(计数器)为章节名的下一级序号(计数器)。</p>
+<p>在定义好定理环境后，就可以使用环境了。定理环境提供可选参数<code>options</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{envname}[options]
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{envname}
+</span></span></code></pre></div><p>效果见下</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\newtheorem</span>{theorem}{Theorem}[section]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\section</span>{section name}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{theorem}
+</span></span><span style="display:flex;"><span>	All triangles are isosceles.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{theorem}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{theorem}[This is TRUE!]
+</span></span><span style="display:flex;"><span>	All isosceles are triangles.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{theorem}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<h3 id="1-section-name">
+  <strong>1 section name</strong>
+  <a class="anchor" href="#1-section-name">#</a>
+</h3>
+<p><strong>Theorem 1.1</strong> <em>All triangles are isosceles.</em></p>
+<p><strong>Theorem 1.2</strong> <strong>(This is TRUE!)</strong> <em>All isosceles are triangles.</em></p>
+
+  </div>
+
+</div>
+
+<p>例中命令新建了一个名为<code>theorem</code>的计数器。
+此时如果需要新建一个和<code>theorem</code>共享编号的定理环境，可以使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\newtheorem</span>{proposition}[theorem]{Proposition}
+</span></span></code></pre></div><p><strong>注意事项</strong>：一般来说我们会使用其它新建的定理名作为<code>counter</code>的参数。请尽量不要使用章节层级名等作为<code>counter</code>参数。</p>
+<h2 id="使用amsthm宏包定制定理环境">
+  使用<code>amsthm</code>宏包定制定理环境
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8amsthm%e5%ae%8f%e5%8c%85%e5%ae%9a%e5%88%b6%e5%ae%9a%e7%90%86%e7%8e%af%e5%a2%83">#</a>
+</h2>
+<p>宏包<code>amsthm</code>提供了<code>\theoremstyle</code>来支持定理格式的切换，在<code>\newtheorem</code>前使用。</p>
+<p><code>amsthm</code>预定义了三种格式用于<code>\theoremstyle</code>：</p>
+<ol>
+<li>
+<p><code>plain</code>：与$\LaTeX$原始格式相同，即<strong>粗体标签</strong>，<em>斜体内容</em></p>
+</li>
+<li>
+<p><code>definition</code>：使用<strong>粗体标签</strong>、正体内容</p>
+</li>
+<li>
+<p><code>remark</code>：使用<em>斜体标签</em>、正体内容</p>
+</li>
+</ol>
+<p>此外<code>amsthm</code>支持带星号的<code>\newtheorem*{envname}{title}</code>定义不带序号的定理环境。</p>
+<p><strong>注意事项</strong>：<code>amsthm</code>会将定理环境的可选参数内容以正体(而非粗体)显示，此外，会在标签后加上一个句号。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\newtheorem*</span>{Nick}{Nick}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\newtheorem*</span>{Doctor}{Doctor}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{Nick}
+</span></span><span style="display:flex;"><span>When I came back from New York I was disgusted.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{Nick}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{Nick}[CONT&#39;D]
+</span></span><span style="display:flex;"><span>Disgusted... with everyone, and everything... Only one man was exempt from my disgust.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{Nick}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{Doctor}
+</span></span><span style="display:flex;"><span>One man...? Mr. Carraway?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{Doctor}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{Nick}[whispers]
+</span></span><span style="display:flex;"><span>Gatsby...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{Nick}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p><strong>Nick.</strong> <em>When I came back from New York I was disgusted.</em></p>
+<p><strong>Nick</strong> (CONT&rsquo;D)<strong>.</strong> <em>Disgusted&hellip; with everyone, and everything&hellip; Only one man was exempt from my disgust.</em></p>
+<p><strong>Doctor.</strong> <em>One man&hellip;? Mr. Carraway?</em></p>
+<p><strong>Nick</strong> (whispers)<strong>.</strong> <em>Gatsby&hellip;</em></p>
+
+  </div>
+
+</div>
+
+<p>此外，<code>amsthm</code>也可以使用<code>\newtheoremstyle</code>来自定义定理格式，参见其<a href="https://mirrors.hit.edu.cn/CTAN/macros/latex/required/amscls/doc/amsthdoc.pdf">文档</a>。</p>
+<h2 id="amsthm的证明环境">
+  <code>amsthm</code>的证明环境
+  <a class="anchor" href="#amsthm%e7%9a%84%e8%af%81%e6%98%8e%e7%8e%af%e5%a2%83">#</a>
+</h2>
+<p><code>amsthm</code>还提供了一个<code>proof</code>环境用于排版定理的证明过程。<code>proof</code>环境基于<code>remark</code>定理风格，在末尾自动加上一个$\square$证毕符号。</p>
+<p><strong>注意事项</strong>：若定理环境末尾为环境，证毕符号可能出现在独立一行，此时可用命令<code>\qedhere</code>指定证毕符号的位置。</p>
 <h1 id="表格环境">
   表格环境
   <a class="anchor" href="#%e8%a1%a8%e6%a0%bc%e7%8e%af%e5%a2%83">#</a>
@@ -730,6 +857,12 @@ $\LaTeX$为此引入的浮动体的机制，使得大块内容可以脱离原文
     <li><a href="#引文环境">引文环境</a>
       <ul>
         <li><a href="#摘要环境">摘要环境</a></li>
+      </ul>
+    </li>
+    <li><a href="#定理环境">定理环境</a>
+      <ul>
+        <li><a href="#使用amsthm宏包定制定理环境">使用<code>amsthm</code>宏包定制定理环境</a></li>
+        <li><a href="#amsthm的证明环境"><code>amsthm</code>的证明环境</a></li>
       </ul>
     </li>
     <li><a href="#表格环境">表格环境</a>

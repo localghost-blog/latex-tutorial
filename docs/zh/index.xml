@@ -72,9 +72,13 @@ itemize：无序列表； enumerate：有序列表； description：描述列表
       <guid>https://localghost-blog.github.io/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/</guid>
       <description>\(\)文章结构#了解了如何输入文字内容后，我们可以尝试写出一个结构化的$\LaTeX$文档。
 flowchart LRA(内容) --&gt; B(开端)A --&gt; C(正文)A --&gt; D(结尾)B --&gt; E(标题)B --&gt; F(前言)B --&gt; G(目录)C --&gt; H(章, 节, 小节)H --&gt; I(章节内容)D --&gt; J(附录)D --&gt; L(参考文献)D --&gt; M(索引)以上仅为示意图，可根据实际需要增加或删减部分。
-开端#Todo.
-正文#Todo.
-结尾#Todo.</description>
+标题#$\LaTeX$支持生成简单的标题页。
+需要在导言区提供标题、作者和日期信息：
+\documentclass{article} ... \title{标题\thanks{致谢}} \author{ 作者A\thanks{its@pku.edu.cn} \and 作者B\thanks{通讯作者} } \date{日期} \begin{document} \maketitle ... \end{document} 其中前两个命令是必须的(不用\title会报错；不用\author会警告)，而\date可选，不使用时默认为\today(生成当前日期)。
+\title和\author可以使用\thanks命令来添加致谢信息，会像脚注一样出现在页面下方。 此外\author的参数可以使用\and来并列多个作者。
+在信息给定后，就可以在正文区插入标题页：\maketitle。
+目录与章节#一篇结构化、条理清晰的文档一定是层次分明的，可以通过命令分割为章、节、小节等：
+\begin{document} \chapter{chapter 1} \section{section 1.</description>
     </item>
     
   </channel>

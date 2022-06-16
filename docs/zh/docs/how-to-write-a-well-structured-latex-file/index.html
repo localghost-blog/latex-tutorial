@@ -5,16 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="\(\)文章结构#了解了如何输入文字内容后，我们可以尝试写出一个结构化的$\LaTeX$文档。
 flowchart LRA(内容) --&gt; B(开端)A --&gt; C(正文)A --&gt; D(结尾)B --&gt; E(标题)B --&gt; F(前言)B --&gt; G(目录)C --&gt; H(章, 节, 小节)H --&gt; I(章节内容)D --&gt; J(附录)D --&gt; L(参考文献)D --&gt; M(索引)以上仅为示意图，可根据实际需要增加或删减部分。
-开端#Todo.
-正文#Todo.
-结尾#Todo.">
+标题#$\LaTeX$支持生成简单的标题页。
+需要在导言区提供标题、作者和日期信息：
+\documentclass{article} ... \title{标题\thanks{致谢}} \author{ 作者A\thanks{its@pku.edu.cn} \and 作者B\thanks{通讯作者} } \date{日期} \begin{document} \maketitle ... \end{document} 其中前两个命令是必须的(不用\title会报错；不用\author会警告)，而\date可选，不使用时默认为\today(生成当前日期)。
+\title和\author可以使用\thanks命令来添加致谢信息，会像脚注一样出现在页面下方。 此外\author的参数可以使用\and来并列多个作者。
+在信息给定后，就可以在正文区插入标题页：\maketitle。
+目录与章节#一篇结构化、条理清晰的文档一定是层次分明的，可以通过命令分割为章、节、小节等：
+\begin{document} \chapter{chapter 1} \section{section 1.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="如何写出一个结构化的LaTeX文档" />
 <meta property="og:description" content="\(\)文章结构#了解了如何输入文字内容后，我们可以尝试写出一个结构化的$\LaTeX$文档。
 flowchart LRA(内容) --&gt; B(开端)A --&gt; C(正文)A --&gt; D(结尾)B --&gt; E(标题)B --&gt; F(前言)B --&gt; G(目录)C --&gt; H(章, 节, 小节)H --&gt; I(章节内容)D --&gt; J(附录)D --&gt; L(参考文献)D --&gt; M(索引)以上仅为示意图，可根据实际需要增加或删减部分。
-开端#Todo.
-正文#Todo.
-结尾#Todo." />
+标题#$\LaTeX$支持生成简单的标题页。
+需要在导言区提供标题、作者和日期信息：
+\documentclass{article} ... \title{标题\thanks{致谢}} \author{ 作者A\thanks{its@pku.edu.cn} \and 作者B\thanks{通讯作者} } \date{日期} \begin{document} \maketitle ... \end{document} 其中前两个命令是必须的(不用\title会报错；不用\author会警告)，而\date可选，不使用时默认为\today(生成当前日期)。
+\title和\author可以使用\thanks命令来添加致谢信息，会像脚注一样出现在页面下方。 此外\author的参数可以使用\and来并列多个作者。
+在信息给定后，就可以在正文区插入标题页：\maketitle。
+目录与章节#一篇结构化、条理清晰的文档一定是层次分明的，可以通过命令分割为章、节、小节等：
+\begin{document} \chapter{chapter 1} \section{section 1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/" /><meta property="article:section" content="docs" />
 
@@ -25,7 +33,7 @@ flowchart LRA(内容) --&gt; B(开端)A --&gt; C(正文)A --&gt; D(结尾)B 
 <link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
   <script defer src="/latex-tutorial/flexsearch.min.js"></script>
-  <script defer src="/latex-tutorial/zh.search.min.3bee9e24c4f9a7623b3ddd535cc9dfc6b986a5031491db19e66616cb1e36fd81.js" integrity="sha256-O&#43;6eJMT5p2I7Pd1TXMnfxrmGpQMUkdsZ5mYWyx42/YE=" crossorigin="anonymous"></script>
+  <script defer src="/latex-tutorial/zh.search.min.6409e1dcce3c03bc8c63eebb0b046b04095a53bd5170a315946a3e5408923aa1.js" integrity="sha256-ZAnh3M48A7yMY&#43;67CwRrBAlaU71RcKMVlGo&#43;VAiSOqE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -221,9 +229,36 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#文章结构">文章结构</a></li>
-    <li><a href="#开端">开端</a></li>
-    <li><a href="#正文">正文</a></li>
-    <li><a href="#结尾">结尾</a></li>
+    <li><a href="#标题">标题</a></li>
+    <li><a href="#目录与章节">目录与章节</a>
+      <ul>
+        <li><a href="#章节层级">章节层级</a></li>
+        <li><a href="#章节计数器">章节计数器</a></li>
+      </ul>
+    </li>
+    <li><a href="#文档结构的划分">文档结构的划分</a></li>
+    <li><a href="#脚注与边注">脚注与边注</a></li>
+    <li><a href="#引用与链接">引用与链接</a>
+      <ul>
+        <li><a href="#使用超链接">使用超链接</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文献">参考文献</a>
+      <ul>
+        <li><a href="#bibtex数据库">BIB$\TeX$数据库</a></li>
+        <li><a href="#如何获取文献数据">如何获取文献数据</a></li>
+        <li><a href="#完整的文献引用样例">完整的文献引用样例</a></li>
+        <li><a href="#biblatex宏包"><code>biblatex</code>宏包</a></li>
+      </ul>
+    </li>
+    <li><a href="#索引">索引</a></li>
+    <li><a href="#使用include和input组织文件">使用<code>\include</code>和<code>\input</code>组织文件</a></li>
+    <li><a href="#标准文档类的主文件样例">标准文档类的主文件样例</a>
+      <ul>
+        <li><a href="#article">article</a></li>
+        <li><a href="#book">book</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -304,21 +339,546 @@ D --> M(索引)
 </p>
 
 <p>以上仅为示意图，可根据实际需要增加或删减部分。</p>
-<h1 id="开端">
-  开端
-  <a class="anchor" href="#%e5%bc%80%e7%ab%af">#</a>
+<h1 id="标题">
+  标题
+  <a class="anchor" href="#%e6%a0%87%e9%a2%98">#</a>
 </h1>
-<p>Todo.</p>
-<h1 id="正文">
-  正文
-  <a class="anchor" href="#%e6%ad%a3%e6%96%87">#</a>
+<p>$\LaTeX$支持生成简单的标题页。</p>
+<p>需要在导言区提供标题、作者和日期信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\title</span>{标题<span style="color:#66d9ef">\thanks</span>{致谢}}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\author</span>{
+</span></span><span style="display:flex;"><span>	作者A<span style="color:#66d9ef">\thanks</span>{its@pku.edu.cn} 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\and</span> 
+</span></span><span style="display:flex;"><span>	作者B<span style="color:#66d9ef">\thanks</span>{通讯作者}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\date</span>{日期}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\maketitle</span>
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><p>其中前两个命令是必须的(不用<code>\title</code>会报错；不用<code>\author</code>会警告)，而<code>\date</code>可选，不使用时默认为<code>\today</code>(生成当前日期)。</p>
+<p><code>\title</code>和<code>\author</code>可以使用<code>\thanks</code>命令来添加致谢信息，会像脚注一样出现在页面下方。
+此外<code>\author</code>的参数可以使用<code>\and</code>来并列多个作者。</p>
+<p>在信息给定后，就可以在正文区插入标题页：<code>\maketitle</code>。</p>
+<h1 id="目录与章节">
+  目录与章节
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95%e4%b8%8e%e7%ab%a0%e8%8a%82">#</a>
 </h1>
-<p>Todo.</p>
-<h1 id="结尾">
-  结尾
-  <a class="anchor" href="#%e7%bb%93%e5%b0%be">#</a>
+<p>一篇结构化、条理清晰的文档一定是层次分明的，可以通过命令分割为章、节、小节等：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\chapter</span>{chapter 1}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\section</span>{section 1.1}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">\subsection</span>{subsection 1.1.1}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">\subsubsection</span>{subsubsection 1.1.1.1}
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">\paragraph</span>{title}
+</span></span><span style="display:flex;"><span>				内容
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">\subparagraph</span>{subtitle}
+</span></span><span style="display:flex;"><span>					内容
+</span></span><span style="display:flex;"><span>				...
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\section</span>{section 1.2}
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\chapter*</span>{chapter 2}
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><p>其中<code>\chapter</code>仅在<code>report</code>和<code>book</code>文档类有定义。这些命令会生成标题并自动编号。
+此外$\LaTeX$还提供了<code>\part</code>指令，用来将文档分割为大块，但不影响章节的编号。</p>
+<p>章节命令还会在目录中添加条目。每个章节命令有两个变体：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\section</span><span style="color:#a6e22e">[short]</span>{title}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% 以及
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\section*</span>{title}
+</span></span></code></pre></div><p>前者会在目录添加短标题，后者标题无编号，也不生成目录项。</p>
+<p>在正文部分使用命令<code>\tableofcontents</code>会生成目录页。</p>
+<p><strong>注意事项</strong>：可能需要多次编译以使目录正常显示。</p>
+<h2 id="章节层级">
+  章节层级
+  <a class="anchor" href="#%e7%ab%a0%e8%8a%82%e5%b1%82%e7%ba%a7">#</a>
+</h2>
+<p>$\LaTeX$标准文档类对章节划分了层级：</p>
+<ul>
+<li>
+<p>在<code>article</code>中<code>part</code>为0，<code>section</code>为1，依此类推；</p>
+</li>
+<li>
+<p>在<code>report</code>/<code>book</code>中<code>part</code>为-1，<code>chapter</code>为0，<code>section</code>为1，依此类推</p>
+</li>
+</ul>
+<p><code>secnumdepth</code>计数器控制编号深度，在<code>article</code>中默认值为3，在<code>report</code>/<code>book</code>中默认值为2。$\LaTeX$会将深度不大于<code>secnumdepth</code>的章节进行标号。</p>
+<p><code>tocdepth</code>计数器控制目录深度，与<code>secnumdepth</code>默认值相同。</p>
+<p>我们可以通过命令<code>\setcounter{secnumdepth}{n}</code>来将<code>secnumdepth</code>计数器的值设置为<code>n</code>，
+如<code>\setcounter{secnumdepth}{5}</code>会给全体章节标号，
+而<code>\setcounter{tocdepth}{-1}</code>在<code>article</code>中会不显示章节目录，在<code>report</code>/<code>book</code>中会仅显示<code>part</code>部分。</p>
+<h2 id="章节计数器">
+  章节计数器
+  <a class="anchor" href="#%e7%ab%a0%e8%8a%82%e8%ae%a1%e6%95%b0%e5%99%a8">#</a>
+</h2>
+<p>如果我们需要修改章节的计数，以<code>section</code>为例，
+可以使用命令<code>\setcounter{section}{n}</code>，如</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\setcounter</span>{section}{-2}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\section</span>{section} <span style="color:#75715e">% -1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\section*</span>{section} <span style="color:#75715e">% null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\setcounter</span>{section}{10}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\section*</span>{section} <span style="color:#75715e">% null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\section</span>{section} <span style="color:#75715e">% 11
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\section</span>{section} <span style="color:#75715e">% 12
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><h1 id="文档结构的划分">
+  文档结构的划分
+  <a class="anchor" href="#%e6%96%87%e6%a1%a3%e7%bb%93%e6%9e%84%e7%9a%84%e5%88%92%e5%88%86">#</a>
 </h1>
-<p>Todo.</p>
+<p>所有标准文档类都提供了<code>\appendix</code>命令将正文和附录分开<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。
+在<code>\appendix</code>以后最高一级章节使用拉丁字母编号，从A开始。</p>
+<p>此外，<code>book</code>文档类还提供了前言、正文、后记结构的划分命令：</p>
+<ul>
+<li><code>frontmatter</code>：前言部分，页码使用小写罗马数字；<code>\chapter</code>不编号</li>
+<li><code>mainmatter</code>：正文部分，页码使用阿拉伯数字；<code>\chapter</code>正常编号</li>
+<li><code>backmatter</code>：后记部分，页码使用阿拉伯数字；<code>\chapter</code>不编号</li>
+</ul>
+<p>以上命令可以与<code>\appendix</code>共同使用，生成有前言、正文、附录、后记的文档。</p>
+<h1 id="脚注与边注">
+  脚注与边注
+  <a class="anchor" href="#%e8%84%9a%e6%b3%a8%e4%b8%8e%e8%be%b9%e6%b3%a8">#</a>
+</h1>
+<p>使用<code>\footnote</code>命令可在页面底部生成一个脚注，如：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>j&#39;en ai découvert une démonstration véritablement merveilleuse. 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\footnote</span>{cette marge est trop étroite pour contenir.}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>j&rsquo;en ai découvert une démonstration véritablement merveilleuse. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>cette marge est trop étroite pour contenir.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  </div>
+
+</div>
+
+<p>在一些环境内(如表格环境)使用<code>\footnote</code>无法正确生成脚注，我们可以分两步进行：</p>
+<ol>
+<li>
+<p>在原地使用<code>\footnotemark</code>计数</p>
+</li>
+<li>
+<p>在合适的位置用<code>\footnotetext</code>生成脚注</p>
+</li>
+</ol>
+<p>使用<code>\marginpar[left-margin]{right-margin}</code>可以生成边注。
+如果仅给定<code>{right-margin}</code>，则边注在奇偶页相同；
+否则奇数页使用<code>right-margin</code>，偶数页使用<code>left-margin</code>。</p>
+<p><strong>注意事项</strong>：边注较窄，建议不要写过多文字。可以使用<code>\footnotesize</code>等命令设置较小的字号。</p>
+<h1 id="引用与链接">
+  引用与链接
+  <a class="anchor" href="#%e5%bc%95%e7%94%a8%e4%b8%8e%e9%93%be%e6%8e%a5">#</a>
+</h1>
+<p>引用是$\LaTeX$强大排版功能的体现之一。</p>
+<p>在章节、公式、图表、定理等位置都支持引用。
+使用<code>\label{label-name}</code>命令后，
+在别处可以使用<code>\ref{lable-name}</code>生成引用的编号，或是<code>\pageref{label-name}</code>生成页码。</p>
+<p>以下是一个例子：
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>A reference to this subsection
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\label</span>{sec:this} looks like:
+</span></span><span style="display:flex;"><span>``see section~<span style="color:#66d9ef">\ref</span>{sec:this} on
+</span></span><span style="display:flex;"><span>page~<span style="color:#66d9ef">\pageref</span>{sec:this}.&#39;&#39;
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>A reference to this subsection looks like:
+&ldquo;see section 3.3 on page 22.&rdquo;</p>
+<p>(数字为样例)</p>
+
+  </div>
+
+</div>
+</p>
+<p><strong>注意事项</strong>：可能需要多次编译以生成正确交叉引用。</p>
+<p><code>\label</code>命令的使用位置为：</p>
+<ul>
+<li><strong>章节标题</strong>：在下一个章节标题前的任意位置</li>
+<li><strong>行间公式</strong>：在每一行公式的任意位置</li>
+<li><strong>有序列表</strong>：在的任意位置</li>
+<li><strong>图表标题</strong>：紧接图表标题</li>
+<li><strong>定理环境</strong>：在环境内任意位置</li>
+</ul>
+<p><strong>注意事项</strong>：<code>label</code>仅对记编号的命令形式生效。</p>
+<h2 id="使用超链接">
+  使用超链接
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8%e8%b6%85%e9%93%be%e6%8e%a5">#</a>
+</h2>
+<p>电子文档最实用的需求之一就是超链接功能。$\LaTeX$中实现这一功能的是<code>hyperref</code>宏包。</p>
+<p><code>hyperref</code>宏包会将目录、引用、脚注、索引、参考文献等封装为超链接，
+这也使其与其它宏包发生冲突的可能性增加。
+为减少可能的冲突，习惯上将<code>hyperref</code>宏包<strong>放在其它宏包之后</strong>调用。</p>
+<p><code>hyperref</code>宏包使用<code>\hypersetup</code>配置参数。参数也可以作为选项在调用时指定：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\hypersetup</span>{key1 = value1, ...}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[key1 = value1, ...]</span>{hyperref}
+</span></span></code></pre></div><p>以下是常用的参数设置：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>colorlinks</td>
+<td>false</td>
+<td>true：链接文字带颜色；false：加上带颜色的边框</td>
+</tr>
+<tr>
+<td>linkcolor</td>
+<td>red</td>
+<td>一般内部链接颜色</td>
+</tr>
+<tr>
+<td>citecolor</td>
+<td>green</td>
+<td>文献引用颜色</td>
+</tr>
+<tr>
+<td>urlcolor</td>
+<td>magenta</td>
+<td>网页地址颜色</td>
+</tr>
+</tbody>
+</table>
+<p>更多参数见其<a href="https://mirror.bjtu.edu.cn/CTAN/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf">文档</a>。此外也可以访问网页版的<a href="https://mirrors.cloud.tencent.com/CTAN/macros/latex/contrib/hyperref/doc/hyperref-doc.html">文档</a>。</p>
+<p>使用<code>hyperref</code>宏包后，所有引用、参考文献、索引等都转化为超链接，也可以使用命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\hyperref</span><span style="color:#a6e22e">[label]</span>{text}
+</span></span></code></pre></div><p>来指定链接文字的样式，这里<code>[]</code>为<strong>必填项</strong>。</p>
+<p>宏包提供了直接书写超链接的指令，如：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\url</span>{https://www.wikipedia.org}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\nolinkurl</span>{https://www.wikepedia.org}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\href</span>{https://www.wikipedia.org}{Wikipedia}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p><a href="https://www.wikipedia.org">https://www.wikipedia.org</a></p>
+<p><a href="https://www.wikipedia.org">https://www.wikipedia.org</a>(无跳转)</p>
+<p><a href="https://www.wikipedia.org">Wikipedia</a></p>
+
+  </div>
+
+</div>
+
+<h1 id="参考文献">
+  参考文献
+  <a class="anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae">#</a>
+</h1>
+<p>$\LaTeX$提供的参考文献和引用方式比较原始，需要用户自行书写参考文献列表，此处不介绍。
+我们介绍两种方式。
+<code>bibtex</code>数据库和<code>biblatex</code>宏包</p>
+<h2 id="bibtex数据库">
+  BIB$\TeX$数据库
+  <a class="anchor" href="#bibtex%e6%95%b0%e6%8d%ae%e5%ba%93">#</a>
+</h2>
+<p>BIB$\TeX$是目前最流行的参考文献数据组织格式之一。它的出现使我们摆脱手写参考文献条目的麻烦。我们还可以通过参考文献样式的支持，使同一份数据库生成不同样式的文献列表。</p>
+<p>BIB$\TeX$以.bib为扩展名，内容使若干条文献条目，每个条目的格式为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@type</span>{citation,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">key1</span> = <span style="color:#e6db74">{value1}</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">key2</span> = <span style="color:#e6db74">{value2}</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">keyn</span> = <span style="color:#e6db74">{valuen}</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>例如</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@book</span>{knuth1984texbook,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>=<span style="color:#e6db74">{The texbook}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Knuth, Donald Ervin and Bibby, Duane}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">volume</span>=<span style="color:#e6db74">{15}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>=<span style="color:#e6db74">{1984}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">publisher</span>=<span style="color:#e6db74">{Addison-Wesley Reading}</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>BIB$\TeX$提供了几个预定义的样式，如<code>plain</code>, <code>unsrt</code>, <code>alpha</code>等，如果需要使用期刊模板的话，可能会提供自用样式。样式文件以.bst为扩展名。</p>
+<p>使用样式文件的方法为<code>\bibliographystyle{name}</code>，其中<code>name</code>为样式文件的名称，<strong>不要带扩展名</strong>。</p>
+<h2 id="如何获取文献数据">
+  如何获取文献数据
+  <a class="anchor" href="#%e5%a6%82%e4%bd%95%e8%8e%b7%e5%8f%96%e6%96%87%e7%8c%ae%e6%95%b0%e6%8d%ae">#</a>
+</h2>
+<p>多数时候我们不必手写BIB$\TeX$文献条目，
+这是因为主流的文献数据库大都有简单的获取BIB$\TeX$文献条目的方式。</p>
+<p>如<a href="https://scholar.google.com/">Google Scholar</a>在每篇文献底下的<code>引用-&gt;BibTeX</code>存有文献条目。</p>
+<p><a href="https://www.lib.pku.edu.cn/">北京大学图书馆</a>每篇文献右边的<code>引用-&gt;导出为BibTeX</code>可以下载bib格式的数据库。</p>
+<h2 id="完整的文献引用样例">
+  完整的文献引用样例
+  <a class="anchor" href="#%e5%ae%8c%e6%95%b4%e7%9a%84%e6%96%87%e7%8c%ae%e5%bc%95%e7%94%a8%e6%a0%b7%e4%be%8b">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#75715e">% main.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\bibliographystyle</span>{plain}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\section</span>{section 1}
+</span></span><span style="display:flex;"><span>Some excellent books, for example, <span style="color:#66d9ef">\cite</span>{knuth1984texbook}.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\bibliography</span>{books} <span style="color:#75715e">% books.bib
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><p>在文件写好后，我们可以开始编译，命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ xelatex main
+</span></span><span style="display:flex;"><span>$ bibtex main
+</span></span><span style="display:flex;"><span>$ xelatex main
+</span></span><span style="display:flex;"><span>$ xelatex main
+</span></span></code></pre></div><h2 id="biblatex宏包">
+  <code>biblatex</code>宏包
+  <a class="anchor" href="#biblatex%e5%ae%8f%e5%8c%85">#</a>
+</h2>
+<p><code>biblatex</code>宏包是基于$\LaTeX$宏命令的参考文献解决方案，
+提供便捷的格式控制和强大的排序、分类、筛选、多文献表等功能。</p>
+<p>因其对UTF-8和中文参考文献的良好支持，被国内较多$\LaTeX$模板采用。</p>
+<p>使用方式如下：</p>
+<ol>
+<li>
+<p>在导言区调用<code>biblatex</code>宏包。宏包支持以<code>key = value</code>形式指定参数，包括文献样式、排序规则等。</p>
+</li>
+<li>
+<p>在其后导言区使用<code>\addbibresource</code>命令引入参考文献数据库，与BIB$\TeX$传统方式不同的是，需要写<strong>完整的文件名</strong>。</p>
+</li>
+<li>
+<p>在正文使用<code>\cite</code>命令引用参考文献。此外可用<code>\citeauthor</code>, <code>\citeyear</code>等单独引用作者与年份，也可用<code>\footcite</code>以脚注式引用。</p>
+</li>
+<li>
+<p>在需要排版参考文献的位置使用<code>\printbibliography</code></p>
+</li>
+</ol>
+<p><code>biblatex</code>自带的常用样式有<code>authoryear</code>, <code>authortitle</code>, <code>verbose</code>, <code>gb7714-2015</code>, <code>ieee</code>等。</p>
+<p>以下是一个样例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#75715e">% main.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[style=gb7714-2015]</span>{biblatex}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\addbibresource</span>{books.bib}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\section</span>{section 1}
+</span></span><span style="display:flex;"><span>Some excellent books, for example, <span style="color:#66d9ef">\cite</span>{knuth1984texbook}.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\printbibliography</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><p>与BIB$\TeX$传统方式不同的是，<code>biblatex</code>使用<code>biber</code>程序处理参考文献，命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ xelatex main
+</span></span><span style="display:flex;"><span>$ biber main
+</span></span><span style="display:flex;"><span>$ xelatex main
+</span></span><span style="display:flex;"><span>$ xelatex main
+</span></span></code></pre></div><h1 id="索引">
+  索引
+  <a class="anchor" href="#%e7%b4%a2%e5%bc%95">#</a>
+</h1>
+<p>书籍和大文档通常用索引来归纳关键词，方便用户查询。$\LaTeX$借助<code>makeindex</code>程序完成对索引的排版。</p>
+<p>添加索引需要在导言区调用<code>makeidx</code>宏包，并使用<code>\makeindex</code>命令开启索引收集。·</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{makeidx}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\makeindex</span>
+</span></span></code></pre></div><p>添加索引项的命令为<code>\index{index-entry}</code>，常用写法如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>样例</th>
+<th>索引项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一级索引</td>
+<td><code>test</code></td>
+<td>test, 1</td>
+</tr>
+<tr>
+<td>二级索引</td>
+<td><code>test!sub</code></td>
+<td> $\text{sub}$, 3</td>
+</tr>
+<tr>
+<td>三级索引</td>
+<td><code>test!sub!subsub</code></td>
+<td>  $\text{subsub}$, 5</td>
+</tr>
+<tr>
+<td>格式化索引</td>
+<td><code>Mobius@\&quot;&quot;obius</code></td>
+<td>$\text{M\&quot;obius}$, 7</td>
+</tr>
+<tr>
+<td></td>
+<td><code>alpha@$\alpha$</code></td>
+<td>$\alpha$, 9</td>
+</tr>
+<tr>
+<td></td>
+<td><code>bold@\textbf{bold}</code></td>
+<td>$\textbf{bold}$, 11</td>
+</tr>
+<tr>
+<td>页码范围</td>
+<td><code>morning|(</code></td>
+<td>$\text{morning}$, 6-7</td>
+</tr>
+<tr>
+<td></td>
+<td><code>morning|)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其中<code>!</code>, <code>@</code>, <code>|</code>为特殊字符，使用<code>&quot;</code>转义，而<code>&quot;</code>使用<code>&quot;&quot;</code>输出。索引至多三级，以上命令可组合使用。</p>
+<p>在需要输出索引的地方(如正文区末尾)使用<code>\printindex</code>命令。</p>
+<p>编译命令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ xelatex main % 生成索引记录文件main.idx
+</span></span><span style="display:flex;"><span>$ makeindex main.idx % 生成索引文件main.ind
+</span></span><span style="display:flex;"><span>$ xelatex main % 生成索引列表
+</span></span></code></pre></div><p>详情可以查看<code>makeindex</code>宏包的<a href="https://mirrors.nju.edu.cn/CTAN/indexing/makeindex/doc/makeindex.pdf">文档</a>。</p>
+<h1 id="使用include和input组织文件">
+  使用<code>\include</code>和<code>\input</code>组织文件
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8include%e5%92%8cinput%e7%bb%84%e7%bb%87%e6%96%87%e4%bb%b6">#</a>
+</h1>
+<p>当$\TeX$文档比较复杂(或是比较长)时，单个源文件的修改、校对、编译会变得十分困难。
+此时，将源文件分割为若干子文件，如将每章内容单独写在一个文件中，会极大地简化工作。</p>
+<p>$\LaTeX$提供两个命令<code>\include</code>和<code>\input</code>以在源代码中插入文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\include</span>{filename}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">%
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\input</span>{filename}
+</span></span></code></pre></div><p>若引入文件和主文件不在同一个目录中，则要使用相对或绝对路径，见<a href="../international-language-support/#%e4%bd%bf%e7%94%a8%e6%9c%ac%e5%9c%b0%e5%ad%97%e4%bd%93">使用本地字体</a>。</p>
+<p>两个命令各有特点：</p>
+<ol>
+<li>
+<p><code>\include</code>会在读入文件前另起一页，<code>\input</code>则不会。</p>
+</li>
+<li>
+<p>在被<code>\include</code>引用的文件中不能再次使用<code>\include</code>命令(包括被<code>\input</code>包含的文件)；而<code>\input</code>可以任意使用，相当于直接在文件中插入被引用的文件。</p>
+</li>
+<li>
+<p>在导言区使用指令<code>\includeonly{filename1, filename2, ...}</code>可以仅载入指定文件。</p>
+</li>
+</ol>
+<p>以下是一个使用<code>\include</code>和<code>\input</code>文件树结构示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#75715e">% main.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\documentclass</span>{book}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\include</span>{header}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\include</span>{part1}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\include</span>{part2}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\appendix</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\include</span>{appendix}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% part1.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\part</span>{Part I}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\input</span>{chapter1}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\input</span>{chapter2}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% part2.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">\part</span>{Part II}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\input</span>{chapter3}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\input</span>{chapter4}
+</span></span></code></pre></div><h1 id="标准文档类的主文件样例">
+  标准文档类的主文件样例
+  <a class="anchor" href="#%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%e7%b1%bb%e7%9a%84%e4%b8%bb%e6%96%87%e4%bb%b6%e6%a0%b7%e4%be%8b">#</a>
+</h1>
+<h2 id="article">
+  article
+  <a class="anchor" href="#article">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{article}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\title</span>{Title}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\author</span>{Author}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\date</span>{<span style="color:#66d9ef">\today</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\maketitle</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\begin</span>{abstract}
+</span></span><span style="display:flex;"><span>		...
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\end</span>{abstract}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\tableofcontents</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{section1}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{section2}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\appendix</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{appendix}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\bibliography</span>{books}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><h2 id="book">
+  book
+  <a class="anchor" href="#book">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{book}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{makeidx}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\makeindex</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span><span style="color:#a6e22e">[style=gb7714-2015]</span>{biblatex}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\addbibresource</span>{bibliography.bib}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\title</span>{Title}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\author</span>{Author}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\date</span>{<span style="color:#66d9ef">\today</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{document}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\frontmatter</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\maketitle</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{preface}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\tableofcontents</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\mainmatter</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{chapter1}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{chapter2}
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\appendix</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{appendixA}
+</span></span><span style="display:flex;"><span>	...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\backmatter</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\include</span>{epilogue}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\printbibliography</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">\printindex</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>部分文档可能采用<code>\begin{appendix}...\end{appendix}</code>的写法，效果相同，但并不规范。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 </article>
  
       
@@ -361,9 +921,36 @@ D --> M(索引)
 <nav id="TableOfContents">
   <ul>
     <li><a href="#文章结构">文章结构</a></li>
-    <li><a href="#开端">开端</a></li>
-    <li><a href="#正文">正文</a></li>
-    <li><a href="#结尾">结尾</a></li>
+    <li><a href="#标题">标题</a></li>
+    <li><a href="#目录与章节">目录与章节</a>
+      <ul>
+        <li><a href="#章节层级">章节层级</a></li>
+        <li><a href="#章节计数器">章节计数器</a></li>
+      </ul>
+    </li>
+    <li><a href="#文档结构的划分">文档结构的划分</a></li>
+    <li><a href="#脚注与边注">脚注与边注</a></li>
+    <li><a href="#引用与链接">引用与链接</a>
+      <ul>
+        <li><a href="#使用超链接">使用超链接</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文献">参考文献</a>
+      <ul>
+        <li><a href="#bibtex数据库">BIB$\TeX$数据库</a></li>
+        <li><a href="#如何获取文献数据">如何获取文献数据</a></li>
+        <li><a href="#完整的文献引用样例">完整的文献引用样例</a></li>
+        <li><a href="#biblatex宏包"><code>biblatex</code>宏包</a></li>
+      </ul>
+    </li>
+    <li><a href="#索引">索引</a></li>
+    <li><a href="#使用include和input组织文件">使用<code>\include</code>和<code>\input</code>组织文件</a></li>
+    <li><a href="#标准文档类的主文件样例">标准文档类的主文件样例</a>
+      <ul>
+        <li><a href="#article">article</a></li>
+        <li><a href="#book">book</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
