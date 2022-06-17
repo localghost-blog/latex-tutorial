@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="\(\)编辑器推荐#一个好用的$\LaTeX$编辑器无疑会极大地提高输入和编译效率，也可以让使用者有一个好的心情，不用一直面对终端手动输入指令(虽然部分人也喜欢这么做)。
+本篇推荐两个笔者长期使用的编辑器，并介绍部分特性与使用方法。 本文并不致力于写成编辑器使用指南，因此主要介绍其中与$\LaTeX$相关的部分。
+此外，你也可以使用你喜欢的编辑器探索如何提升$\LaTeX$文档的编辑体验。
+Visual Studio Code#Visual Studio Code (简称VS Code)是由微软公司开发的跨平台免费开源的编辑器，主要用于编写程序，预设支持多数常用语言，也包括$\LaTeX$。 在2021年问答网站Stack Overflow的开发环境调研中，其获得了71.06%的推荐率，远超其后的Visual Studio (33.03%)等。
+VS Code支持通过扩展增强功能，在其扩展商店中的LaTeX Workshop可以极大地提升编辑器中$\LaTeX$文件的编辑和编译效率。
+以下介绍其主要功能。更详细的介绍可以查看Features和其Wiki。
+一般代码支持#支持$\LaTeX$, $\LaTeX$3, Bib$\TeX$语法高亮、代码折叠、代码格式化。
+自动编译#LaTeX Workshop默认会在你保存文件时自动编译$\LaTeX$文档， 因此可以告别生成引用、文献、索引等多次编译的烦恼。
+如果使用\input, \include来形成文件树，其会智能地在保存树中任意文件时重新编译主文件。
+此外，可以选择删除编译过程中出现的辅助文件。
+该设定可以关闭。
+PDF预览和SyncTeX支持#LaTeX Workshop支持在VS Code内与外部PDF查看器实时预览编译出的PDF文档。
+此外，支持通过SyncTeX从文档中的\label和\ref处跳转PDF至相应部分，或是从PDF任意部分跳转至生成该部分的一行(同样支持访问文件树)。
+Snippets, Shortcuts 与 IntelliSense#智能提示宏命令(包含可能的参数类型)，\cite和\ref引用内容，以及\input, \include, \includegraphics等文件导入路径，可以选择并按tab键补完。
+智能生成列举环境中的\item，
+更方便地给文本提供\emph等样式。
+此外，可以通过VS Code自定义代码片段，形成适合个人的代码片段。
+数学公式和TikZ绘图，图片预览#将光标置于数学公式与TikZ绘图，或图片插入处可以看到渲染效果。
+错误分析#将编译报错显示于文件中。
+大纲，代码片段插入#在资源管理器-&gt;大纲处(或$\TeX$-&gt;STRUCTURE处)可以看到树状组织的全部章节和标签，支持点击跳转。
+在$\TeX$-&gt;SNIPPET VIEW处可以根据符号插入对应的命令，以及常用的TikZ绘图片段。
+其它插件#你也可以在扩展商店搜索自己喜欢的扩展。 如笔者会使用hypersnips(借助Vim中的王牌插件Ultisnips灵感创作)以根据上下文(context)快速自动展开代码片段。 由于其目前为beta版，存在部分问题，故此处不介绍。">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="编辑器推荐" />
+<meta property="og:description" content="\(\)编辑器推荐#一个好用的$\LaTeX$编辑器无疑会极大地提高输入和编译效率，也可以让使用者有一个好的心情，不用一直面对终端手动输入指令(虽然部分人也喜欢这么做)。
+本篇推荐两个笔者长期使用的编辑器，并介绍部分特性与使用方法。 本文并不致力于写成编辑器使用指南，因此主要介绍其中与$\LaTeX$相关的部分。
+此外，你也可以使用你喜欢的编辑器探索如何提升$\LaTeX$文档的编辑体验。
+Visual Studio Code#Visual Studio Code (简称VS Code)是由微软公司开发的跨平台免费开源的编辑器，主要用于编写程序，预设支持多数常用语言，也包括$\LaTeX$。 在2021年问答网站Stack Overflow的开发环境调研中，其获得了71.06%的推荐率，远超其后的Visual Studio (33.03%)等。
+VS Code支持通过扩展增强功能，在其扩展商店中的LaTeX Workshop可以极大地提升编辑器中$\LaTeX$文件的编辑和编译效率。
+以下介绍其主要功能。更详细的介绍可以查看Features和其Wiki。
+一般代码支持#支持$\LaTeX$, $\LaTeX$3, Bib$\TeX$语法高亮、代码折叠、代码格式化。
+自动编译#LaTeX Workshop默认会在你保存文件时自动编译$\LaTeX$文档， 因此可以告别生成引用、文献、索引等多次编译的烦恼。
+如果使用\input, \include来形成文件树，其会智能地在保存树中任意文件时重新编译主文件。
+此外，可以选择删除编译过程中出现的辅助文件。
+该设定可以关闭。
+PDF预览和SyncTeX支持#LaTeX Workshop支持在VS Code内与外部PDF查看器实时预览编译出的PDF文档。
+此外，支持通过SyncTeX从文档中的\label和\ref处跳转PDF至相应部分，或是从PDF任意部分跳转至生成该部分的一行(同样支持访问文件树)。
+Snippets, Shortcuts 与 IntelliSense#智能提示宏命令(包含可能的参数类型)，\cite和\ref引用内容，以及\input, \include, \includegraphics等文件导入路径，可以选择并按tab键补完。
+智能生成列举环境中的\item，
+更方便地给文本提供\emph等样式。
+此外，可以通过VS Code自定义代码片段，形成适合个人的代码片段。
+数学公式和TikZ绘图，图片预览#将光标置于数学公式与TikZ绘图，或图片插入处可以看到渲染效果。
+错误分析#将编译报错显示于文件中。
+大纲，代码片段插入#在资源管理器-&gt;大纲处(或$\TeX$-&gt;STRUCTURE处)可以看到树状组织的全部章节和标签，支持点击跳转。
+在$\TeX$-&gt;SNIPPET VIEW处可以根据符号插入对应的命令，以及常用的TikZ绘图片段。
+其它插件#你也可以在扩展商店搜索自己喜欢的扩展。 如笔者会使用hypersnips(借助Vim中的王牌插件Ultisnips灵感创作)以根据上下文(context)快速自动展开代码片段。 由于其目前为beta版，存在部分问题，故此处不介绍。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/latex-editor/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="LaTeX 教程" />
+
+<title>编辑器推荐 | LaTeX 教程</title>
+<link rel="manifest" href="/latex-tutorial/manifest.json">
+<link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
+  <script defer src="/latex-tutorial/flexsearch.min.js"></script>
+  <script defer src="/latex-tutorial/zh.search.min.d3a63ec596583a8a7a7537146ccf55ff16ade9d7ea534c61ad15ad47062841c4.js" integrity="sha256-06Y&#43;xZZYOop6dTcUbM9V/xat6dfqU0xhrRWtRwYoQcQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/latex-tutorial/zh/"><span>LaTeX 教程</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/latex-tutorial/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://localghost-blog.github.io/latex-tutorial/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/getting-started-with-latex/" class="">初次使用 LaTeX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/international-language-support/" class="">多语言支持</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/latex-file-content/" class="">LaTeX 文件内容</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/common-environments/" class="">常见环境</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/" class="">如何写出一个结构化的LaTeX文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/typesetting-math/" class="">排版数学公式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/latex-editor/" class="active">编辑器推荐</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/latex-tutorial/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>编辑器推荐</strong>
+
+  <label for="toc-control">
+    
+    <img src="/latex-tutorial/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#编辑器推荐">编辑器推荐</a></li>
+    <li><a href="#visual-studio-code">Visual Studio Code</a>
+      <ul>
+        <li><a href="#一般代码支持">一般代码支持</a></li>
+        <li><a href="#自动编译">自动编译</a></li>
+        <li><a href="#pdf预览和synctex支持">PDF预览和SyncTeX支持</a></li>
+        <li><a href="#snippets-shortcuts-与-intellisense">Snippets, Shortcuts 与 IntelliSense</a></li>
+        <li><a href="#数学公式和tikz绘图图片预览">数学公式和TikZ绘图，图片预览</a></li>
+        <li><a href="#错误分析">错误分析</a></li>
+        <li><a href="#大纲代码片段插入">大纲，代码片段插入</a></li>
+        <li><a href="#其它插件">其它插件</a></li>
+      </ul>
+    </li>
+    <li><a href="#vim">VIM</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+	integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+	integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+	crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+	integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+	crossorigin="anonymous"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		renderMathInElement(document.body, {
+			
+			
+			delimiters: [
+				{ left: "$", right: "$", display: false },
+				{ left: "$$", right: "$$", display: true },
+				{ left: "\\(", right: "\\)", display: false },
+				{ left: "\\begin{equation}", right: "\\end{equation}", display: true },
+				{ left: "\\begin{align}", right: "\\end{align}", display: true },
+				{ left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+				{ left: "\\begin{gather}", right: "\\end{gather}", display: true },
+				{ left: "\\begin{CD}", right: "\\end{CD}", display: true },
+				{ left: "\\[", right: "\\]", display: true }
+			],
+			
+			throwOnError: false
+		});
+	});
+</script><span>
+	\(\)
+</span>
+<h1 id="编辑器推荐">
+  编辑器推荐
+  <a class="anchor" href="#%e7%bc%96%e8%be%91%e5%99%a8%e6%8e%a8%e8%8d%90">#</a>
+</h1>
+<p>一个好用的$\LaTeX$编辑器无疑会极大地提高输入和编译效率，也可以让使用者有一个好的心情，不用一直面对终端手动输入指令(虽然部分人也喜欢这么做)。</p>
+<p>本篇推荐两个笔者长期使用的编辑器，并介绍部分特性与使用方法。
+本文并不致力于写成编辑器使用指南，因此主要介绍其中与$\LaTeX$相关的部分。</p>
+<p>此外，你也可以使用你喜欢的编辑器探索如何提升$\LaTeX$文档的编辑体验。</p>
+<h1 id="visual-studio-code">
+  Visual Studio Code
+  <a class="anchor" href="#visual-studio-code">#</a>
+</h1>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> (简称VS Code)是由微软公司开发的跨平台免费开源的编辑器，主要用于编写程序，预设支持多数常用语言，也包括$\LaTeX$。
+在2021年问答网站Stack Overflow的<a href="https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment">开发环境调研</a>中，其获得了71.06%的推荐率，远超其后的Visual Studio (33.03%)等。</p>
+<p>VS Code支持通过扩展增强功能，在其扩展商店中的<a href="https://github.com/James-Yu/LaTeX-Workshop">LaTeX Workshop</a>可以极大地提升编辑器中$\LaTeX$文件的编辑和编译效率。</p>
+<p>以下介绍其主要功能。更详细的介绍可以查看<a href="https://github.com/James-Yu/LaTeX-Workshop#features-taster">Features</a>和其<a href="https://github.com/James-Yu/LaTeX-Workshop/wiki">Wiki</a>。</p>
+<h2 id="一般代码支持">
+  一般代码支持
+  <a class="anchor" href="#%e4%b8%80%e8%88%ac%e4%bb%a3%e7%a0%81%e6%94%af%e6%8c%81">#</a>
+</h2>
+<p>支持$\LaTeX$, $\LaTeX$3, Bib$\TeX$语法高亮、代码折叠、代码格式化。</p>
+<h2 id="自动编译">
+  自动编译
+  <a class="anchor" href="#%e8%87%aa%e5%8a%a8%e7%bc%96%e8%af%91">#</a>
+</h2>
+<p>LaTeX Workshop默认会在你保存文件时自动编译$\LaTeX$文档，
+因此可以告别生成引用、文献、索引等多次编译的烦恼。</p>
+<p>如果使用<code>\input</code>, <code>\include</code>来形成文件树，其会智能地在保存树中任意文件时重新编译主文件。</p>
+<p>此外，可以选择删除编译过程中出现的辅助文件。</p>
+<p>该设定可以关闭。</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/build.gif" alt="Build" /></p>
+<h2 id="pdf预览和synctex支持">
+  PDF预览和SyncTeX支持
+  <a class="anchor" href="#pdf%e9%a2%84%e8%a7%88%e5%92%8csynctex%e6%94%af%e6%8c%81">#</a>
+</h2>
+<p>LaTeX Workshop支持在VS Code内与外部PDF查看器实时预览编译出的PDF文档。</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/preview.gif" alt="Preview" /></p>
+<p>此外，支持通过SyncTeX从文档中的<code>\label</code>和<code>\ref</code>处跳转PDF至相应部分，或是从PDF任意部分跳转至生成该部分的一行(同样支持访问文件树)。</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/synctex.gif" alt="SyncTeX" /></p>
+<h2 id="snippets-shortcuts-与-intellisense">
+  Snippets, Shortcuts 与 IntelliSense
+  <a class="anchor" href="#snippets-shortcuts-%e4%b8%8e-intellisense">#</a>
+</h2>
+<p>智能提示宏命令(包含可能的参数类型)，<code>\cite</code>和<code>\ref</code>引用内容，以及<code>\input</code>, <code>\include</code>, <code>\includegraphics</code>等文件导入路径，可以选择并按<code>tab</code>键补完。</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/ref.gif" alt="IntelliSense" /></p>
+<p>智能生成列举环境中的<code>\item</code>，</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/auto%20item.gif" alt="Auto Item" /></p>
+<p>更方便地给文本提供<code>\emph</code>等样式。</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/emph.gif" alt="Emph" /></p>
+<p>此外，可以通过VS Code自定义代码片段，形成适合个人的代码片段。</p>
+<h2 id="数学公式和tikz绘图图片预览">
+  数学公式和TikZ绘图，图片预览
+  <a class="anchor" href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e5%92%8ctikz%e7%bb%98%e5%9b%be%e5%9b%be%e7%89%87%e9%a2%84%e8%a7%88">#</a>
+</h2>
+<p>将光标置于数学公式与TikZ绘图，或图片插入处可以看到渲染效果。</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/hover.gif" alt="Hover" /></p>
+<h2 id="错误分析">
+  错误分析
+  <a class="anchor" href="#%e9%94%99%e8%af%af%e5%88%86%e6%9e%90">#</a>
+</h2>
+<p>将编译报错显示于文件中。</p>
+<p><img src="https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/demo_media/errors.png" alt="Errors" /></p>
+<h2 id="大纲代码片段插入">
+  大纲，代码片段插入
+  <a class="anchor" href="#%e5%a4%a7%e7%ba%b2%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5%e6%8f%92%e5%85%a5">#</a>
+</h2>
+<p>在资源管理器-&gt;大纲处(或$\TeX$-&gt;STRUCTURE处)可以看到树状组织的全部章节和标签，支持点击跳转。</p>
+<p>在$\TeX$-&gt;SNIPPET VIEW处可以根据符号插入对应的命令，以及常用的TikZ绘图片段。</p>
+<h2 id="其它插件">
+  其它插件
+  <a class="anchor" href="#%e5%85%b6%e5%ae%83%e6%8f%92%e4%bb%b6">#</a>
+</h2>
+<p>你也可以在扩展商店搜索自己喜欢的扩展。
+如笔者会使用hypersnips(借助Vim中的王牌插件Ultisnips灵感创作)以根据上下文(context)快速自动展开代码片段。
+由于其目前为beta版，存在部分问题，故此处不介绍。</p>
+<h1 id="vim">
+  VIM
+  <a class="anchor" href="#vim">#</a>
+</h1>
+<p><a href="https://www.vim.org/">Vim</a>是从vi发展出的开源自由文本编辑器，于1991年发布，可以在终端使用，是类Unix系统用户最喜欢的编辑器。其以学习曲线陡峭著称，但一旦掌握后能大幅提高编辑效率。</p>
+<p>笔者因著名文章<a href="https://castel.dev/post/lecture-notes-1/">How I&rsquo;m able to take notes in mathematics lectures using LaTeX and Vim</a>入坑。
+虽有差生文具多之嫌，但经过测试确实能够与课堂同步做笔记(而笔者并不喜欢做笔记)，可以在无需思考的情况下高速输出文字。</p>
+<p>本部分推荐主要参考上述文章，此外会增加部分个人的使用体验。</p>
+<!-- todo --></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#编辑器推荐">编辑器推荐</a></li>
+    <li><a href="#visual-studio-code">Visual Studio Code</a>
+      <ul>
+        <li><a href="#一般代码支持">一般代码支持</a></li>
+        <li><a href="#自动编译">自动编译</a></li>
+        <li><a href="#pdf预览和synctex支持">PDF预览和SyncTeX支持</a></li>
+        <li><a href="#snippets-shortcuts-与-intellisense">Snippets, Shortcuts 与 IntelliSense</a></li>
+        <li><a href="#数学公式和tikz绘图图片预览">数学公式和TikZ绘图，图片预览</a></li>
+        <li><a href="#错误分析">错误分析</a></li>
+        <li><a href="#大纲代码片段插入">大纲，代码片段插入</a></li>
+        <li><a href="#其它插件">其它插件</a></li>
+      </ul>
+    </li>
+    <li><a href="#vim">VIM</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

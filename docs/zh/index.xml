@@ -81,5 +81,56 @@ flowchart LRA(内容) --&gt; B(开端)A --&gt; C(正文)A --&gt; D(结尾)B 
 \begin{document} \chapter{chapter 1} \section{section 1.</description>
     </item>
     
+    <item>
+      <title>排版数学公式</title>
+      <link>https://localghost-blog.github.io/latex-tutorial/zh/docs/typesetting-math/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localghost-blog.github.io/latex-tutorial/zh/docs/typesetting-math/</guid>
+      <description>\(\)使用$\LaTeX$排版数学公式#为较好地支持排版数学公式，需要使用AMS-$\LaTeX$宏集。 AMS-$\LaTeX$宏集是一个包含了若干类和宏包的数学排版拓展，我们主要使用amsmath宏包。 以下的命令总是假定已引用该宏包。
+行内公式#数学公式的排版分为两种：其一是与文字混排，称为行内公式；其二是单独成行，称为行间公式。
+行内公式是由一对$包裹($\TeX$语法)或是由\(与\)包裹($\LaTeX$语法)的环境：
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则$a^2+b^2=c^2$。 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$，斜边长度为$c$，则$a^2+b^2=c^2$。也可以使用\begin{math}和\end{math}来包裹，甚至可以混用语法：$a\)。 但这两种都不推荐。
+我们建议全部使用$\TeX$语法(即使用$包裹)，这样便于阅读。
+行间公式#若需要将较长的公式独立于段落展示，需要使用环境equation：
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation} a^2 + b^2 = c^2 \end{equation} 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation} a^2 + b^2 = c^2 \end{equation}equation环境会为公式生成编号，可以使用\label, \ref进行引用。 \tag{}可为公式修改编号。
+如果不需要编号，可以使用\notag命令。此外也有更直接的方式：
+使用equation*环境；
+使用displaymath环境；
+使用一对$$包裹($\TeX$语法)或者用\[与\]包裹($\LaTeX$语法)。
+注意事项：请尽量不要使用$$包裹来生成行间公式，更不要混合使用语法。其并不支持如fleqn等命令(见文档导言)。此外还有其它支持问题，可以参考讨论Why is \[ ... \] preferable to $$ ... $$?。
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation*} a^2 + b^2 = c^2 \end{equation*} 或者更简单一些： \[ a^2 + b^2 = c^2 \] 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \[ a^2 + b^2 = c^2 \] 或者更简单一些： \[ a^2 + b^2 = c^2 \]数学模式#被数学环境包裹的片段进入数学模式，其与文本模式有差异，如：</description>
+    </item>
+    
+    <item>
+      <title>编辑器推荐</title>
+      <link>https://localghost-blog.github.io/latex-tutorial/zh/docs/latex-editor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localghost-blog.github.io/latex-tutorial/zh/docs/latex-editor/</guid>
+      <description>\(\)编辑器推荐#一个好用的$\LaTeX$编辑器无疑会极大地提高输入和编译效率，也可以让使用者有一个好的心情，不用一直面对终端手动输入指令(虽然部分人也喜欢这么做)。
+本篇推荐两个笔者长期使用的编辑器，并介绍部分特性与使用方法。 本文并不致力于写成编辑器使用指南，因此主要介绍其中与$\LaTeX$相关的部分。
+此外，你也可以使用你喜欢的编辑器探索如何提升$\LaTeX$文档的编辑体验。
+Visual Studio Code#Visual Studio Code (简称VS Code)是由微软公司开发的跨平台免费开源的编辑器，主要用于编写程序，预设支持多数常用语言，也包括$\LaTeX$。 在2021年问答网站Stack Overflow的开发环境调研中，其获得了71.06%的推荐率，远超其后的Visual Studio (33.03%)等。
+VS Code支持通过扩展增强功能，在其扩展商店中的LaTeX Workshop可以极大地提升编辑器中$\LaTeX$文件的编辑和编译效率。
+以下介绍其主要功能。更详细的介绍可以查看Features和其Wiki。
+一般代码支持#支持$\LaTeX$, $\LaTeX$3, Bib$\TeX$语法高亮、代码折叠、代码格式化。
+自动编译#LaTeX Workshop默认会在你保存文件时自动编译$\LaTeX$文档， 因此可以告别生成引用、文献、索引等多次编译的烦恼。
+如果使用\input, \include来形成文件树，其会智能地在保存树中任意文件时重新编译主文件。
+此外，可以选择删除编译过程中出现的辅助文件。
+该设定可以关闭。
+PDF预览和SyncTeX支持#LaTeX Workshop支持在VS Code内与外部PDF查看器实时预览编译出的PDF文档。
+此外，支持通过SyncTeX从文档中的\label和\ref处跳转PDF至相应部分，或是从PDF任意部分跳转至生成该部分的一行(同样支持访问文件树)。
+Snippets, Shortcuts 与 IntelliSense#智能提示宏命令(包含可能的参数类型)，\cite和\ref引用内容，以及\input, \include, \includegraphics等文件导入路径，可以选择并按tab键补完。
+智能生成列举环境中的\item，
+更方便地给文本提供\emph等样式。
+此外，可以通过VS Code自定义代码片段，形成适合个人的代码片段。
+数学公式和TikZ绘图，图片预览#将光标置于数学公式与TikZ绘图，或图片插入处可以看到渲染效果。
+错误分析#将编译报错显示于文件中。
+大纲，代码片段插入#在资源管理器-&amp;gt;大纲处(或$\TeX$-&amp;gt;STRUCTURE处)可以看到树状组织的全部章节和标签，支持点击跳转。
+在$\TeX$-&amp;gt;SNIPPET VIEW处可以根据符号插入对应的命令，以及常用的TikZ绘图片段。
+其它插件#你也可以在扩展商店搜索自己喜欢的扩展。 如笔者会使用hypersnips(借助Vim中的王牌插件Ultisnips灵感创作)以根据上下文(context)快速自动展开代码片段。 由于其目前为beta版，存在部分问题，故此处不介绍。</description>
+    </item>
+    
   </channel>
 </rss>

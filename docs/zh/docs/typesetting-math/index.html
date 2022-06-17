@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="\(\)使用$\LaTeX$排版数学公式#为较好地支持排版数学公式，需要使用AMS-$\LaTeX$宏集。 AMS-$\LaTeX$宏集是一个包含了若干类和宏包的数学排版拓展，我们主要使用amsmath宏包。 以下的命令总是假定已引用该宏包。
+行内公式#数学公式的排版分为两种：其一是与文字混排，称为行内公式；其二是单独成行，称为行间公式。
+行内公式是由一对$包裹($\TeX$语法)或是由\(与\)包裹($\LaTeX$语法)的环境：
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则$a^2&#43;b^2=c^2$。 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$，斜边长度为$c$，则$a^2&#43;b^2=c^2$。也可以使用\begin{math}和\end{math}来包裹，甚至可以混用语法：$a\)。 但这两种都不推荐。
+我们建议全部使用$\TeX$语法(即使用$包裹)，这样便于阅读。
+行间公式#若需要将较长的公式独立于段落展示，需要使用环境equation：
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation} a^2 &#43; b^2 = c^2 \end{equation} 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation} a^2 &#43; b^2 = c^2 \end{equation}equation环境会为公式生成编号，可以使用\label, \ref进行引用。 \tag{}可为公式修改编号。
+如果不需要编号，可以使用\notag命令。此外也有更直接的方式：
+使用equation*环境；
+使用displaymath环境；
+使用一对$$包裹($\TeX$语法)或者用\[与\]包裹($\LaTeX$语法)。
+注意事项：请尽量不要使用$$包裹来生成行间公式，更不要混合使用语法。其并不支持如fleqn等命令(见文档导言)。此外还有其它支持问题，可以参考讨论Why is \[ ... \] preferable to $$ ... $$?。
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation*} a^2 &#43; b^2 = c^2 \end{equation*} 或者更简单一些： \[ a^2 &#43; b^2 = c^2 \] 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \[ a^2 &#43; b^2 = c^2 \] 或者更简单一些： \[ a^2 &#43; b^2 = c^2 \]数学模式#被数学环境包裹的片段进入数学模式，其与文本模式有差异，如：">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="排版数学公式" />
+<meta property="og:description" content="\(\)使用$\LaTeX$排版数学公式#为较好地支持排版数学公式，需要使用AMS-$\LaTeX$宏集。 AMS-$\LaTeX$宏集是一个包含了若干类和宏包的数学排版拓展，我们主要使用amsmath宏包。 以下的命令总是假定已引用该宏包。
+行内公式#数学公式的排版分为两种：其一是与文字混排，称为行内公式；其二是单独成行，称为行间公式。
+行内公式是由一对$包裹($\TeX$语法)或是由\(与\)包裹($\LaTeX$语法)的环境：
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则$a^2&#43;b^2=c^2$。 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$，斜边长度为$c$，则$a^2&#43;b^2=c^2$。也可以使用\begin{math}和\end{math}来包裹，甚至可以混用语法：$a\)。 但这两种都不推荐。
+我们建议全部使用$\TeX$语法(即使用$包裹)，这样便于阅读。
+行间公式#若需要将较长的公式独立于段落展示，需要使用环境equation：
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation} a^2 &#43; b^2 = c^2 \end{equation} 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation} a^2 &#43; b^2 = c^2 \end{equation}equation环境会为公式生成编号，可以使用\label, \ref进行引用。 \tag{}可为公式修改编号。
+如果不需要编号，可以使用\notag命令。此外也有更直接的方式：
+使用equation*环境；
+使用displaymath环境；
+使用一对$$包裹($\TeX$语法)或者用\[与\]包裹($\LaTeX$语法)。
+注意事项：请尽量不要使用$$包裹来生成行间公式，更不要混合使用语法。其并不支持如fleqn等命令(见文档导言)。此外还有其它支持问题，可以参考讨论Why is \[ ... \] preferable to $$ ... $$?。
+源代码#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \begin{equation*} a^2 &#43; b^2 = c^2 \end{equation*} 或者更简单一些： \[ a^2 &#43; b^2 = c^2 \] 编译结果#设直角三角形的两条直角边长度分别为$a$和$b$， 斜边长度为$c$，则 \[ a^2 &#43; b^2 = c^2 \] 或者更简单一些： \[ a^2 &#43; b^2 = c^2 \]数学模式#被数学环境包裹的片段进入数学模式，其与文本模式有差异，如：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://localghost-blog.github.io/latex-tutorial/zh/docs/typesetting-math/" /><meta property="article:section" content="docs" />
+
+<meta property="og:site_name" content="LaTeX 教程" />
+
+<title>排版数学公式 | LaTeX 教程</title>
+<link rel="manifest" href="/latex-tutorial/manifest.json">
+<link rel="icon" href="/latex-tutorial/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/latex-tutorial/book.min.c276b083c3960ae7d4c3e26b07316e8e7e83fff9de948e671424aaac84acc0f1.css" integrity="sha256-wnawg8OWCufUw&#43;JrBzFujn6D//nelI5nFCSqrISswPE=" crossorigin="anonymous">
+  <script defer src="/latex-tutorial/flexsearch.min.js"></script>
+  <script defer src="/latex-tutorial/zh.search.min.d3a63ec596583a8a7a7537146ccf55ff16ade9d7ea534c61ad15ad47062841c4.js" integrity="sha256-06Y&#43;xZZYOop6dTcUbM9V/xat6dfqU0xhrRWtRwYoQcQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/latex-tutorial/zh/"><span>LaTeX 教程</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/latex-tutorial/svg/translate.svg" class="book-icon" alt="Languages" />
+        简体中文
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://localghost-blog.github.io/latex-tutorial/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/getting-started-with-latex/" class="">初次使用 LaTeX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/international-language-support/" class="">多语言支持</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/latex-file-content/" class="">LaTeX 文件内容</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/common-environments/" class="">常见环境</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/how-to-write-a-well-structured-latex-file/" class="">如何写出一个结构化的LaTeX文档</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/typesetting-math/" class="active">排版数学公式</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/latex-tutorial/zh/docs/latex-editor/" class="">编辑器推荐</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/latex-tutorial/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>排版数学公式</strong>
+
+  <label for="toc-control">
+    
+    <img src="/latex-tutorial/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#使用latex排版数学公式">使用$\LaTeX$排版数学公式</a></li>
+    <li><a href="#行内公式">行内公式</a></li>
+    <li><a href="#行间公式">行间公式</a>
+      <ul>
+        <li><a href="#数学模式">数学模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#常用数学命令表">常用数学命令表</a>
+      <ul>
+        <li><a href="#希腊字母">希腊字母</a></li>
+        <li><a href="#数学字体">数学字体</a></li>
+        <li><a href="#二元关系符">二元关系符</a></li>
+        <li><a href="#二元运算符">二元运算符</a></li>
+        <li><a href="#箭头">箭头</a></li>
+        <li><a href="#分隔符">分隔符</a></li>
+        <li><a href="#杂项">杂项</a></li>
+        <li><a href="#算符">算符</a></li>
+        <li><a href="#巨算符">巨算符</a></li>
+        <li><a href="#重音">重音</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+	integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+	integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+	crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+	integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+	crossorigin="anonymous"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		renderMathInElement(document.body, {
+			
+			
+			delimiters: [
+				{ left: "$", right: "$", display: false },
+				{ left: "$$", right: "$$", display: true },
+				{ left: "\\(", right: "\\)", display: false },
+				{ left: "\\begin{equation}", right: "\\end{equation}", display: true },
+				{ left: "\\begin{align}", right: "\\end{align}", display: true },
+				{ left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+				{ left: "\\begin{gather}", right: "\\end{gather}", display: true },
+				{ left: "\\begin{CD}", right: "\\end{CD}", display: true },
+				{ left: "\\[", right: "\\]", display: true }
+			],
+			
+			throwOnError: false
+		});
+	});
+</script><span>
+	\(\)
+</span>
+<h1 id="使用latex排版数学公式">
+  使用$\LaTeX$排版数学公式
+  <a class="anchor" href="#%e4%bd%bf%e7%94%a8latex%e6%8e%92%e7%89%88%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f">#</a>
+</h1>
+<p>为较好地支持排版数学公式，需要使用AMS-$\LaTeX$宏集。
+AMS-$\LaTeX$宏集是一个包含了若干类和宏包的数学排版拓展，我们主要使用<code>amsmath</code>宏包。
+以下的命令总是假定已引用该宏包。</p>
+<h1 id="行内公式">
+  行内公式
+  <a class="anchor" href="#%e8%a1%8c%e5%86%85%e5%85%ac%e5%bc%8f">#</a>
+</h1>
+<p>数学公式的排版分为两种：其一是与文字混排，称为<strong>行内公式</strong>；其二是单独成行，称为<strong>行间公式</strong>。</p>
+<p>行内公式是由一对<code>$</code>包裹($\TeX$语法)或是由<code>\(</code>与<code>\)</code>包裹($\LaTeX$语法)的环境：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>设直角三角形的两条直角边长度分别为<span style="color:#e6db74">$</span>a<span style="color:#e6db74">$</span>和<span style="color:#e6db74">$</span>b<span style="color:#e6db74">$</span>，
+</span></span><span style="display:flex;"><span>斜边长度为<span style="color:#e6db74">$</span>c<span style="color:#e6db74">$</span>，则<span style="color:#e6db74">$</span>a^<span style="color:#ae81ff">2</span><span style="color:#f92672">+</span>b^<span style="color:#ae81ff">2</span><span style="color:#f92672">=</span>c^<span style="color:#ae81ff">2</span><span style="color:#e6db74">$</span>。
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>设直角三角形的两条直角边长度分别为$a$和$b$，斜边长度为$c$，则$a^2+b^2=c^2$。
+  </div>
+
+</div>
+
+<p>也可以使用<code>\begin{math}</code>和<code>\end{math}</code>来包裹，甚至可以混用语法：<code>$a\)</code>。
+但这两种都不推荐。</p>
+<p>我们建议全部使用$\TeX$语法(即使用<code>$</code>包裹)，这样便于阅读。</p>
+<h1 id="行间公式">
+  行间公式
+  <a class="anchor" href="#%e8%a1%8c%e9%97%b4%e5%85%ac%e5%bc%8f">#</a>
+</h1>
+<p>若需要将较长的公式独立于段落展示，需要使用环境<code>equation</code>：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>设直角三角形的两条直角边长度分别为<span style="color:#e6db74">$</span>a<span style="color:#e6db74">$</span>和<span style="color:#e6db74">$</span>b<span style="color:#e6db74">$</span>，
+</span></span><span style="display:flex;"><span>斜边长度为<span style="color:#e6db74">$</span>c<span style="color:#e6db74">$</span>，则
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{equation}
+</span></span><span style="display:flex;"><span>a^2 + b^2 = c^2
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{equation}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>设直角三角形的两条直角边长度分别为$a$和$b$，
+斜边长度为$c$，则
+\begin{equation}
+a^2 + b^2 = c^2
+\end{equation}
+  </div>
+
+</div>
+
+<p><code>equation</code>环境会为公式生成编号，可以使用<code>\label</code>, <code>\ref</code>进行引用。
+<code>\tag{}</code>可为公式修改编号。</p>
+<p>如果不需要编号，可以使用<code>\notag</code>命令。此外也有更直接的方式：</p>
+<ol>
+<li>
+<p>使用<code>equation*</code>环境；</p>
+</li>
+<li>
+<p>使用<code>displaymath</code>环境；</p>
+</li>
+<li>
+<p>使用一对<code>$$</code>包裹($\TeX$语法)或者用<code>\[</code>与<code>\]</code>包裹($\LaTeX$语法)。</p>
+</li>
+</ol>
+<p><strong>注意事项</strong>：请尽量不要使用<code>$$</code>包裹来生成行间公式，更不要混合使用语法。其并不支持如<code>fleqn</code>等命令(见<a href="../getting-started-with-LaTeX#%e6%96%87%e6%a1%a3%e5%af%bc%e8%a8%80">文档导言</a>)。此外还有其它支持问题，可以参考讨论<a href="https://tex.stackexchange.com/questions/503/why-is-preferable-to">Why is <code>\[ ... \]</code> preferable to <code>$$ ... $$</code>?</a>。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>设直角三角形的两条直角边长度分别为<span style="color:#e6db74">$</span>a<span style="color:#e6db74">$</span>和<span style="color:#e6db74">$</span>b<span style="color:#e6db74">$</span>，
+</span></span><span style="display:flex;"><span>斜边长度为<span style="color:#e6db74">$</span>c<span style="color:#e6db74">$</span>，则
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{equation*}
+</span></span><span style="display:flex;"><span>a^2 + b^2 = c^2
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{equation*}
+</span></span><span style="display:flex;"><span>或者更简单一些：
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">\[</span> a^<span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> b^<span style="color:#ae81ff">2</span> <span style="color:#f92672">=</span> c^<span style="color:#ae81ff">2</span> <span style="color:#e6db74">\]</span>
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>设直角三角形的两条直角边长度分别为$a$和$b$，
+斜边长度为$c$，则
+\[
+a^2 + b^2 = c^2
+\]
+或者更简单一些：
+\[ a^2 + b^2 = c^2 \]
+  </div>
+
+</div>
+
+<h2 id="数学模式">
+  数学模式
+  <a class="anchor" href="#%e6%95%b0%e5%ad%a6%e6%a8%a1%e5%bc%8f">#</a>
+</h2>
+<p>被数学环境包裹的片段进入数学模式，其与文本模式有差异，如：</p>
+<ol>
+<li>
+<p>空格将被忽略，由表达式生成间距，也可以使用<code>\,</code>, <code>\quad</code>等手动调整间距；</p>
+</li>
+<li>
+<p>不允许有空行；</p>
+</li>
+<li>
+<p>所有字母被当作变量处理，间距与文本模式不一致，亦不会生成单词间的空格。
+如须嵌入文本模式，可以使用<code>\text{}</code>, <code>\textit{}</code>等命令。</p>
+</li>
+</ol>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#e6db74">$</span>\forall x \in \mathbb R: \qquad x^<span style="color:#ae81ff">2</span> \geq <span style="color:#ae81ff">0</span><span style="color:#e6db74">$</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">$</span>x^<span style="color:#ae81ff">2</span> \geq <span style="color:#ae81ff">0</span> \qquad \text{for all } x \in \mathbb R<span style="color:#e6db74">$</span>
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>$\forall x \in \mathbb R: \qquad x^2 \geq 0$</p>
+<p>$x^2 \geq 0 \qquad \text{for all } x \in \mathbb R$</p>
+
+  </div>
+
+</div>
+
+<p><strong>注意事项</strong>：请不要滥用<code>\text</code>命令进入文本模式，更不要做无必要的数学环境和文本环境的多层嵌套。</p>
+<h1 id="常用数学命令表">
+  常用数学命令表
+  <a class="anchor" href="#%e5%b8%b8%e7%94%a8%e6%95%b0%e5%ad%a6%e5%91%bd%e4%bb%a4%e8%a1%a8">#</a>
+</h1>
+<p>注：由于表格较宽，建议使用电脑浏览以获取最佳效果。</p>
+<h2 id="希腊字母">
+  希腊字母
+  <a class="anchor" href="#%e5%b8%8c%e8%85%8a%e5%ad%97%e6%af%8d">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">\alpha</th>
+<th style="text-align:center">\beta</th>
+<th style="text-align:center">\gamma</th>
+<th style="text-align:center">\delta</th>
+<th style="text-align:center">\epsilon</th>
+<th style="text-align:center">\varepsilon</th>
+<th style="text-align:center">\zeta</th>
+<th style="text-align:center">\eta</th>
+<th style="text-align:center">\theta</th>
+<th style="text-align:center">\vartheta</th>
+<th style="text-align:center">\iota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字母</td>
+<td style="text-align:center">$\alpha$</td>
+<td style="text-align:center">$\beta$</td>
+<td style="text-align:center">$\gamma$</td>
+<td style="text-align:center">$\delta$</td>
+<td style="text-align:center">$\epsilon$</td>
+<td style="text-align:center">$\varepsilon$</td>
+<td style="text-align:center">$\zeta$</td>
+<td style="text-align:center">$\eta$</td>
+<td style="text-align:center">$\theta$</td>
+<td style="text-align:center">$\vartheta$</td>
+<td style="text-align:center">$\iota$</td>
+</tr>
+<tr>
+<td style="text-align:center">命令</td>
+<td style="text-align:center">\kappa</td>
+<td style="text-align:center">\lambda</td>
+<td style="text-align:center">\mu</td>
+<td style="text-align:center">\nu</td>
+<td style="text-align:center">\xi</td>
+<td style="text-align:center">\pi</td>
+<td style="text-align:center">\varpi</td>
+<td style="text-align:center">\rho</td>
+<td style="text-align:center">\varrho</td>
+<td style="text-align:center">\sigma</td>
+<td style="text-align:center">\varsigma</td>
+</tr>
+<tr>
+<td style="text-align:center">字母</td>
+<td style="text-align:center">$\kappa$</td>
+<td style="text-align:center">$\lambda$</td>
+<td style="text-align:center">$\mu$</td>
+<td style="text-align:center">$\nu$</td>
+<td style="text-align:center">$\xi$</td>
+<td style="text-align:center">$\pi$</td>
+<td style="text-align:center">$\varpi$</td>
+<td style="text-align:center">$\rho$</td>
+<td style="text-align:center">$\varrho$</td>
+<td style="text-align:center">$\sigma$</td>
+<td style="text-align:center">$\varsigma$</td>
+</tr>
+<tr>
+<td style="text-align:center">命令</td>
+<td style="text-align:center">\tau</td>
+<td style="text-align:center">\upsilon</td>
+<td style="text-align:center">\phi</td>
+<td style="text-align:center">\varphi</td>
+<td style="text-align:center">\chi</td>
+<td style="text-align:center">\psi</td>
+<td style="text-align:center">\omega</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">字母</td>
+<td style="text-align:center">$\tau$</td>
+<td style="text-align:center">$\upsilon$</td>
+<td style="text-align:center">$\phi$</td>
+<td style="text-align:center">$\varphi$</td>
+<td style="text-align:center">$\chi$</td>
+<td style="text-align:center">$\psi$</td>
+<td style="text-align:center">$\omega$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">命令</td>
+<td style="text-align:center">\Gamma</td>
+<td style="text-align:center">\Delta</td>
+<td style="text-align:center">\Theta</td>
+<td style="text-align:center">\Lambda</td>
+<td style="text-align:center">\Xi</td>
+<td style="text-align:center">\Pi</td>
+<td style="text-align:center">\Sigma</td>
+<td style="text-align:center">\Upsilon</td>
+<td style="text-align:center">\Phi</td>
+<td style="text-align:center">\Psi</td>
+<td style="text-align:center">\Omega</td>
+</tr>
+<tr>
+<td style="text-align:center">字母</td>
+<td style="text-align:center">$\Gamma$</td>
+<td style="text-align:center">$\Delta$</td>
+<td style="text-align:center">$\Theta$</td>
+<td style="text-align:center">$\Lambda$</td>
+<td style="text-align:center">$\Xi$</td>
+<td style="text-align:center">$\Pi$</td>
+<td style="text-align:center">$\Sigma$</td>
+<td style="text-align:center">$\Upsilon$</td>
+<td style="text-align:center">$\Phi$</td>
+<td style="text-align:center">$\Psi$</td>
+<td style="text-align:center">$\Omega$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数学字体">
+  数学字体
+  <a class="anchor" href="#%e6%95%b0%e5%ad%a6%e5%ad%97%e4%bd%93">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">大写字母</th>
+<th style="text-align:center">小写字母</th>
+<th style="text-align:center">数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\mathnormal (默认)</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">$ABCDEFGHIJKLMN$$OPQRSTUVWXYZ$</td>
+<td style="text-align:center">$abcdefghijklmnopqrstuvwxyz$</td>
+<td style="text-align:center">$0123456789$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathrm</td>
+<td style="text-align:center">Roman</td>
+<td style="text-align:center">$\mathrm{ABCDEFGHIJKLMN}$$\mathrm{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathrm{abcdefghijklmn}$$\mathrm{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathrm{0123456789}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathit</td>
+<td style="text-align:center">Italic</td>
+<td style="text-align:center">$\mathit{ABCDEFGHIJKLMN}$$\mathit{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathit{abcdefghijklmn}$$\mathit{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathit{0123456789}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathcal</td>
+<td style="text-align:center">Calligraphic</td>
+<td style="text-align:center">$\mathcal{ABCDEFGHIJKLMN}$$\mathcal{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathcal{abcdefghijklmn}$$\mathcal{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathcal{0123456789}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathfrak</td>
+<td style="text-align:center">Frakutr</td>
+<td style="text-align:center">$\mathfrak{ABCDEFGHIJKLMN}$$\mathfrak{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathfrak{abcdefghijklmn}$$\mathfrak{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathfrak{0123456789}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathbb</td>
+<td style="text-align:center">Blackboard bold</td>
+<td style="text-align:center">$\mathbb{ABCDEFGHIJKLMN}$$\mathbb{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathbb{abcdefghijklmn}$$\mathbb{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathbb{0123456789}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathbf</td>
+<td style="text-align:center">Boldface</td>
+<td style="text-align:center">$\mathbf{ABCDEFGHIJKLMN}$$\mathbf{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathbf{abcdefghijklmn}$$\mathbf{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathbf{0123456789}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathtt</td>
+<td style="text-align:center">Typewriter</td>
+<td style="text-align:center">$\mathtt{ABCDEFGHIJKLMN}$$\mathtt{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathtt{abcdefghijklmn}$$\mathtt{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathtt{0123456789}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\mathsf</td>
+<td style="text-align:center">Sans Serif</td>
+<td style="text-align:center">$\mathsf{ABCDEFGHIJKLMN}$$\mathsf{OPQRSTUVWXYZ}$</td>
+<td style="text-align:center">$\mathsf{abcdefghijklmn}$$\mathsf{opqrstuvwxyz}$</td>
+<td style="text-align:center">$\mathsf{0123456789}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二元关系符">
+  二元关系符
+  <a class="anchor" href="#%e4%ba%8c%e5%85%83%e5%85%b3%e7%b3%bb%e7%ac%a6">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&lt;</th>
+<th style="text-align:center">&gt;</th>
+<th style="text-align:center">=</th>
+<th style="text-align:center">\leq (or \le)</th>
+<th style="text-align:center">\geq (or \ge)</th>
+<th style="text-align:center">\equiv</th>
+<th style="text-align:center">\ll</th>
+<th style="text-align:center">\gg</th>
+<th style="text-align:center">\doteq</th>
+<th style="text-align:center">\prec</th>
+<th style="text-align:center">\succ</th>
+<th style="text-align:center">\sim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$&lt;$</td>
+<td style="text-align:center">$&gt;$</td>
+<td style="text-align:center">$=$</td>
+<td style="text-align:center">$\leq$</td>
+<td style="text-align:center">$\geq$</td>
+<td style="text-align:center">$\equiv$</td>
+<td style="text-align:center">$\ll$</td>
+<td style="text-align:center">$\gg$</td>
+<td style="text-align:center">$\doteq$</td>
+<td style="text-align:center">$\prec$</td>
+<td style="text-align:center">$\succ$</td>
+<td style="text-align:center">$\sim$</td>
+</tr>
+<tr>
+<td style="text-align:center">\preceq</td>
+<td style="text-align:center">\succeq</td>
+<td style="text-align:center">\simeq</td>
+<td style="text-align:center">\subset</td>
+<td style="text-align:center">\supset</td>
+<td style="text-align:center">\approx</td>
+<td style="text-align:center">\subseteq</td>
+<td style="text-align:center">\supseteq</td>
+<td style="text-align:center">\cong</td>
+<td style="text-align:center">\sqsubset</td>
+<td style="text-align:center">\sqsupset</td>
+<td style="text-align:center">\Join</td>
+</tr>
+<tr>
+<td style="text-align:center">$\preceq$</td>
+<td style="text-align:center">$\succeq$</td>
+<td style="text-align:center">$\simeq$</td>
+<td style="text-align:center">$\subset$</td>
+<td style="text-align:center">$\supset$</td>
+<td style="text-align:center">$\approx$</td>
+<td style="text-align:center">$\subseteq$</td>
+<td style="text-align:center">$\supseteq$</td>
+<td style="text-align:center">$\cong$</td>
+<td style="text-align:center">$\sqsubset$</td>
+<td style="text-align:center">$\sqsupset$</td>
+<td style="text-align:center">$\Join$</td>
+</tr>
+<tr>
+<td style="text-align:center">\sqsubseteq</td>
+<td style="text-align:center">\sqsupseteq</td>
+<td style="text-align:center">\bowtie</td>
+<td style="text-align:center">\in</td>
+<td style="text-align:center">\ni (or \owns)</td>
+<td style="text-align:center">\propto</td>
+<td style="text-align:center">\vdash</td>
+<td style="text-align:center">\dashv</td>
+<td style="text-align:center">\models</td>
+<td style="text-align:center">\mid</td>
+<td style="text-align:center">\parallel</td>
+<td style="text-align:center">\perp</td>
+</tr>
+<tr>
+<td style="text-align:center">$\sqsubseteq$</td>
+<td style="text-align:center">$\sqsupseteq$</td>
+<td style="text-align:center">$\bowtie$</td>
+<td style="text-align:center">$\in$</td>
+<td style="text-align:center">$\ni$</td>
+<td style="text-align:center">$\propto$</td>
+<td style="text-align:center">$\vdash$</td>
+<td style="text-align:center">$\dashv$</td>
+<td style="text-align:center">$\models$</td>
+<td style="text-align:center">$\mid$</td>
+<td style="text-align:center">$\parallel$</td>
+<td style="text-align:center">$\perp$</td>
+</tr>
+<tr>
+<td style="text-align:center">\smile</td>
+<td style="text-align:center">\frown</td>
+<td style="text-align:center">\asymp</td>
+<td style="text-align:center">:</td>
+<td style="text-align:center">\notin</td>
+<td style="text-align:center">\neq (or \ne)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">$\smile$</td>
+<td style="text-align:center">$\frown$</td>
+<td style="text-align:center">$\asymp$</td>
+<td style="text-align:center">$:$</td>
+<td style="text-align:center">$\notin$</td>
+<td style="text-align:center">$\neq$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="二元运算符">
+  二元运算符
+  <a class="anchor" href="#%e4%ba%8c%e5%85%83%e8%bf%90%e7%ae%97%e7%ac%a6">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>+</th>
+<th>-</th>
+<th>\pm</th>
+<th>\mp</th>
+<th>riangleleft</th>
+<th>\triangleright</th>
+<th>\cdot</th>
+<th>\div</th>
+<th>\times</th>
+<th>\setminus</th>
+<th>\star</th>
+<th>\cup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$+$</td>
+<td>$-$</td>
+<td>$\pm$</td>
+<td>$\mp$</td>
+<td>$\triangleleft$</td>
+<td>$\triangleright$</td>
+<td>$\cdot$</td>
+<td>$\div$</td>
+<td>$\times$</td>
+<td>$\setminus$</td>
+<td>$\star$</td>
+<td>$\cup$</td>
+</tr>
+<tr>
+<td>\cap</td>
+<td>\ast</td>
+<td>\sqcup</td>
+<td>\sqcap</td>
+<td>\circ</td>
+<td>\vee (or \lor)</td>
+<td>\wedge (or \land)</td>
+<td>\bullet</td>
+<td>\oplus</td>
+<td>\ominus</td>
+<td>\diamond</td>
+<td>\odot</td>
+</tr>
+<tr>
+<td>$\cap$</td>
+<td>$\ast$</td>
+<td>$\sqcup$</td>
+<td>$\sqcap$</td>
+<td>$\circ$</td>
+<td>$\vee$</td>
+<td>$\wedge$</td>
+<td>$\bullet$</td>
+<td>$\oplus$</td>
+<td>$\ominus$</td>
+<td>$\diamond$</td>
+<td>$\odot$</td>
+</tr>
+<tr>
+<td>\oslash</td>
+<td>\uplus</td>
+<td>\otimes</td>
+<td>\bigcirc</td>
+<td>\amalg</td>
+<td>\bigtriangleup</td>
+<td>\bigtriangledown</td>
+<td>\dagger</td>
+<td>\lhd</td>
+<td>\rhd</td>
+<td>\ddagger</td>
+<td>\unlhd</td>
+</tr>
+<tr>
+<td>$\oslash$</td>
+<td>$\uplus$</td>
+<td>$\otimes$</td>
+<td>$\bigcirc$</td>
+<td>$\amalg$</td>
+<td>$\bigtriangleup$</td>
+<td>$\bigtriangledown$</td>
+<td>$\dagger$</td>
+<td>$\lhd$</td>
+<td>$\rhd$</td>
+<td>$\ddagger$</td>
+<td>$\unlhd$</td>
+</tr>
+<tr>
+<td>\unrhd</td>
+<td>\wr</td>
+<td>\dotplus</td>
+<td>\centerdot</td>
+<td>\ltimes</td>
+<td>\rtimes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$\unrhd$</td>
+<td>$\wr$</td>
+<td>$\dotplus$</td>
+<td>$\centerdot$</td>
+<td>$\ltimes$</td>
+<td>$\rtimes$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>分式使用命令<code>\frac{分子}{分母}</code>书写，在行间公式中正常显示，而在行内公式中被压缩以适应行高。
+可以使用<code>\tfrac</code>与<code>\dfrac</code>来获得行内和行间的分式风格。
+此外我们也常使用<code>1/2</code>来表示分式，这在部分情况下会较为美观。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#e6db74">$</span><span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> \qquad \frac{<span style="color:#ae81ff">1</span>}{<span style="color:#ae81ff">2</span>} \qquad \dfrac{<span style="color:#ae81ff">1</span>}{<span style="color:#ae81ff">2</span>}<span style="color:#e6db74">$</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{equation*}
+</span></span><span style="display:flex;"><span>3/8 <span style="color:#66d9ef">\qquad</span> <span style="color:#66d9ef">\frac</span>{3}{8} <span style="color:#66d9ef">\qquad</span> <span style="color:#66d9ef">\tfrac</span>{3}{8}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{equation*}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>$1/2 \qquad \frac{1}{2} \qquad \dfrac{1}{2}$
+\[3/8 \qquad \frac{3}{8} \qquad \tfrac{3}{8}\]
+  </div>
+
+</div>
+
+<p>对于模函数<code>mod</code>，使用<code>\bmod</code>来表示<code>mod</code>运算，而<code>\pmod</code>表示同余式等，如</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#e6db74">$</span>a \bmod b<span style="color:#e6db74">$</span>, <span style="color:#e6db74">$</span>x \equiv a \pmod b<span style="color:#e6db74">$</span>
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>$a \bmod b$, $x \equiv a \pmod b$
+  </div>
+
+</div>
+
+<h2 id="箭头">
+  箭头
+  <a class="anchor" href="#%e7%ae%ad%e5%a4%b4">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>\leftarrow (or \gets)</th>
+<th>\longleftarrow</th>
+<th>\rightarrow (or \to)</th>
+<th>\longrightarrow</th>
+<th>\leftrightarrow</th>
+<th>\longleftrightarrow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\leftarrow$</td>
+<td>$\longleftarrow$</td>
+<td>$\rightarrow$</td>
+<td>$\longrightarrow$</td>
+<td>$\leftrightarrow$</td>
+<td>$\longleftrightarrow$</td>
+</tr>
+<tr>
+<td>\Leftarrow</td>
+<td>\Longleftarrow</td>
+<td>\Rightarrow</td>
+<td>\Longrightarrow</td>
+<td>\Leftrightarrow</td>
+<td>\Longleftrightarrow</td>
+</tr>
+<tr>
+<td>$\Leftarrow$</td>
+<td>$\Longleftarrow$</td>
+<td>$\Rightarrow$</td>
+<td>$\Longrightarrow$</td>
+<td>$\Leftrightarrow$</td>
+<td>$\Longleftrightarrow$</td>
+</tr>
+<tr>
+<td>\mapsto</td>
+<td>\longmapsto</td>
+<td>\hookleftarrow</td>
+<td>\hookrightarrow</td>
+<td>\leftharpoonup</td>
+<td>\rightharpoonup</td>
+</tr>
+<tr>
+<td>$\mapsto$</td>
+<td>$\longmapsto$</td>
+<td>$\hookleftarrow$</td>
+<td>$\hookrightarrow$</td>
+<td>$\leftharpoonup$</td>
+<td>$\rightharpoonup$</td>
+</tr>
+<tr>
+<td>\leftharpoondown</td>
+<td>\rightharpoondown</td>
+<td>\rightleftharpoons</td>
+<td>\iff</td>
+<td>\uparrow</td>
+<td>\downarrow</td>
+</tr>
+<tr>
+<td>$\leftharpoondown$</td>
+<td>$\rightharpoondown$</td>
+<td>$\rightleftharpoons$</td>
+<td>$\iff$</td>
+<td>$\uparrow$</td>
+<td>$\downarrow$</td>
+</tr>
+<tr>
+<td>\updownarrow</td>
+<td>\Uparrow</td>
+<td>\Downarrow</td>
+<td>\Updownarrow</td>
+<td>\nearrow</td>
+<td>\searrow</td>
+</tr>
+<tr>
+<td>$\updownarrow$</td>
+<td>$\Uparrow$</td>
+<td>$\Downarrow$</td>
+<td>$\Updownarrow$</td>
+<td>$\nearrow$</td>
+<td>$\searrow$</td>
+</tr>
+<tr>
+<td>\swarrow</td>
+<td>\nwarrow</td>
+<td>\leadsto</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$\swarrow$</td>
+<td>$\nwarrow$</td>
+<td>$\leadsto$</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="分隔符">
+  分隔符
+  <a class="anchor" href="#%e5%88%86%e9%9a%94%e7%ac%a6">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>(</th>
+<th>)</th>
+<th>[ (or \lbrack)</th>
+<th>] (or \rbrack)</th>
+<th>\{ (or \lbrace)</th>
+<th>\} (or \rbrace)</th>
+<th>\langle</th>
+<th>\rangle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$($</td>
+<td>$)$</td>
+<td>$[$</td>
+<td>$]$</td>
+<td>$\{$</td>
+<td>$\}$</td>
+<td>$\langle$</td>
+<td>$\rangle$</td>
+</tr>
+<tr>
+<td>| (or \vert)</td>
+<td>\| (or \Vert)</td>
+<td>/</td>
+<td>\backslash</td>
+<td>\lfloor</td>
+<td>\rfloor</td>
+<td>\lceil</td>
+<td>\rceil</td>
+</tr>
+<tr>
+<td>$|$</td>
+<td>$\|$</td>
+<td>$/$</td>
+<td>$\backslash$</td>
+<td>$\lfloor$</td>
+<td>$\rfloor$</td>
+<td>$\lceil$</td>
+<td>$\rceil$</td>
+</tr>
+</tbody>
+</table>
+<p>可以在两个分隔符前分别用<code>\left</code>与<code>\right</code>命令来根据其间包裹内容大小自动调整分隔符大小。
+对于单边的分隔符，可以使用<code>\left.</code>或<code>\right.</code>来使另一边不可见：</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{equation*}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\left</span>. <span style="color:#66d9ef">\left</span>(<span style="color:#66d9ef">\alpha</span> + <span style="color:#66d9ef">\frac</span>{1}{<span style="color:#66d9ef">\beta</span>}<span style="color:#66d9ef">\right</span>)^3 <span style="color:#66d9ef">\right</span>|_{<span style="color:#66d9ef">\alpha</span> = 1, <span style="color:#66d9ef">\beta</span> = -1} = 0
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{equation*}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>\[\left. \left(\alpha + \frac{1}{\beta}\right)^3 \right|_{\alpha = 1, \beta = -1} = 0\]
+  </div>
+
+</div>
+
+<h2 id="杂项">
+  杂项
+  <a class="anchor" href="#%e6%9d%82%e9%a1%b9">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>\dots</th>
+<th>\cdots</th>
+<th>\vdots</th>
+<th>\ddots</th>
+<th>\hbar</th>
+<th>\imath</th>
+<th>\jmath</th>
+<th>\ell</th>
+<th>\Re</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\dots$</td>
+<td>$\cdots$</td>
+<td>$\vdots$</td>
+<td>$\ddots$</td>
+<td>$\hbar$</td>
+<td>$\imath$</td>
+<td>$\jmath$</td>
+<td>$\ell$</td>
+<td>$\Re$</td>
+</tr>
+<tr>
+<td>\Im</td>
+<td>\aleph</td>
+<td>\wp</td>
+<td>\forall</td>
+<td>\exists</td>
+<td>\mho</td>
+<td>\partial</td>
+<td>\prime</td>
+<td>\varnothing</td>
+</tr>
+<tr>
+<td>$\Im$</td>
+<td>$\aleph$</td>
+<td>$\wp$</td>
+<td>$\forall$</td>
+<td>$\exists$</td>
+<td>$\mho$</td>
+<td>$\partial$</td>
+<td>$\prime$</td>
+<td>$\varnothing$</td>
+</tr>
+<tr>
+<td>\emptyset</td>
+<td>\infty</td>
+<td>\nabla</td>
+<td>\triangle</td>
+<td>\Box</td>
+<td>\Diamond</td>
+<td>\bot</td>
+<td>\top</td>
+<td>\angle</td>
+</tr>
+<tr>
+<td>$\emptyset$</td>
+<td>$\infty$</td>
+<td>$\nabla$</td>
+<td>$\triangle$</td>
+<td>$\Box$</td>
+<td>$\Diamond$</td>
+<td>$\bot$</td>
+<td>$\top$</td>
+<td>$\angle$</td>
+</tr>
+<tr>
+<td>\surd</td>
+<td>\diamondsuit</td>
+<td>\heartsuit</td>
+<td>\clubsuit</td>
+<td>\spadesuit</td>
+<td>\neg (or \lnot)</td>
+<td>\flat</td>
+<td>\natural</td>
+<td>\sharp</td>
+</tr>
+<tr>
+<td>$\surd$</td>
+<td>$\diamondsuit$</td>
+<td>$\heartsuit$</td>
+<td>$\clubsuit$</td>
+<td>$\spadesuit$</td>
+<td>$\neg$</td>
+<td>$\flat$</td>
+<td>$\natural$</td>
+<td>$\sharp$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="算符">
+  算符
+  <a class="anchor" href="#%e7%ae%97%e7%ac%a6">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">\sin</th>
+<th style="text-align:center">\cos</th>
+<th style="text-align:center">\tan</th>
+<th style="text-align:center">\cot</th>
+<th style="text-align:center">\sec</th>
+<th style="text-align:center">\arcsin</th>
+<th style="text-align:center">\arccos</th>
+<th style="text-align:center">\arctan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\arg</td>
+<td style="text-align:center">\csc</td>
+<td style="text-align:center">\sinh</td>
+<td style="text-align:center">\cosh</td>
+<td style="text-align:center">\tanh</td>
+<td style="text-align:center">\coth</td>
+<td style="text-align:center">\exp</td>
+<td style="text-align:center">\log</td>
+</tr>
+<tr>
+<td style="text-align:center">\lg</td>
+<td style="text-align:center">\ln</td>
+<td style="text-align:center">\dim</td>
+<td style="text-align:center">\ker</td>
+<td style="text-align:center">\hom</td>
+<td style="text-align:center">\deg</td>
+<td style="text-align:center">\max<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></td>
+<td style="text-align:center">\min</td>
+</tr>
+<tr>
+<td style="text-align:center">\det</td>
+<td style="text-align:center">\Pr</td>
+<td style="text-align:center">\gcd</td>
+<td style="text-align:center">\inf</td>
+<td style="text-align:center">\liminf</td>
+<td style="text-align:center">\sup</td>
+<td style="text-align:center">\limsup</td>
+<td style="text-align:center">\lim</td>
+</tr>
+</tbody>
+</table>
+<p>对于未定义的算符，可以用<code>\DeclareMathOperator{}{}</code>命令定义，也可以用带星号的版本以支持上下限。</p>
+<div class="book-columns flex flex-wrap">
+
+  <div class="flex-even markdown-inner">
+    <h2 id="源代码">
+  源代码
+  <a class="anchor" href="#%e6%ba%90%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\DeclareMathOperator</span>{<span style="color:#66d9ef">\argh</span>}{argh}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\DeclareMathOperator*</span>{<span style="color:#66d9ef">\nut</span>}{Nut}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{equation*}
+</span></span><span style="display:flex;"><span>3 <span style="color:#66d9ef">\argh</span> = 2 <span style="color:#66d9ef">\nut</span>_{x = 1}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{equation*}
+</span></span></code></pre></div>
+  </div>
+
+  <div class="flex-even markdown-inner">
+    <h2 id="编译结果">
+  编译结果
+  <a class="anchor" href="#%e7%bc%96%e8%af%91%e7%bb%93%e6%9e%9c">#</a>
+</h2>
+<p>\[ 3 \operatorname{argh} = 2 \operatorname*{Nut} \limits_{x = 1} \]
+  </div>
+
+</div>
+
+<h2 id="巨算符">
+  巨算符
+  <a class="anchor" href="#%e5%b7%a8%e7%ae%97%e7%ac%a6">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">\sum</th>
+<th style="text-align:center">\prod</th>
+<th style="text-align:center">\coprod</th>
+<th style="text-align:center">\int</th>
+<th style="text-align:center">\oint</th>
+<th style="text-align:center">\bigcup</th>
+<th style="text-align:center">\bigcap</th>
+<th style="text-align:center">\bigsqcup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$\sum$</td>
+<td style="text-align:center">$\prod$</td>
+<td style="text-align:center">$\coprod$</td>
+<td style="text-align:center">$\int$</td>
+<td style="text-align:center">$\oint$</td>
+<td style="text-align:center">$\bigcup$</td>
+<td style="text-align:center">$\bigcap$</td>
+<td style="text-align:center">$\bigsqcup$</td>
+</tr>
+<tr>
+<td style="text-align:center">\bigvee</td>
+<td style="text-align:center">\bigwedge</td>
+<td style="text-align:center">\biguplus</td>
+<td style="text-align:center">\bigodot</td>
+<td style="text-align:center">\bigoplus</td>
+<td style="text-align:center">\bigotimes</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">$\bigvee$</td>
+<td style="text-align:center">$\bigwedge$</td>
+<td style="text-align:center">$\biguplus$</td>
+<td style="text-align:center">$\bigodot$</td>
+<td style="text-align:center">$\bigoplus$</td>
+<td style="text-align:center">$\bigotimes$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>巨算符在行内与行间的大小和形状有一定差异，在行内上下标位于右方，在行间上下标位于上下方。
+可以使用<code>\limits</code>和<code>\nolimits</code>调整。</p>
+<p>在连用多个积分号时可能间隔较大，可以用<code>\!</code>调整，或者使用由<code>amsmath</code>提供的命令，如
+<code>\iint</code>, <code>\iiint</code>, <code>\iiiint</code>和<code>\idotsint</code>等。</p>
+<h2 id="重音">
+  重音
+  <a class="anchor" href="#%e9%87%8d%e9%9f%b3">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>\hat{a}</th>
+<th>\grave{a}</th>
+<th>\bar{a}</th>
+<th>\acute{a}</th>
+<th>\mathring{a}</th>
+<th>\check{a}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\hat{a}$</td>
+<td>$\grave{a}$</td>
+<td>$\bar{a}$</td>
+<td>$\acute{a}$</td>
+<td>$\mathring{a}$</td>
+<td>$\check{a}$</td>
+</tr>
+<tr>
+<td>\dot{a}</td>
+<td>\vec{a}</td>
+<td>\breve{a}</td>
+<td>\tilde{a}</td>
+<td>\ddot{a}</td>
+<td>a&rsquo; (= a^{\prime})</td>
+</tr>
+<tr>
+<td>$\dot{a}$</td>
+<td>$\vec{a}$</td>
+<td>$\breve{a}$</td>
+<td>$\tilde{a}$</td>
+<td>$\ddot{a}$</td>
+<td>$a^{\prime}$</td>
+</tr>
+<tr>
+<td>\widehat{AAA}</td>
+<td>\widetilde{AAA}</td>
+<td>\overline{AAA}</td>
+<td>\underline{AAA}</td>
+<td>\overrightarrow{AAA}</td>
+<td>\underrightarrow{AAA}</td>
+</tr>
+<tr>
+<td>$\widehat{AAA}$</td>
+<td>$\widetilde{AAA}$</td>
+<td>$\overline{AAA}$</td>
+<td>$\underline{AAA}$</td>
+<td>$\overrightarrow{AAA}$</td>
+<td>$\underrightarrow{AAA}$</td>
+</tr>
+<tr>
+<td>\overleftarrow{AAA}</td>
+<td>\underleftarrow{AAA}</td>
+<td>\overleftrightarrow{AAA}</td>
+<td>\underleftrightarrow{AAA}</td>
+<td>\underbrace{AAA}_{A}</td>
+<td>\overbrace{AAA}^A</td>
+</tr>
+<tr>
+<td>$\overleftarrow{AAA}$</td>
+<td>$\underleftarrow{AAA}$</td>
+<td>$\overleftrightarrow{AAA}$</td>
+<td>$\underleftrightarrow{AAA}$</td>
+<td>$\underbrace{AAA}_{A}$</td>
+<td>$\overbrace{AAA}^A$</td>
+</tr>
+</tbody>
+</table>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><code>\max</code>及其后的算符使用上下限。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#使用latex排版数学公式">使用$\LaTeX$排版数学公式</a></li>
+    <li><a href="#行内公式">行内公式</a></li>
+    <li><a href="#行间公式">行间公式</a>
+      <ul>
+        <li><a href="#数学模式">数学模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#常用数学命令表">常用数学命令表</a>
+      <ul>
+        <li><a href="#希腊字母">希腊字母</a></li>
+        <li><a href="#数学字体">数学字体</a></li>
+        <li><a href="#二元关系符">二元关系符</a></li>
+        <li><a href="#二元运算符">二元运算符</a></li>
+        <li><a href="#箭头">箭头</a></li>
+        <li><a href="#分隔符">分隔符</a></li>
+        <li><a href="#杂项">杂项</a></li>
+        <li><a href="#算符">算符</a></li>
+        <li><a href="#巨算符">巨算符</a></li>
+        <li><a href="#重音">重音</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
